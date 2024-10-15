@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Aphasia Listening Exercise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script
+      type="text/javascript"
+      src="../static/js/jquery.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../static/js/jwplayer/jwplayer.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../static/js/jquery.hoverIntent.minified.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../static/js/application.js"
+      charset="utf-8"
+    ></script>
+
+    <style>
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+        .transition-transform {
+            transition: transform 0.3s ease-in-out;
+        }
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+        }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Professional Styling */
+        body {
+            background-color: #f4f7fa;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto', sans-serif;
+        }
+        button {
+            transition: all 0.3s ease;
+        }
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto p-6 max-w-4xl">
+        <!-- Page Title -->
+        <h1 class="text-4xl font-bold mb-8 text-center text-blue-600">Aphasia Listening Exercise</h1>
+        
+        <!-- Audio Player Section -->
+        <div id="audioPlayer" class="bg-white shadow-lg rounded-lg p-8 mb-8">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Listening Comprehension Challenge</h2>
+            <p class="mb-6 text-gray-600 leading-relaxed">
+                Listen to the audio and answer the questions that follow. This exercise simulates difficulties in auditory processing for individuals with aphasia.
+            </p>
+            <div class="flex items-center justify-center mb-4">
+                <button id="PlayButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    <i class="fas fa-play mr-2"></i>
+                    <span>Play Audio</span>
+                </button>
+            </div>
+            <div id="progressBarContainer" class="hidden">
+                <div class="bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
+                    <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 0%"></div>
+                </div>
+                <p id="progressText" class="text-center text-sm text-gray-500"></p>
+            </div>
+        </div>
+
+        <!-- Questions Section -->
+        <div id="questionsContainer" class="space-y-8 hidden">
+            <!-- Questions will be dynamically inserted here -->
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden bg-white shadow-lg rounded-lg p-8 mt-8">
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Your Results</h3>
+            <p id="scoreDisplay" class="text-lg mb-4 font-medium text-green-600"></p>
+            <div id="explanations" class="space-y-4"></div>
+            <button id="retryButton" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                Try Again
+            </button>
+        </div>
+    </div>
+    <div style="display: none; visibility: hidden"><div id="player"></div></div>
+    <script>
+      // JWPlayer setup
+      jwplayer("player").setup({
+          flashplayer: "../static/js/jwplayer/player.swf",
+          file: "../static/assets/audio/listening-sim-2.mp3",
+          width: 0,
+          height: 0,
+          events: {
+              onComplete: function () {
+                  // Handle when the audio playback completes
+                  playButton.classList.remove("pause");
+                  questionsContainer.classList.remove("hidden");
+                  progressBarContainer.classList.add("hidden");
+                  $("#answers").fadeIn();  // Assuming you have an element with id "answers"
+                  $("#quick-desc").fadeIn();  // Assuming you have an element with id "quick-desc"
+                  $(".console-small").css("padding-top", "1em");
+              },
+          },
+      });
+  
+      const questions = [
+          {
+              id: 1,
+              question: "Caterpillars eat:",
+              answers: [
+                  { id: 'a', text: "plants only", correct: false },
+                  { id: 'b', text: "insects only", correct: false },
+                  { id: 'c', text: "plants and insects", correct: true },
+                  { id: 'd', text: "pollen and dew", correct: false },
+              ],
+              explanation: "Caterpillars primarily eat plants, but some species also consume insects."
+          },
+          // More questions...
+      ];
+  
+      const playButton = document.getElementById('playButton');
+      const progressBarContainer = document.getElementById('progressBarContainer');
+      const progressBar = document.getElementById('progressBar');
+      const progressText = document.getElementById('progressText');
+      const questionsContainer = document.getElementById('questionsContainer');
+      const results = document.getElementById('results');
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      const explanations = document.getElementById('explanations');
+      const retryButton = document.getElementById('retryButton');
+  
+      let isPlaying = false;
+      let score = 0;
+      let answeredQuestions = 0;
+  
+      playButton.addEventListener('click', togglePlay);
+      retryButton.addEventListener('click', resetExercise);
+  
+      function togglePlay() {
+          isPlaying = !isPlaying;
+          if (isPlaying) {
+              playButton.innerHTML = '<i class="fas fa-pause mr-2"></i><span>Pause</span>';
+              playButton.classList.replace('bg-blue-600', 'bg-yellow-500');
+              jwplayer("player").play();  // Play the audio
+              startProgress();
+          } else {
+              playButton.innerHTML = '<i class="fas fa-play mr-2"></i><span>Resume</span>';
+              playButton.classList.replace('bg-yellow-500', 'bg-blue-600');
+              jwplayer("player").pause();  // Pause the audio
+          }
+      }
+  
+      function startProgress() {
+          progressBarContainer.classList.remove('hidden');
+          let width = 0;
+          const interval = setInterval(() => {
+              if (width >= 100 || !isPlaying) {
+                  clearInterval(interval);
+                  if (width >= 100) {
+                      showQuestions();
+                  }
+              } else {
+                  width++;
+                  progressBar.style.width = width + '%';
+                  progressText.textContent = `${width}% complete`;
+              }
+          }, 50); // Adjust timing as needed for your audio length
+      }
+  
+      function showQuestions() {
+          playButton.classList.add('hidden');
+          progressBarContainer.classList.add('hidden');
+          questionsContainer.classList.remove('hidden');
+          questionsContainer.innerHTML = questions.map(q => `
+              <div class="bg-white shadow-lg rounded-lg p-6 transition-transform hover:scale-105">
+                  <h3 class="text-xl font-semibold mb-4 text-gray-800">${q.question}</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      ${q.answers.map(a => `
+                          <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50" onclick="selectAnswer(${q.id}, '${a.id}', ${a.correct})">
+                              ${a.id}. ${a.text}
+                          </button>
+                      `).join('')}
+                  </div>
+              </div>
+          `).join('');
+      }
+  
+      function selectAnswer(questionId, answerId, isCorrect) {
+          const buttons = questionsContainer.querySelectorAll(`button`);
+          buttons.forEach(button => {
+              if (button.textContent.includes(`${answerId}.`)) {
+                  button.classList.replace('bg-gray-200', isCorrect ? 'bg-green-500' : 'bg-red-500');
+                  if (isCorrect) score++;
+                  button.disabled = true;
+              }
+          });
+          answeredQuestions++;
+          if (answeredQuestions === questions.length) {
+              setTimeout(showResults, 1000);
+          }
+      }
+  
+      function showResults() {
+          questionsContainer.classList.add('hidden');
+          results.classList.remove('hidden');
+          scoreDisplay.textContent = `You scored ${score} out of ${questions.length}!`;
+          explanations.innerHTML = questions.map(q => `
+              <div class="bg-gray-100 rounded-lg p-4">
+                  <p class="font-semibold">${q.question}</p>
+                  <p class="text-sm mt-2">${q.explanation}</p>
+              </div>
+          `).join('');
+      }
+  
+      function resetExercise() {
+          score = 0;
+          answeredQuestions = 0;
+          isPlaying = false;
+          results.classList.add('hidden');
+          playButton.classList.remove('hidden');
+          playButton.innerHTML = '<i class="fas fa-play mr-2"></i><span>Play Audio</span>';
+          progressBar.style.width = '0%';
+          progressText.textContent = '';
+          questionsContainer.classList.add('hidden');
+          progressBarContainer.classList.add('hidden');
+      }
+  </script>  
+</body>
+</html>

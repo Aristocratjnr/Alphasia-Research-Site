@@ -1,0 +1,113 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f3f4f6;
+  }
+  
+  .logo {
+    max-width: 90px;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tip-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+  }
+  
+  .tip-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .tip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+  }
+  
+  .tip-title {
+    font-size: 1.25rem;
+    color: #1f2937;
+  }
+  
+  .tip-content {
+    padding: 15px 20px;
+    display: none;
+    background-color: #fdfdfd;
+    color: #4b5563;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3b82f6;
+    color: white;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    .container {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    .tip-title {
+      font-size: 1.1rem;
+    }
+  
+    .tip-header {
+      flex-direction: column; /* Stack items vertically */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .tip-header svg {
+      margin-top: 10px; /* Add some space between text and icon */
+    }
+  
+    .button {
+      width: 100%; /* Make button full-width */
+      padding: 12px; /* Increase padding for easier tapping */
+    }
+  }

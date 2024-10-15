@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>
+      Aphasia Corner: Listening Impairments - Simulating Phonological and
+      Semantic Errors
+    </title>
+
+    <!-- Google Fonts and FontAwesome for Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- MDBootstrap (MDB) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="../static/css/main.css"
+      type="text/css"
+    />
+    <script
+      type="text/javascript"
+      src="../static/js/jquery.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../static/js/jwplayer/jwplayer.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../static/js/jquery.hoverIntent.minified.js"
+      charset="utf-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../static/js/application.js"
+      charset="utf-8"
+    ></script>
+
+    <style>
+      .play-button {
+        background-color: #0d6efd;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.5rem;
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+
+      .play-button:hover {
+        background-color: #0b5ed7;
+      }
+
+      #answers ul {
+        padding-left: 0;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      #answers li {
+        width: 165px;
+        height: 130px;
+        border: 2px solid #ddd;
+        border-radius: 0.5rem;
+        overflow: hidden;
+      }
+
+      #answers img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .console-small {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .console-button {
+        background-color: #0d6efd;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+
+      .console-button:hover {
+        background-color: #0b5ed7;
+      }
+
+      .next {
+        display: flex;
+        align-items: center;
+      }
+
+      .next span {
+        margin-right: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <!-- Header -->
+          <header class="text-center mb-5">
+            <h1 class="h3">Aphasia Exercises</h1>
+          </header>
+
+          <!-- Navigation -->
+          <nav class="mb-4">
+            <ul class="nav nav-tabs justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Introduction</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="listening-impairments.html"
+                  >Listening</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="reading-impairments.html">Reading</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="writing-impairments.html">Writing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="speaking-impairments.html">Speaking</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Sub-Navigation -->
+          <nav>
+            <ul class="nav nav-pills justify-content-center mb-4">
+              <li class="nav-item">
+                <a class="nav-link" href="listening-impairments.html"
+                  >Overview</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="listening-impairments-simulation-1.html"
+                  >Exercise 1</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listening-impairments-simulation-2.html"
+                  >Exercise 2</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listening-impairments-simulation-3.html"
+                  >Exercise 3</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listening-impairments-communication-tips.html"
+                  >Communication Tips</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Simulation Section -->
+          <section id="simulation" class="text-center">
+            <h2 class="h4">
+              Simulating Phonological and Semantic Errors
+            </h2>
+
+            <p class="lead">
+              Click play to hear the question and then choose the appropriate
+              answer.
+            </p>
+
+            <div id="task" class="mb-4">
+              <div class="play-button" id="play-button">
+                <i class="fas fa-play"></i> PLAY
+              </div>
+            </div>
+
+            <!-- Answer Section -->
+            <div id="answers" class="mb-4">
+              <ul class="d-flex justify-content-center">
+                <li id="img1">
+                  <a href="#"><img src="" alt="Image 1" /></a>
+                  <div class="confirmation"></div>
+                </li>
+                <li id="img2">
+                  <a href="#"><img src="" alt="Image 2" /></a>
+                  <div class="confirmation"></div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Navigation for questions -->
+            <div class="console-small">
+              <div class="console-button next">
+                <span>Next Question</span>
+              </div>
+              <div>
+                <span id="sim-current-count">1</span> of
+                <span id="sim-total-count">6</span>
+              </div>
+            </div>
+
+            <!-- Quick Description -->
+            <div id="quick-desc" class="mt-4"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+     <!-- #container -->
+     <div style="display: none; visibility: hidden">
+      <div id="player"></div>
+    </div>
+
+    <!-- MDBootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+
+    <!-- Your custom script -->
+    <script type="text/javascript">
+      var CURRENT_QUESTION = 1;
+
+      jwplayer("player").setup({
+        flashplayer: "../static/js/jwplayer/player.swf",
+        width: 0,
+        height: 0,
+        events: {
+          onComplete: function () {
+            $("#play-button").removeClass("pause");
+          },
+        },
+      });
+
+      var questionsData = {
+        questions: [
+          {
+            audio_url: "../static/assets/audio/listening-sim-1-q1.mp3",
+            correct_image_url: "../static/assets/images/nose.jpg",
+            wrong_image_url: "../static/assets/images/hose.jpg",
+            description:
+              "<p>Now, that was confusing wasn't it...Sometimes the person with aphasia may hear the sounds but may perceive them in the wrong order.</p><p>In this example, instead of NOSE, they may perceive what was said as SNOW.</p> <p>Click on Next Question below to try a few more examples.<p>",
+          },
+          {
+            audio_url: "../static/assets/audio/listening-sim-1-q2.mp3",
+            correct_image_url: "../static/assets/images/book.jpg",
+            wrong_image_url: "../static/assets/images/hook.jpg",
+            description:
+              "<p>Sometimes, the person with aphasia may hear the sounds but may perceive them in the wrong order.</p><p>In this example, instead of BOOK they may perceived what was said as KOOB</p>",
+          },
+          {
+            audio_url: "../static/assets/audio/listening-sim-1-q3.mp3",
+            correct_image_url: "../static/assets/images/horse.jpg",
+            wrong_image_url: "../static/assets/images/cat.jpg",
+            description:
+              "<p>Sometimes, the person with aphasia may think of a word related to the one that is said.</p> <p>For example, they may think they heard COW even though HORSE was said.</p>",
+          },
+          {
+            audio_url: "../static/assets/audio/listening-sim-1-q4.mp3",
+            correct_image_url: "../static/assets/images/apple.jpg",
+            wrong_image_url: "../static/assets/images/banana.jpg",
+            description:
+              "<p>Sometimes, the person with aphasia may think of a word related to the one that is said.</p><p>For example, they may think they heard ORANGE even though APPLE was said.</p>",
+          },
+          {
+            audio_url: "../static/assets/audio/listening-sim-1-q5.mp3",
+            correct_image_url: "../static/assets/images/screwdriver.jpg",
+            wrong_image_url: "../static/assets/images/saw.jpg",
+            description:
+              "<p>Sometimes, the person with aphasia may think of a word related to the one that is said.</p><p> For example, they may think they heard HAMMER even though SCREWDRIVER was said.",
+          },
+        ],
+      };
+
+      $(document).ready(function () {
+        listeningSim1DocReady();
+      });
+    </script>
+  </body>
+</html>

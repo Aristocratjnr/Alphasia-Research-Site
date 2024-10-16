@@ -1,138 +1,124 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-  rel="stylesheet"
-/>
-<!-- Created for use in the Voices of Hope for Aphasia site developed in collaboration with the University of Florida Chapter of the Association for Information Systems -->
-<!-- Managing Credit: Justin H, Jashmina P -->
-<!-- Technical Analysts: Devin D, Manuel U, Valdemar T -->
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Aphasia Exercise - Reading Impairments</title>
-
-    <link
-      rel="stylesheet"
-      href="../static/css/reset-min.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/css/main.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-
-    <!--[if lte IE 6]>
-      <script src="../static/js/ie-transparent-min.js"></script>
-      <script src="../static/js/ie-png-fix.js"></script>
-      <script>
-        DD_belatedPNG.fix("#example, .example");
-      </script>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="../static/css/ie.css"
-        media="screen"
-      />
-    <![endif]-->
-    <!--[if IE 7
-      ]><link
-        type="text/css"
-        rel="stylesheet"
-        href="../static/css/ie7.css"
-        media="screen"
-    /><![endif]-->
-
-    <script type="text/javascript" src="../static/js/jquery.js"></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.hoverIntent.minified.js"
-      charset="utf-8"
-    ></script>
-    <script type="text/javascript" src="../static/js/application.js"></script>
-  </head>
-  <body>
-    <div id="container">
-      <!--#set var="page" value="about-aphasia" -->
-      <!--#include virtual="../header.html" -->
-
-      <div id="content">
-        <h1>Aphasia Exercises</h1>
-
-        <div id="sim-nav">
-          <ul class="clearfix">
-            <li><a href="../index.html">Introduction</a></li>
-            <li><a href="listening-impairments.html">Listening</a></li>
-            <li>
-              <a class="selected" href="reading-impairments.html">Reading</a>
-            </li>
-            <li><a href="writing-impairments.html">Writing</a></li>
-            <li><a href="speaking-impairments.html">Speaking</a></li>
-          </ul>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Roboto', sans-serif;
+        }
+        .navbar {
+            background-color: #3f51b5;
+        }
+        .nav-link {
+            color: rgb(148, 145, 145) !important;
+        }
+        .nav-link.active {
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+        .sub-nav .nav-link.active {
+            color: #3f51b5 !important;
+            font-weight: bold;
+        }
+        .card {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+        .btn-next {
+            background-color: #ff9800;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-next:hover {
+            background-color: #f57c00;
+            transform: scale(1.05);
+        }
+        img {
+            max-width: auto; 
+            height: auto;
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html" style="font-family: 'Courier New', monospace;">Aphasia Corner</a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listening-impairments.html">Listening</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="reading-impairments.html">Reading</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="writing-impairments.html">Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="speaking-impairments.html">Speaking</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="sim-sub-nav">
-          <ul class="clearfix">
-            <li class="selected">
-              <a href="reading-impairments.html">Overview</a>
+    </nav>
+
+    <div class="container my-5">
+        <h1 class="text-center mb-4" style="font-family: 'Courier New', monospace;">Aphasia Exercises</h1>
+        
+        <ul class="nav nav-tabs mb-4 justify-content-center sub-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="reading-impairments.html">Overview</a>
             </li>
-            <li>
-              <a href="reading-impairments-simulation-1.html"> Exercise 1</a>
+            <li class="nav-item">
+                <a class="nav-link" href="reading-impairments-simulation-1.html">Exercise 1</a>
             </li>
-            <li>
-              <a href="reading-impairments-simulation-2.html"> Exercise 2</a>
+            <li class="nav-item">
+                <a class="nav-link" href="reading-impairments-simulation-2.html">Exercise 2</a>
             </li>
-            <li>
-              <a href="reading-impairments-simulation-3.html"> Exercise 3</a>
+            <li class="nav-item">
+                <a class="nav-link" href="reading-impairments-simulation-3.html">Exercise 3</a>
             </li>
-            <li>
-              <a href="reading-impairments-communication-tips.html"
-                >Communication Tips</a
-              >
+            <li class="nav-item">
+                <a class="nav-link" href="reading-impairments-communication-tips.html">Communication Tips</a>
             </li>
-          </ul>
+        </ul>
+
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4" style="text-align: center;">Reading Impairments</h2>
+                <img src="https://consumer.healthday.com/media-library/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjgzOTk5OC9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTcyMTkwODA4N30.qZGCzApimB9bb7fKq5l7wLaLT4bGO4gwRduqbH6Xr5I/image.jpg?width=1245&height=700&quality=85&coordinates=0%2C0%2C0%2C105" 
+                     alt="Person with aphasia reading" class="img-fluid rounded mb-4">
+                <p class="lead">Some people with aphasia have difficulty processing the written words that they see.</p>
+                <p>Reading impairments can significantly impact a person's ability to understand written text, making everyday tasks challenging. These exercises aim to simulate some of the difficulties faced by individuals with reading impairments due to aphasia.</p>
+                <div class="mt-4 text-center">
+                    <a href="reading-impairments-simulation-1.html" class="btn btn-next btn-lg">
+                        Start Exercise 1 <i class="fas fa-chevron-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <h2>Reading Impairments</h2>
-
-        <div id="simulation" class="card">
-          <img
-            src="https://consumer.healthday.com/media-library/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNjgzOTk5OC9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTcyMTkwODA4N30.qZGCzApimB9bb7fKq5l7wLaLT4bGO4gwRduqbH6Xr5I/image.jpg?width=1245&height=700&quality=85&coordinates=0%2C0%2C0%2C105"
-            width="900px"
-            style="margin-bottom: 20px"
-          />
-
-          <div id="sim-content">
-            <p>
-              Some people with aphasia have difficulty processing the written
-              words that they see.
-            </p>
-          <p class="start-button">
-            <a
-              class="small-button button orange clearfix"
-              href="reading-impairments-simulation-1.html"
-              >Next...</a
-            >
-          </p>
-        </div>
-      </div>
     </div>
-  </body>
+
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <p class="text-center text-muted mb-0">© 2023 Aphasia Corner. All rights reserved. <br/>Developed by Aristocratjnr</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+</body>
 </html>

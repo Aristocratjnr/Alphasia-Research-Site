@@ -3,246 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Aphasia Listening Exercise</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jwplayer/jwplayer.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.hoverIntent.minified.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/application.js"
-      charset="utf-8"
-    ></script>
-
+    <title>Aphasia Corner: Listening Comprehension Impairment</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet">
     <style>
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .animate-pulse {
-            animation: pulse 2s infinite;
-        }
-        .transition-transform {
-            transition: transform 0.3s ease-in-out;
-        }
-        .hover\:scale-105:hover {
-            transform: scale(1.05);
-        }
-        .progress-bar {
-            transition: width 0.5s ease-in-out;
-        }
-
-        /* Professional Styling */
         body {
-            background-color: #f4f7fa;
-        }
-        h1, h2, h3 {
             font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
         }
-        button {
-            transition: all 0.3s ease;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        button:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5);
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+        }
+        .nav-tabs .nav-link {
+            color: #34495e;
+        }
+        .nav-tabs .nav-link.active {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        #play-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        #play-button:hover {
+            background-color: #2980b9;
+        }
+        #play-button.pause {
+            background-color: #e74c3c;
+        }
+        #answers {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .new-answers {
+            list-style-type: none;
+            padding: 0;
+        }
+        .new-answers li {
+            margin-bottom: 10px;
+        }
+        .sim-answer {
+            display: block;
+            padding: 10px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sim-answer:hover {
+            background-color: #bdc3c7;
+        }
+        .sim-answer .order {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .console-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2ecc71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .console-button:hover {
+            background-color: #27ae60;
+        }
+        #quick-desc {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f6f3;
+            border-left: 5px solid #1abc9c;
+            border-radius: 5px;
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="container mx-auto p-6 max-w-4xl">
-        <!-- Page Title -->
-        <h1 class="text-4xl font-bold mb-8 text-center text-blue-600">Aphasia Listening Exercise</h1>
-        
-        <!-- Audio Player Section -->
-        <div id="audioPlayer" class="bg-white shadow-lg rounded-lg p-8 mb-8">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Listening Comprehension Challenge</h2>
-            <p class="mb-6 text-gray-600 leading-relaxed">
-                Listen to the audio and answer the questions that follow. This exercise simulates difficulties in auditory processing for individuals with aphasia.
-            </p>
-            <div class="flex items-center justify-center mb-4">
-                <button id="PlayButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                    <i class="fas fa-play mr-2"></i>
-                    <span>Play Audio</span>
-                </button>
-            </div>
-            <div id="progressBarContainer" class="hidden">
-                <div class="bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
-                    <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 0%"></div>
-                </div>
-                <p id="progressText" class="text-center text-sm text-gray-500"></p>
-            </div>
-        </div>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Aphasia Exercises</h1>
 
-        <!-- Questions Section -->
-        <div id="questionsContainer" class="space-y-8 hidden">
-            <!-- Questions will be dynamically inserted here -->
-        </div>
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link" href="../index.html">Introduction</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="listening-impairments.html">Listening</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="reading-impairments.html">Reading</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="writing-impairments.html">Writing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="speaking-impairments.html">Speaking</a>
+            </li>
+        </ul>
 
-        <!-- Results Section -->
-        <div id="results" class="hidden bg-white shadow-lg rounded-lg p-8 mt-8">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Your Results</h3>
-            <p id="scoreDisplay" class="text-lg mb-4 font-medium text-green-600"></p>
-            <div id="explanations" class="space-y-4"></div>
-            <button id="retryButton" class="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                Try Again
-            </button>
+        <ul class="nav nav-pills mb-4">
+            <li class="nav-item">
+                <a class="nav-link" href="listening-impairments.html">Overview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listening-impairments-simulation-1.html">Exercise 1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="listening-impairments-simulation-2.html">Exercise 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listening-impairments-simulation-3.html">Exercise 3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="listening-impairments-communication-tips.html">Communication Tips</a>
+            </li>
+        </ul>
+
+        <h2 class="mb-4">Simulating Slow Rise Time and Intermittent Lexical Retrieval in Listening Comprehension Impairment</h2>
+
+        <div id="simulation" class="card p-4">
+            <h3 class="mb-3">Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listened to the audio.</h3>
+
+            <div id="task" class="mb-4">
+                <a id="play-button" href="#"><i class="fas fa-play me-2"></i>PLAY</a>
+            </div>
+
+            <div id="answers" style="display: none;">
+                <h4>1. Caterpillars eat:</h4>
+                <ul class="new-answers">
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">a</span>plants only</a></li>
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">b</span>insects only</a></li>
+                    <li><a class="sim-answer correct-answer" href="#"><span class="order">c</span>plants and insects</a></li>
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">d</span>pollen and dew</a></li>
+                </ul>
+
+                <h4 class="mt-4">2. To defend themselves, some caterpillars can make themselves look like snakes by:</h4>
+                <ul class="new-answers">
+                    <li><a class="sim-answer correct-answer" href="#"><span class="order">a</span>inflating their head</a></li>
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">b</span>growing additional eyes</a></li>
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">c</span>stretching their bodies</a></li>
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">d</span>developing a rattle on their tail</a></li>
+                </ul>
+
+                <h4 class="mt-4">3. Caterpillars can store toxins in the adult butterfly stage:</h4>
+                <ul class="new-answers">
+                    <li><a class="sim-answer correct-answer" href="#"><span class="order">a</span>true</a></li>
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">b</span>false</a></li>
+                </ul>
+
+                <h4 class="mt-4">4. Red and orange markings let other animals know that butterflies are good to eat:</h4>
+                <ul class="new-answers">
+                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">a</span>true</a></li>
+                    <li><a class="sim-answer correct-answer" href="#"><span class="order">b</span>false</a></li>
+                </ul>
+            </div>
+
+            <div class="console-small mt-4">
+                <a href="listening-impairments-simulation-3.html" class="console-button next">
+                    <span>Next Exercise</span>
+                    <i class="fas fa-chevron-right ms-2"></i>
+                </a>
+            </div>
+
+            <div id="quick-desc" class="mt-4" style="display: none;">
+                <p>To simulate listening comprehension impairments, the audio has been altered and some words were made incomprehensible.</p>
+            </div>
         </div>
     </div>
-    <div style="display: none; visibility: hidden"><div id="player"></div></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+    <script src="../static/js/jwplayer/jwplayer.js"></script>
     <script>
-      // JWPlayer setup
-      jwplayer("player").setup({
-          flashplayer: "../static/js/jwplayer/player.swf",
-          file: "../static/assets/audio/listening-sim-2.mp3",
-          width: 0,
-          height: 0,
-          events: {
-              onComplete: function () {
-                  // Handle when the audio playback completes
-                  playButton.classList.remove("pause");
-                  questionsContainer.classList.remove("hidden");
-                  progressBarContainer.classList.add("hidden");
-                  $("#answers").fadeIn();  // Assuming you have an element with id "answers"
-                  $("#quick-desc").fadeIn();  // Assuming you have an element with id "quick-desc"
-                  $(".console-small").css("padding-top", "1em");
-              },
-          },
-      });
-  
-      const questions = [
-          {
-              id: 1,
-              question: "Caterpillars eat:",
-              answers: [
-                  { id: 'a', text: "plants only", correct: false },
-                  { id: 'b', text: "insects only", correct: false },
-                  { id: 'c', text: "plants and insects", correct: true },
-                  { id: 'd', text: "pollen and dew", correct: false },
-              ],
-              explanation: "Caterpillars primarily eat plants, but some species also consume insects."
-          },
-          // More questions...
-      ];
-  
-      const playButton = document.getElementById('playButton');
-      const progressBarContainer = document.getElementById('progressBarContainer');
-      const progressBar = document.getElementById('progressBar');
-      const progressText = document.getElementById('progressText');
-      const questionsContainer = document.getElementById('questionsContainer');
-      const results = document.getElementById('results');
-      const scoreDisplay = document.getElementById('scoreDisplay');
-      const explanations = document.getElementById('explanations');
-      const retryButton = document.getElementById('retryButton');
-  
-      let isPlaying = false;
-      let score = 0;
-      let answeredQuestions = 0;
-  
-      playButton.addEventListener('click', togglePlay);
-      retryButton.addEventListener('click', resetExercise);
-  
-      function togglePlay() {
-          isPlaying = !isPlaying;
-          if (isPlaying) {
-              playButton.innerHTML = '<i class="fas fa-pause mr-2"></i><span>Pause</span>';
-              playButton.classList.replace('bg-blue-600', 'bg-yellow-500');
-              jwplayer("player").play();  // Play the audio
-              startProgress();
-          } else {
-              playButton.innerHTML = '<i class="fas fa-play mr-2"></i><span>Resume</span>';
-              playButton.classList.replace('bg-yellow-500', 'bg-blue-600');
-              jwplayer("player").pause();  // Pause the audio
-          }
-      }
-  
-      function startProgress() {
-          progressBarContainer.classList.remove('hidden');
-          let width = 0;
-          const interval = setInterval(() => {
-              if (width >= 100 || !isPlaying) {
-                  clearInterval(interval);
-                  if (width >= 100) {
-                      showQuestions();
-                  }
-              } else {
-                  width++;
-                  progressBar.style.width = width + '%';
-                  progressText.textContent = `${width}% complete`;
-              }
-          }, 50); // Adjust timing as needed for your audio length
-      }
-  
-      function showQuestions() {
-          playButton.classList.add('hidden');
-          progressBarContainer.classList.add('hidden');
-          questionsContainer.classList.remove('hidden');
-          questionsContainer.innerHTML = questions.map(q => `
-              <div class="bg-white shadow-lg rounded-lg p-6 transition-transform hover:scale-105">
-                  <h3 class="text-xl font-semibold mb-4 text-gray-800">${q.question}</h3>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      ${q.answers.map(a => `
-                          <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50" onclick="selectAnswer(${q.id}, '${a.id}', ${a.correct})">
-                              ${a.id}. ${a.text}
-                          </button>
-                      `).join('')}
-                  </div>
-              </div>
-          `).join('');
-      }
-  
-      function selectAnswer(questionId, answerId, isCorrect) {
-          const buttons = questionsContainer.querySelectorAll(`button`);
-          buttons.forEach(button => {
-              if (button.textContent.includes(`${answerId}.`)) {
-                  button.classList.replace('bg-gray-200', isCorrect ? 'bg-green-500' : 'bg-red-500');
-                  if (isCorrect) score++;
-                  button.disabled = true;
-              }
-          });
-          answeredQuestions++;
-          if (answeredQuestions === questions.length) {
-              setTimeout(showResults, 1000);
-          }
-      }
-  
-      function showResults() {
-          questionsContainer.classList.add('hidden');
-          results.classList.remove('hidden');
-          scoreDisplay.textContent = `You scored ${score} out of ${questions.length}!`;
-          explanations.innerHTML = questions.map(q => `
-              <div class="bg-gray-100 rounded-lg p-4">
-                  <p class="font-semibold">${q.question}</p>
-                  <p class="text-sm mt-2">${q.explanation}</p>
-              </div>
-          `).join('');
-      }
-  
-      function resetExercise() {
-          score = 0;
-          answeredQuestions = 0;
-          isPlaying = false;
-          results.classList.add('hidden');
-          playButton.classList.remove('hidden');
-          playButton.innerHTML = '<i class="fas fa-play mr-2"></i><span>Play Audio</span>';
-          progressBar.style.width = '0%';
-          progressText.textContent = '';
-          questionsContainer.classList.add('hidden');
-          progressBarContainer.classList.add('hidden');
-      }
-  </script>  
+        jwplayer("player").setup({
+            file: "../static/assets/audio/listening-sim-2.mp3",
+            width: 0,
+            height: 0,
+            events: {
+                onComplete: function () {
+                    $("#play-button").removeClass("pause");
+                    $("#answers").fadeIn();
+                    $("#quick-desc").fadeIn();
+                },
+            },
+        });
+
+        $(document).ready(function() {
+            $("#play-button").click(function(e) {
+                e.preventDefault();
+                var player = jwplayer("player");
+                if ($(this).hasClass("pause")) {
+                    player.pause();
+                    $(this).removeClass("pause");
+                    $(this).html('<i class="fas fa-play me-2"></i>PLAY');
+                } else {
+                    player.play();
+                    $(this).addClass("pause");
+                    $(this).html('<i class="fas fa-pause me-2"></i>PAUSE');
+                }
+            });
+
+            $(".sim-answer").click(function(e) {
+                e.preventDefault();
+                $(this).closest('ul').find('.sim-answer').removeClass('bg-success text-white bg-danger');
+                if ($(this).hasClass('correct-answer')) {
+                    $(this).addClass('bg-success text-white');
+                } else {
+                    $(this).addClass('bg-danger text-white');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

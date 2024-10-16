@@ -150,84 +150,92 @@
             <div class="progress" id="progressBar"></div>
         </div>
     </div>
-
+    <footer class="text-center mt-8">
+      <p class="text-gray-600 text-sm" style="font-family: 'Courier New', monospace;">
+        &copy; <span id="currentYear"></span> Aphasia Corner. All rights reserved. <br/>Developed by <code>Aristocratjnr</code>
+      </p>
+    </footer>
     <script>
-        const questionsData = {
-            questions: [
-                {
-                    text: "ne$e",
-                    correct_image_url: "../static/assets/images/nose.jpg",
-                    wrong_image_url: "../static/assets/images/hose.jpg",
-                    description: "Now, that was confusing, wasn't it? The person with aphasia may perceive some parts of the word correctly, but not others. In this example, instead of NOSE, they may perceive what was written as NE$E."
-                },
-                {
-                    text: "hammer",
-                    correct_image_url: "https://via.placeholder.com/165x130?text=Correct",
-                    wrong_image_url: "https://via.placeholder.com/165x130?text=Wrong",
-                    description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of SCREWDRIVER, they may perceive what was written as HAMMER."
-                },
-                {
-                    text: "ook",
-                    correct_image_url: "https://via.placeholder.com/165x130?text=Correct",
-                    wrong_image_url: "https://via.placeholder.com/165x130?text=Wrong",
-                    description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of BOOK, they may perceive what was written as OOK."
-                },
-                {
-                    text: "cow",
-                    correct_image_url: "https://via.placeholder.com/165x130?text=Correct",
-                    wrong_image_url: "https://via.placeholder.com/165x130?text=Wrong",
-                    description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of HORSE, they may perceive what was written as COW."
-                },
-                {
-                    text: "orange",
-                    correct_image_url: "https://via.placeholder.com/165x130?text=Correct",
-                    wrong_image_url: "https://via.placeholder.com/165x130?text=Wrong",
-                    description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of APPLE, they may perceive what was written as ORANGE."
-                }
-            ]
-        };
-
-        let currentQuestion = 0;
-
-        function loadQuestion() {
-            const question = questionsData.questions[currentQuestion];
-            document.getElementById('questionText').textContent = question.text;
-            document.getElementById('img1').src = question.correct_image_url;
-            document.getElementById('img2').src = question.wrong_image_url;
-            document.getElementById('confirmation1').textContent = '';
-            document.getElementById('confirmation2').textContent = '';
-            document.getElementById('description').style.display = 'none';
-            document.getElementById('currentQuestion').textContent = currentQuestion + 1;
-            document.getElementById('totalQuestions').textContent = questionsData.questions.length;
-            updateProgressBar();
-        }
-
-        function selectAnswer(isCorrect) {
-            const correctIndex = isCorrect ? 1 : 2;
-            const incorrectIndex = isCorrect ? 2 : 1;
-            document.getElementById(`confirmation${correctIndex}`).textContent = '✓ Correct';
-            document.getElementById(`confirmation${correctIndex}`).style.color = '#2ecc71';
-            document.getElementById(`confirmation${incorrectIndex}`).textContent = '✗ Incorrect';
-            document.getElementById(`confirmation${incorrectIndex}`).style.color = '#e74c3c';
-            document.getElementById('description').textContent = questionsData.questions[currentQuestion].description;
-            document.getElementById('description').style.display = 'block';
-        }
-
-        function nextQuestion() {
-            currentQuestion++;
-            if (currentQuestion >= questionsData.questions.length) {
-                currentQuestion = 0; // Loop back to the first question
-            }
-            loadQuestion();
-        }
-
-        function updateProgressBar() {
-            const progress = ((currentQuestion + 1) / questionsData.questions.length) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-        }
-
-        // Initialize the first question
-        loadQuestion();
-    </script>
+      const questionsData = {
+          questions: [
+              {
+                  text: "ne$e",
+                  correct_image_url: "../static/assets/images/nose.jpg", // Correct answer
+                  wrong_image_url: "../static/assets/images/hose.jpg",
+                  description: "Now, that was confusing, wasn't it? The person with aphasia may perceive some parts of the word correctly, but not others. In this example, instead of NOSE, they may perceive what was written as NE$E."
+              },
+              {
+                  text: "hammer",
+                  correct_image_url: "../static/assets/images/screwdriver.jpg", // Correct answer
+                  wrong_image_url: "../static/assets/images/saw.jpg",
+                  description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of SCREWDRIVER, they may perceive what was written as HAMMER."
+              },
+              {
+                  text: "ook",
+                  correct_image_url: "../static/assets/images/book.jpg", // Correct answer
+                  wrong_image_url: "../static/assets/images/hook.jpg",
+                  description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of BOOK, they may perceive what was written as OOK."
+              },
+              {
+                  text: "cow",
+                  correct_image_url: "../static/assets/images/horse.jpg", // Correct answer
+                  wrong_image_url: "../static/assets/images/cat.jpg",
+                  description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of HORSE, they may perceive what was written as COW."
+              },
+              {
+                  text: "orange",
+                  correct_image_url: "../static/assets/images/apple.jpg", // Correct answer
+                  wrong_image_url: "../static/assets/images/banana.jpg",
+                  description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of APPLE, they may perceive what was written as ORANGE."
+              }
+          ]
+      };
+  
+      let currentQuestion = 0;
+  
+      function loadQuestion() {
+          const question = questionsData.questions[currentQuestion];
+          document.getElementById('questionText').textContent = question.text;
+          document.getElementById('img1').src = question.correct_image_url; // First image is correct
+          document.getElementById('img2').src = question.wrong_image_url;   // Second image is wrong
+          document.getElementById('confirmation1').textContent = '';
+          document.getElementById('confirmation2').textContent = '';
+          document.getElementById('description').style.display = 'none';
+          document.getElementById('currentQuestion').textContent = currentQuestion + 1;
+          document.getElementById('totalQuestions').textContent = questionsData.questions.length;
+          updateProgressBar();
+      }
+  
+      function selectAnswer(selectedImage) {
+          const question = questionsData.questions[currentQuestion];
+          const isCorrect = selectedImage.src === question.correct_image_url;
+  
+          const correctIndex = isCorrect ? 2 : 1;
+          const incorrectIndex = isCorrect ? 1 : 2;
+  
+          document.getElementById(`confirmation${correctIndex}`).textContent = '✓ Correct';
+          document.getElementById(`confirmation${correctIndex}`).style.color = '#2ecc71';
+          document.getElementById(`confirmation${incorrectIndex}`).textContent = '✗ Incorrect';
+          document.getElementById(`confirmation${incorrectIndex}`).style.color = '#e74c3c';
+          document.getElementById('description').textContent = question.description;
+          document.getElementById('description').style.display = 'block';
+      }
+  
+      function nextQuestion() {
+          currentQuestion++;
+          if (currentQuestion >= questionsData.questions.length) {
+              currentQuestion = 0; // Loop back to the first question
+          }
+          loadQuestion();
+      }
+  
+      function updateProgressBar() {
+          const progress = ((currentQuestion + 1) / questionsData.questions.length) * 100;
+          document.getElementById('progressBar').style.width = `${progress}%`;
+      }
+  
+      // Initialize the first question
+      loadQuestion();
+  </script>
 </body>
 </html>

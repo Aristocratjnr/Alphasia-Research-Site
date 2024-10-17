@@ -1,78 +1,108 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-rel="stylesheet"
-/>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
-  <title>Aphasia Corner: Writing Impairments Overview</title>
-  
-  <link rel="stylesheet" href="../static/css/reset-min.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-  <link rel="stylesheet" href="../static/css/main.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-
-  <script type="text/javascript" src="../static/js/jquery.js"></script>
-  <script type="text/javascript" src="../static/js/jquery.hoverIntent.minified.js" charset="utf-8"></script>  
-  <script type="text/javascript" src="../static/js/application.js"></script>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aphasia Corner: Writing Impairments Overview</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .navbar {
+            background-color: #2c3e50;
+        }
+        .nav-link {
+            color: #ecf0f1 !important;
+            font-weight: 400;
+        }
+        .nav-link.active {
+            font-weight: 500;
+            border-bottom: 2px solid #3498db;
+        }
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: #3498db !important;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9 !important;
+        }
+        .btn-outline-primary {
+            color: #3498db !important;
+            border-color: #3498db !important;
+        }
+        .btn-outline-primary:hover {
+            background-color: #3498db !important;
+            color: white !important;
+        }
+        h2 {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .card-text {
+            color: #34495e;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-
-  <div id="container"> 
-    <div id="content" class="card">
-      
-      <h1>Aphasia  Exercises</h1>
-      
-      <div id="sim-nav">
-        <ul class="clearfix">
-<li><a href="../index.html">Introduction</a></li>
-        
-          <li><a href="listening-impairments.html">Listening</a></li>
-          <li><a href="reading-impairments.html">Reading</a></li>
-          <li><a class="selected" href="writing-impairments.html">Writing</a></li>
-          <li><a href="speaking-impairments.html">Speaking</a></li>                              
-                                         
-        </ul>
-      </div>
-      <div id="sim-sub-nav">
-        <ul class="clearfix">
-          <li class="selected"><a href="writing-impairments.html">Overview</a></li>
-          <li><a href="writing-impairments-simulation-1.html"> Exercise 1</a></li>
-          <li><a href="writing-impairments-simulation-2.html"> Exercise 2</a></li>
-          <li><a href="writing-impairments-simulation-3.html"> Exercise 3</a></li>          
-          <li><a href="writing-impairments-communication-tips.html">Communication Tips</a></li>
-        </ul>
-      </div>
-      
-      <h2>Writing Impairments</h2>
-      
-      <div id="simulation">
-        <div id="sim-content">
-          <img
-          src="https://cdn.cancercenter.com/-/media/ctca/images/others/blogs/2020/03-march/blog-writing-l.jpg"
-          width="900px"
-          style="margin-bottom: 20px"
-        />
-          <p>Some people with aphasia may have <strong>trouble thinking of the word</strong> that they want to write, even though they know the meaning or message that they want to communicate.</strong></p>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html" style="font-family: 'Courier New', monospace;">Aphasia</a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Introduction</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listening-impairments.html">Listening</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reading-impairments.html">Reading</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="writing-impairments.html">Writing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="speaking-impairments.html">Speaking</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <p class="start-button"><a class="small-button button orange clearfix" href="writing-impairments-simulation-1.html">Next...</a></p>
-      </div>
-    </div>
-  </div> 
+    </nav>
 
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body p-5">
+                        <h2 class="card-title text-center mb-4" style="font-family: 'Courier New', monospace;">Writing Impairments</h2>
+                        <img src="https://cdn.cancercenter.com/-/media/ctca/images/others/blogs/2020/03-march/blog-writing-l.jpg" class="img-fluid rounded mb-4" alt="Person writing">
+                        <p class="card-text">Individuals with aphasia may experience difficulty in word retrieval when writing, despite having a clear understanding of the message they wish to convey. This cognitive-linguistic challenge can significantly impact their written communication abilities.</p>
+                        <div class="d-flex flex-wrap justify-content-between mt-5">
+                            <a href="writing-impairments.html" class="btn btn-outline-primary m-1">Overview</a>
+                            <a href="writing-impairments-simulation-1.html" class="btn btn-primary m-1">Exercise 1</a>
+                            <a href="writing-impairments-simulation-2.html" class="btn btn-primary m-1">Exercise 2</a>
+                            <a href="writing-impairments-simulation-3.html" class="btn btn-primary m-1">Exercise 3</a>
+                            <a href="writing-impairments-communication-tips.html" class="btn btn-primary m-1">Communication Tips</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
 </body>
 </html>

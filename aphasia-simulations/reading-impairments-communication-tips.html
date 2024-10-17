@@ -10,6 +10,7 @@
     <style>
         body {
             background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
         }
         .navbar {
             background-color: #3f51b5;
@@ -31,12 +32,24 @@
         .btn-next:hover {
             background-color: #f57c00;
         }
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .card-title {
+                font-size: 1.5rem; /* Adjusted for smaller screens */
+            }
+            .list-group-item {
+                font-size: 0.9rem; /* Adjusted for readability */
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">Aphasia Corner</a>
+            <a class="navbar-brand" href="../index.html" style="font-family: 'Courier New', monospace;">Aphasia</a>
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav">
                 <i class="fas fa-bars"></i>
             </button>

@@ -12,29 +12,29 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<body class="min-h-screen bg-gray-50 py-6 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
-      <div class="p-6">
-        <h1 class="text-3xl font-bold text-center text-gray-900 mb-2">Aphasia Reading Exercise</h1>
-        <p class="text-center text-gray-600 mb-6">Simulating Difficulties with Reading Comprehension - <b>Grammatical Impairments</b></p>
+        <div class="p-6">
+            <h1 class="text-3xl font-bold text-center text-gray-900 mb-2">Aphasia Reading Exercise</h1>
+            <p class="text-center text-gray-600 mb-6">Simulating Difficulties with Reading Comprehension - <b>Grammatical Impairments</b></p>
             
             <div id="instructions" class="text-center space-y-4">
                 <p class="text-gray-700">
                     When you are ready, click on the START button and read the paragraph silently to yourself. Answer the questions that follow by selecting the best answer.
                 </p>
-                <button id="startButton" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition duration-200">
+                <button id="startButton" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded transition duration-200">
                     Start Exercise
                 </button>
             </div>
 
             <div id="reading" class="hidden space-y-4">
                 <div class="bg-white border border-gray-200 p-4 rounded-lg shadow">
-                    <p class="text-gray-800 leading-relaxed">
+                    <p class="text-gray-800 leading-relaxed text-sm sm:text-base">
                         Aboriginal people Canada include Inuit other people and culture. Aboriginal people Canada total 1,172,790 people 2006 census. 3.8% national population. people spread over 600 recognized government or band. group own distinct culture, language, art, and music. 17th century, European settler mix some people. Today, Canadian law protect right exercise political and economic control community. National Aboriginal Day June honor culture and contribution Aboriginal people history of Canada.
                     </p>
                 </div>
                 <div class="text-center">
-                    <button id="continueButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                    <button id="continueButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition duration-300">
                         Continue to Questions
                     </button>
                 </div>
@@ -60,157 +60,155 @@
                         In this example, grammatical words like prepositions, articles, and some verb forms were omitted to simulate what it might be like to have problems understanding grammar.
                     </p>
                 </div>
-                <button id="restartButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                <button id="restartButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded transition duration-300">
                     Restart Exercise
                 </button>
             </div>
         </div>
     </div><br/>
-    <div class="console-small" style="text-align: center;">
-            <a
-              href="reading-impairments-communication-tips.html"
-              class="console-button next"
-              ><span>Communication Tips💡</span></a
-            >
-          </div>
-          <script>
-            const questions = [
-                {
-                    text: "There are less than 1 million Aboriginal people in Canada:",
-                    options: [
-                        { value: "a", label: "True" },
-                        { value: "b", label: "False", correct: true }
-                    ]
-                },
-                {
-                    text: "In the 17th century, the native people of Canada:",
-                    options: [
-                        { value: "a", label: "were nearly wiped out by disease" },
-                        { value: "b", label: "developed a single culture" },
-                        { value: "c", label: "mixed with European settlers", correct: true },
-                        { value: "d", label: "migrated to the West" }
-                    ]
-                },
-                {
-                    text: "Aboriginal peoples in Canada today:",
-                    options: [
-                        { value: "a", label: "have the right to exercise their own political and economic control over their community", correct: true },
-                        { value: "b", label: "are controlled by a special National Aboriginal panel" },
-                        { value: "c", label: "only have rights over their own health care" },
-                        { value: "d", label: "have very limited rights and are trying to leave Canada" }
-                    ]
-                },
-                {
-                    text: "National Aboriginal Day is intended to:",
-                    options: [
-                        { value: "a", label: "provide a day for these citizens to vote" },
-                        { value: "b", label: "honor Aboriginal contributions to Canada", correct: true },
-                        { value: "c", label: "provide a time when all of the Aboriginal peoples get together" },
-                        { value: "d", label: "honors the birthday of one of the Aboriginal leaders" }
-                    ]
-                }
-            ];
-        
-            let currentQuestion = 0;
-            let score = 0;
-        
-            const instructionsDiv = document.getElementById('instructions');
-            const readingDiv = document.getElementById('reading');
-            const questionsDiv = document.getElementById('questions');
-            const resultsDiv = document.getElementById('results');
-            const startButton = document.getElementById('startButton');
-            const continueButton = document.getElementById('continueButton');
-            const questionText = document.getElementById('questionText');
-            const options = document.getElementById('options');
-            const progressBar = document.getElementById('progressBar');
-            const questionCounter = document.getElementById('questionCounter');
-            const scoreText = document.getElementById('scoreText');
-            const restartButton = document.getElementById('restartButton');
-        
-            function showReading() {
-                instructionsDiv.classList.add('hidden');
-                readingDiv.classList.remove('hidden');
+    <div class="text-center">
+        <a href="reading-impairments-communication-tips.html" class="bg-gray-200 text-gray-800 py-2 px-4 rounded shadow hover:bg-gray-300 transition duration-200">
+            Communication Tips 💡
+        </a>
+    </div>
+    <script>
+        const questions = [
+            {
+                text: "There are less than 1 million Aboriginal people in Canada:",
+                options: [
+                    { value: "a", label: "True" },
+                    { value: "b", label: "False", correct: true }
+                ]
+            },
+            {
+                text: "In the 17th century, the native people of Canada:",
+                options: [
+                    { value: "a", label: "were nearly wiped out by disease" },
+                    { value: "b", label: "developed a single culture" },
+                    { value: "c", label: "mixed with European settlers", correct: true },
+                    { value: "d", label: "migrated to the West" }
+                ]
+            },
+            {
+                text: "Aboriginal peoples in Canada today:",
+                options: [
+                    { value: "a", label: "have the right to exercise their own political and economic control over their community", correct: true },
+                    { value: "b", label: "are controlled by a special National Aboriginal panel" },
+                    { value: "c", label: "only have rights over their own health care" },
+                    { value: "d", label: "have very limited rights and are trying to leave Canada" }
+                ]
+            },
+            {
+                text: "National Aboriginal Day is intended to:",
+                options: [
+                    { value: "a", label: "provide a day for these citizens to vote" },
+                    { value: "b", label: "honor Aboriginal contributions to Canada", correct: true },
+                    { value: "c", label: "provide a time when all of the Aboriginal peoples get together" },
+                    { value: "d", label: "honors the birthday of one of the Aboriginal leaders" }
+                ]
             }
-        
-            function showQuestions() {
-                readingDiv.classList.add('hidden');
-                questionsDiv.classList.remove('hidden');
-                displayQuestion();
+        ];
+    
+        let currentQuestion = 0;
+        let score = 0;
+    
+        const instructionsDiv = document.getElementById('instructions');
+        const readingDiv = document.getElementById('reading');
+        const questionsDiv = document.getElementById('questions');
+        const resultsDiv = document.getElementById('results');
+        const startButton = document.getElementById('startButton');
+        const continueButton = document.getElementById('continueButton');
+        const questionText = document.getElementById('questionText');
+        const options = document.getElementById('options');
+        const progressBar = document.getElementById('progressBar');
+        const questionCounter = document.getElementById('questionCounter');
+        const scoreText = document.getElementById('scoreText');
+        const restartButton = document.getElementById('restartButton');
+    
+        function showReading() {
+            instructionsDiv.classList.add('hidden');
+            readingDiv.classList.remove('hidden');
+        }
+    
+        function showQuestions() {
+            readingDiv.classList.add('hidden');
+            questionsDiv.classList.remove('hidden');
+            displayQuestion();
+        }
+    
+        function displayQuestion() {
+            questionText.textContent = `${currentQuestion + 1}. ${questions[currentQuestion].text}`;
+            options.innerHTML = '';
+            questions[currentQuestion].options.forEach((option) => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center space-x-2';
+                
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = `q${currentQuestion}`;
+                input.id = `q${currentQuestion}-${option.value}`;
+                input.value = option.value;
+                input.className = 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500';
+                
+                const label = document.createElement('label');
+                label.htmlFor = `q${currentQuestion}-${option.value}`;
+                label.className = 'text-sm font-medium text-gray-900';
+                label.textContent = option.label;
+                
+                div.appendChild(input);
+                div.appendChild(label);
+                options.appendChild(div);
+    
+                input.addEventListener('change', () => selectAnswer(option, input));
+            });
+            updateProgress();
+        }
+    
+        function selectAnswer(selectedOption, input) {
+            const isCorrect = selectedOption.correct;
+            if (isCorrect) {
+                score++;
+                input.parentElement.classList.add('bg-green-100');
+            } else {
+                input.parentElement.classList.add('bg-red-100');
             }
-        
-            function displayQuestion() {
-                questionText.textContent = `${currentQuestion + 1}. ${questions[currentQuestion].text}`;
-                options.innerHTML = '';
-                questions[currentQuestion].options.forEach((option) => {
-                    const div = document.createElement('div');
-                    div.className = 'flex items-center space-x-2';
-                    
-                    const input = document.createElement('input');
-                    input.type = 'radio';
-                    input.name = `q${currentQuestion}`;
-                    input.id = `q${currentQuestion}-${option.value}`;
-                    input.value = option.value;
-                    input.className = 'w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500';
-                    
-                    const label = document.createElement('label');
-                    label.htmlFor = `q${currentQuestion}-${option.value}`;
-                    label.className = 'text-sm font-medium text-gray-900';
-                    label.textContent = option.label;
-                    
-                    div.appendChild(input);
-                    div.appendChild(label);
-                    options.appendChild(div);
-        
-                    input.addEventListener('change', () => selectAnswer(option, input));
-                });
-                updateProgress();
-            }
-        
-            function selectAnswer(selectedOption, input) {
-                const isCorrect = selectedOption.correct;
-                if (isCorrect) {
-                    score++;
-                    input.parentElement.classList.add('bg-green-100');
+    
+            // Disable all options after selection
+            const allInputs = options.querySelectorAll('input');
+            allInputs.forEach(input => input.disabled = true);
+    
+            currentQuestion++;
+            setTimeout(() => {
+                if (currentQuestion < questions.length) {
+                    displayQuestion();
                 } else {
-                    input.parentElement.classList.add('bg-red-100');
+                    showResults();
                 }
-        
-                // Disable all options after selection
-                const allInputs = options.querySelectorAll('input');
-                allInputs.forEach(input => input.disabled = true);
-        
-                currentQuestion++;
-                setTimeout(() => {
-                    if (currentQuestion < questions.length) {
-                        displayQuestion();
-                    } else {
-                        showResults();
-                    }
-                }, 1000); // 1 second delay before moving to the next question
-            }
-        
-            function updateProgress() {
-                const progress = ((currentQuestion + 1) / questions.length) * 100;
-                progressBar.style.width = `${progress}%`;
-                questionCounter.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
-            }
-        
-            function showResults() {
-                questionsDiv.classList.add('hidden');
-                resultsDiv.classList.remove('hidden');
-                scoreText.textContent = `You scored ${score} out of ${questions.length} correct.`;
-            }
-        
-            function restartExercise() {
-                currentQuestion = 0;
-                score = 0;
-                resultsDiv.classList.add('hidden');
-                instructionsDiv.classList.remove('hidden');
-            }
-        
-            startButton.addEventListener('click', showReading);
-            continueButton.addEventListener('click', showQuestions);
-            restartButton.addEventListener('click', restartExercise);
-        </script>
+            }, 1000); // 1 second delay before moving to the next question
+        }
+    
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            questionCounter.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+        }
+    
+        function showResults() {
+            questionsDiv.classList.add('hidden');
+            resultsDiv.classList.remove('hidden');
+            scoreText.textContent = `You scored ${score} out of ${questions.length} correct.`;
+        }
+    
+        function restartExercise() {
+            currentQuestion = 0;
+            score = 0;
+            resultsDiv.classList.add('hidden');
+            instructionsDiv.classList.remove('hidden');
+        }
+    
+        startButton.addEventListener('click', showReading);
+        continueButton.addEventListener('click', showQuestions);
+        restartButton.addEventListener('click', restartExercise);
+    </script>
 </body>
 </html>

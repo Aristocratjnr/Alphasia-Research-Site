@@ -111,3 +111,32 @@ body {
       padding: 12px; /* Increase padding for easier tapping */
     }
   }
+  /* Responsive adjustments */
+@media (max-width: 768px) {
+  #answers ul {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center; /* Center items */
+  }
+
+  #answers li {
+    width: 90%; /* Full width for list items */
+    max-width: 300px; /* Set a max width for list items */
+    margin-bottom: 1rem; /* Space between items */
+  }
+
+  .play-button {
+    width: 100%; /* Make the play button full width */
+    padding: 1rem; /* Increase padding for easier tapping */
+    font-size: 1.5rem; /* Increase font size for readability */
+  }
+
+  .console-small {
+    flex-direction: column; /* Stack console buttons vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .console-button {
+    width: 100%; /* Full width for console button */
+    margin-top: 0.5rem; /* Add space between buttons */
+  }
+}

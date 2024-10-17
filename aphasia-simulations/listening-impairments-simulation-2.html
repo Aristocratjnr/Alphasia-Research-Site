@@ -22,13 +22,13 @@
         }
         h1, h2, h3, h4 {
             color: #2c3e50;
+            text-align: center; /* Center align headings */
         }
-        .nav-tabs .nav-link {
-            color: #34495e;
+        .nav-tabs, .nav-pills {
+            justify-content: center; /* Center tabs */
         }
-        .nav-tabs .nav-link.active {
-            color: #2c3e50;
-            font-weight: bold;
+        .nav-link {
+            margin: 0 5px; /* Add some spacing between tabs */
         }
         #play-button {
             display: inline-block;
@@ -38,12 +38,10 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            text-align: center;
         }
         #play-button:hover {
             background-color: #2980b9;
-        }
-        #play-button.pause {
-            background-color: #e74c3c;
         }
         #answers {
             background-color: white;
@@ -71,17 +69,6 @@
         .sim-answer:hover {
             background-color: #bdc3c7;
         }
-        .sim-answer .order {
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            background-color: #3498db;
-            color: white;
-            text-align: center;
-            line-height: 25px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
         .console-button {
             display: inline-block;
             padding: 10px 20px;
@@ -90,6 +77,7 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            text-align: center;
         }
         .console-button:hover {
             background-color: #27ae60;
@@ -101,11 +89,26 @@
             border-left: 5px solid #1abc9c;
             border-radius: 5px;
         }
+        @media (max-width: 600px) {
+            #play-button, .console-button {
+                width: 100%; /* Full width on small screens */
+                padding: 15px; /* Larger padding for touch targets */
+            }
+            .sim-answer {
+                font-size: 16px; /* Larger font size for readability */
+            }
+            h1, h2 {
+                font-size: 24px; /* Responsive font size */
+            }
+            h3, h4 {
+                font-size: 20px; /* Responsive font size */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4"style="font-family: 'Courier New', monospace;">Aphasia Exercises</h1>
+        <h1 class="mb-4" style="font-family: 'Courier New', monospace;">Aphasia Exercises</h1>
 
         <ul class="nav nav-tabs mb-4">
             <li class="nav-item">
@@ -143,10 +146,10 @@
             </li>
         </ul>
 
-        <center><h2 class="mb-4" style="font-family: 'Courier New', monospace;">Simulating Slow Rise Time and Intermittent Lexical Retrieval in Listening Comprehension Impairment</h2></center>
+        <h2 class="mb-4" style="font-family: 'Courier New', monospace;">Simulating Slow Rise Time and Intermittent Lexical Retrieval in Listening Comprehension Impairment</h2>
 
         <div id="simulation" class="card p-4">
-            <h5 class="mb-3">Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listened to the audio.</h3>
+            <h5 class="mb-3">Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listened to the audio.</h5>
 
             <div id="task" class="mb-4">
                 <a id="play-button" href="#"><i class="fas fa-play me-2"></i>PLAY</a>

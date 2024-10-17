@@ -15,118 +15,135 @@
       display: block;
     }
     body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f3f4f6;
-  }
-  
-  .logo {
-    max-width: 90px;
-    height: auto;
-    margin: 0 auto;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-  }
-  
-  .tip-card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-    transition: transform 0.2s;
-  }
-  
-  .tip-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .tip-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    cursor: pointer;
-    border-bottom: 1px solid #e5e7eb;
-    background-color: #f9fafb;
-  }
-  
-  .tip-title {
-    font-size: 1.25rem;
-    color: #1f2937;
-  }
-  
-  .tip-content {
-    padding: 15px 20px;
-    display: none;
-    background-color: #fdfdfd;
-    color: #4b5563;
-  }
-  
-  .show {
-    display: block;
-  }
-  
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #3b82f6;
-    color: white;
-    font-size: 1rem;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #2563eb;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 640px) {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f3f4f6;
+    }
+    .logo {
+      max-width: 90px;
+      height: auto;
+      margin: 0 auto;
+    }
     .container {
-      padding: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
     }
-  
     h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
     }
-  
-    .tip-title {
-      font-size: 1.1rem;
+    .tip-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+      transition: transform 0.2s;
     }
-  
+    .tip-card:hover {
+      transform: translateY(-5px);
+    }
     .tip-header {
-      flex-direction: column; /* Stack items vertically */
-      align-items: flex-start; /* Align items to the start */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      cursor: pointer;
+      border-bottom: 1px solid #e5e7eb;
+      background-color: #f9fafb;
     }
-  
-    .tip-header svg {
-      margin-top: 10px; /* Add some space between text and icon */
+    .tip-title {
+      font-size: 1.25rem;
+      color: #1f2937;
     }
-  
+    .tip-content {
+      padding: 15px 20px;
+      display: none;
+      background-color: #fdfdfd;
+      color: #4b5563;
+    }
+    .show {
+      display: block;
+    }
     .button {
-      width: 100%; /* Make button full-width */
-      padding: 12px; /* Increase padding for easier tapping */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3b82f6;
+      color: white;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
     }
-  }
+    .button:hover {
+      background-color: #2563eb;
+    }
+    /* Responsive Design */
+    @media (max-width: 640px) {
+      .container {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .tip-title {
+        font-size: 1.1rem;
+      }
+      .tip-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .tip-header svg {
+        margin-top: 10px;
+      }
+      .button {
+        width: 100%;
+        padding: 12px;
+      }
+    }
+    /* WhatsApp Icon Style */
+    .whatsapp-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: white;
+      transition: transform 0.2s;
+    }
+    .whatsapp-icon:hover {
+      transform: scale(1.1);
+    }
+    .tooltip {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background-color: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: none;
+      white-space: nowrap;
+    }
+    .whatsapp-icon:hover .tooltip {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -228,7 +245,7 @@
         </div>
       </div>
      <!-- Responsive Image Section -->
-      <div class="flex-1 mt-8 lg:mt-0 flex  flex-col lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex-1 mt-8 lg:mt-0 flex flex-col lg:flex-row lg:items-center lg:justify-between">
         <img src="https://tactustherapy.com/wp-content/uploads/2021/04/TWA-Featured-Image.png" 
              alt="Communication" 
              class="w-full h-auto rounded-lg shadow-md max-w-sm" />
@@ -241,12 +258,18 @@
     </p>
   </footer>
 
+  <div class="whatsapp-icon" onclick="window.open('https://wa.me/+233551784926', '_blank')">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" class="w-8 h-8"/>
+    <div class="tooltip">Contact us on WhatsApp!</div>
+  </div>
+
   <script>
     function toggleTip(index) {
       const content = document.querySelectorAll('.tip-content');
       const tipContent = content[index];
       tipContent.classList.toggle('show');
     }
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

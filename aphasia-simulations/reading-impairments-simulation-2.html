@@ -1,260 +1,242 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-  rel="stylesheet"
-/>
-<!-- Created for use in the Voices of Hope for Aphasia site developed in collaboration with the University of Florida Chapter of the Association for Information Systems -->
-<!-- Managing Credit: Justin H, Jashmina P -->
-<!-- Technical Analysts: Devin D, Manuel U, Valdemar T -->
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <title>
-      Aphasia Corner: Simulating Difficulties with Reading Paragraphs
-    </title>
-
-    <link
-      rel="stylesheet"
-      href="../static/css/reset-min.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/css/main.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-
-    <!--[if lte IE 6]>
-      <script src="../static/js/ie-transparent-min.js"></script>
-      <script src="../static/js/ie-png-fix.js"></script>
-      <script>
-        DD_belatedPNG.fix("#example, .example");
-      </script>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="../static/css/ie.css"
-        media="screen"
-      />
-    <![endif]-->
-    <!--[if IE 7
-      ]><link
-        type="text/css"
-        rel="stylesheet"
-        href="../static/css/ie7.css"
-        media="screen"
-    /><![endif]-->
-
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.hoverIntent.minified.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/application.js"
-      charset="utf-8"
-    ></script>
-  </head>
-  <body>
-    <div id="container">
-      <!--#set var="page" value="about-aphasia" -->
-      <!--#include virtual="../header.html" -->
-
-      <div id="content">
-        <h1>Aphasia Exercises</h1>
-
-        <div id="sim-nav">
-          <ul class="clearfix">
-            <li><a href="../index.html">Introduction</a></li>
-            <li><a href="listening-impairments.html">Listening</a></li>
-            <li>
-              <a class="selected" href="reading-impairments.html">Reading</a>
-            </li>
-            <li><a href="writing-impairments.html">Writing</a></li>
-            <li><a href="speaking-impairments.html">Speaking</a></li>
-          </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aphasia Reading Exercise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 47.4% 11.2%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 47.4% 11.2%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 47.4% 11.2%;
+            --primary: 222.2 47.4% 11.2%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96.1%;
+            --secondary-foreground: 222.2 47.4% 11.2%;
+            --accent: 210 40% 96.1%;
+            --accent-foreground: 222.2 47.4% 11.2%;
+            --destructive: 0 100% 50%;
+            --destructive-foreground: 210 40% 98%;
+            --ring: 215 20.2% 65.1%;
+            --radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white shadow-sm rounded-lg border border-gray-200">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-center text-gray-900 mb-2">Aphasia Reading Exercise</h1>
+                <p class="text-center text-gray-600 mb-6">Simulating Difficulties with Reading Comprehension</p>
+                
+                <div id="instructions" class="text-center space-y-4">
+                    <p class="text-gray-700">
+                        This exercise simulates reading difficulties associated with aphasia. When you're ready, click the START button to begin. You'll have 45 seconds to read a paragraph silently. Afterwards, answer the questions to the best of your ability.
+                    </p>
+                    <button id="startBtn" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">Start Exercise</button>
+                </div>
+                
+                <div id="exercise" class="hidden space-y-4">
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 100%"></div>
+                    </div>
+                    <p id="timeLeft" class="text-sm text-gray-500 text-center"></p>
+                    <div class="bg-white shadow-sm rounded-lg border border-gray-200 p-4">
+                        <p id="readingText" class="text-gray-800 leading-relaxed">
+                            Trees are perennial plants characterized by a single woody stem or trunk, supporting a crown of branches and leaves. The Coast Redwood, native to California, holds the record for the tallest tree, measuring an impressive 379 feet in height. Interestingly, of the ten tallest known trees globally, four are found in the Western United States, while another four are located in Australia. When it comes to girth, the African Baobab in South Africa takes the lead, with a circumference of 52 feet near ground level. Tree heights vary dramatically, with some species maturing at just a few inches tall. Age-wise, the "Methuselah" pine stands out, with a verified age of 4,844 years. Human intervention in tree planting also has a long history, with the oldest known human-planted tree dating back to 288 B.C., making it 2,299 years old at present.
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="questions" class="hidden space-y-6"></div>
+                
+                <div id="results" class="hidden space-y-4">
+                    <div id="score" class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4" role="alert"></div>
+                    <div class="bg-white shadow-sm rounded-lg border border-gray-200 p-4">
+                        <p class="text-gray-700">
+                            This exercise simulates the challenges in reading comprehension that individuals with aphasia may experience. By limiting the reading time, we create a scenario where information processing and recall become more difficult, similar to the cognitive challenges faced by those with aphasia.
+                        </p>
+                    </div>
+                    <button id="restartBtn" class="w-full inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+                        Restart Exercise
+                    </button>
+                </div>
+            </div>
         </div>
-        <div id="sim-sub-nav">
-          <ul class="clearfix">
-            <li><a href="reading-impairments.html">Overview</a></li>
-            <li>
-              <a href="reading-impairments-simulation-1.html"> Exercise 1</a>
-            </li>
-            <li class="selected">
-              <a href="reading-impairments-simulation-2.html"> Exercise 2</a>
-            </li>
-            <li>
-              <a href="reading-impairments-simulation-3.html"> Exercise 3</a>
-            </li>
-            <li>
-              <a href="reading-impairments-communication-tips.html"
-                >Communication Tips</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <h2>Simulating Difficulties with Reading Paragraphs</h2>
-
-        <div id="simulation" class="card">
-          <h3 id="directions">
-            When you are ready, click on the START button and read the paragraph
-            silently to yourself. Answer the questions that follow by clicking
-            on the best answer.
-          </h3>
-
-          <div id="task">
-            <p class="start-button">
-              <a class="small-button button orange clearfix" href="">START</a>
-            </p>
-            <p class="task-read">
-              Trees are defined as woody plants with a single stem or trunk,
-              with several branches above ground. The tallest tree is the Coast
-              Redwood of California, measured at 379 feet tall. Of the ten
-              tallest known trees, four are located in the Western United States
-              and four others are located in Australia. The stoutest tree with a
-              single trunk is the African Baobab in South Africa. It measures 52
-              feet around its girth near the ground. The shortest tree is one
-              variety that grows to only a few inches tall when it is mature and
-              healthy. The oldest tree is the “Methuselah” pine, with a verified
-              age of 4,844. The oldest human-planted tree has a verified
-              planting date of 288 B. C., which makes it 2,299 years old.
-            </p>
-          </div>
-          <div id="answers">
-            <h4>1. The tallest tree is:</h4>
-            <ul class="new-answers">
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">a</span>about 52 feet high</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">b</span>over 2,000 feet high</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer correct-answer" href="#"
-                  ><span class="order">c</span>almost 380 feet high</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">d</span>about 4,000 feet high</a
-                >
-              </li>
-            </ul>
-
-            <h4>
-              2. Of the ten tallest trees in the world, most of them are located
-              in:
-            </h4>
-            <ul class="new-answers">
-              <li>
-                <a class="sim-answer correct-answer" href="#"
-                  ><span class="order">a</span>Australia</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">b</span>Sri Lanka</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">c</span>South Africa</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">d</span>Lebanon</a
-                >
-              </li>
-            </ul>
-
-            <h4>
-              3. The Methuselah pine may be almost 5,000 years old, but its age
-              is not verified:
-            </h4>
-            <ul class="new-answers">
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">a</span>true</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer correct-answer" href="#"
-                  ><span class="order">b</span>false</a
-                >
-              </li>
-            </ul>
-
-            <h4>
-              4. There are no known date records for human-planted trees before
-              1000 A.D.:
-            </h4>
-            <ul class="new-answers">
-              <li>
-                <a class="sim-answer wrong-answer" href="#"
-                  ><span class="order">a</span>true</a
-                >
-              </li>
-              <li>
-                <a class="sim-answer correct-answer" href="#"
-                  ><span class="order">d</span>false</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="console-small">
-            <a
-              href="reading-impairments-simulation-3.html"
-              class="console-button next"
-              ><span>Next Exercise</span></a
-            >
-          </div>
-
-          <div id="quick-desc">
-            <p>
-              In this example, a relatively short amount of time was provided,
-              to simulate the slowness in reading that can be part of aphasia.
-            </p>
-          </div>
-        </div>
-      </div>
+    </div><br/>
+    <div class="console-small" style="text-align: center;">
+      <a
+        href="reading-impairments-simulation-3.html"
+        class="console-button next"
+        ><span>Next Page</span></a
+      >
     </div>
 
-    <div style="display: none; visibility: hidden"><div id="player"></div></div>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        readingSim2DocReady();
-      });
+    <script>
+        const questions = [
+            {
+                text: "What is the height of the tallest tree mentioned?",
+                options: [
+                    { value: "a", label: "52 feet" },
+                    { value: "b", label: "2,000 feet" },
+                    { value: "c", label: "379 feet", correct: true },
+                    { value: "d", label: "4,000 feet" }
+                ]
+            },
+            {
+                text: "Where are the majority of the ten tallest known trees located?",
+                options: [
+                    { value: "a", label: "Western United States and Australia", correct: true },
+                    { value: "b", label: "South Africa" },
+                    { value: "c", label: "California" },
+                    { value: "d", label: "Lebanon" }
+                ]
+            },
+            {
+                text: "What is the verified age of the oldest tree mentioned?",
+                options: [
+                    { value: "a", label: "2,299 years" },
+                    { value: "b", label: "4,844 years", correct: true },
+                    { value: "c", label: "5,000 years" },
+                    { value: "d", label: "288 years" }
+                ]
+            },
+            {
+                text: "Which tree is mentioned as having the largest girth?",
+                options: [
+                    { value: "a", label: "Coast Redwood" },
+                    { value: "b", label: "Methuselah pine" },
+                    { value: "c", label: "African Baobab", correct: true },
+                    { value: "d", label: "The oldest human-planted tree" }
+                ]
+            }
+        ];
+
+        let timeLeft = 45;
+        let timer;
+
+        document.getElementById('startBtn').addEventListener('click', startExercise);
+        document.getElementById('restartBtn').addEventListener('click', restartExercise);
+
+        function startExercise() {
+            document.getElementById('instructions').classList.add('hidden');
+            document.getElementById('exercise').classList.remove('hidden');
+            timer = setInterval(updateTimer, 1000);
+            updateTimer();
+        }
+
+        function updateTimer() {
+            timeLeft--;
+            document.getElementById('timeLeft').textContent = `Time remaining: ${timeLeft} seconds`;
+            document.getElementById('progressBar').style.width = `${(timeLeft / 45) * 100}%`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                showQuestions();
+            }
+        }
+
+        function showQuestions() {
+            document.getElementById('exercise').classList.add('hidden');
+            document.getElementById('questions').classList.remove('hidden');
+            
+            const questionsContainer = document.getElementById('questions');
+            questions.forEach((question, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'bg-white shadow-sm rounded-lg border border-gray-200 p-4';
+                questionElement.innerHTML = `
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">${index + 1}. ${question.text}</h3>
+                    <div class="space-y-2">
+                        ${question.options.map(option => `
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="q${index}" value="${option.value}" class="form-radio text-blue-600">
+                                <span class="text-gray-700">${option.label}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                questionsContainer.appendChild(questionElement);
+            });
+            
+            const submitBtn = document.createElement('button');
+            submitBtn.textContent = 'Submit Answers';
+            submitBtn.className = 'w-full mt-6 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2';
+            submitBtn.addEventListener('click', checkAnswers);
+            questionsContainer.appendChild(submitBtn);
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selectedAnswer && question.options.find(option => option.value === selectedAnswer.value && option.correct)) {
+                    score++;
+                }
+            });
+            
+            document.getElementById('questions').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+            document.getElementById('score').textContent = `You scored ${score} out of ${questions.length} correct.`;
+        }
+
+        function restartExercise() {
+            timeLeft = 45;
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('questions').innerHTML = '';
+            document.getElementById('instructions').classList.remove('hidden');
+        }
     </script>
-  </body>
+</body>
 </html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Aphasia Corner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        [x-cloak] { display: none !important; }
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div x-data="{ mobileMenuOpen: false }">
+        <!-- Navbar -->
+        <nav class="bg-indigo-700 text-white shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="#" class="font-bold text-2xl" style="font-family: 'Courier New', monospace;">Aphasia</a>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition">Home</a>
+                            <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition">About Aphasia</a>
+                            <a href="#resources" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition">Resources</a>
+                            <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-600 transition">Contact</a>
+                        </div>
+                    </div>
+                    <div class="md:hidden">
+                        <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md hover:bg-indigo-600 focus:outline-none">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path :class="{'hidden': mobileMenuOpen, 'inline-flex': !mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                <path :class="{'hidden': !mobileMenuOpen, 'inline-flex': mobileMenuOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div x-show="mobileMenuOpen" x-cloak class="md:hidden bg-indigo-600">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-500 transition">Home</a>
+                    <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-500 transition">About Aphasia</a>
+                    <a href="#resources" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-500 transition">Resources</a>
+                    <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-500 transition">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative bg-indigo-600 text-white py-20 hero">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl" style="font-family: 'Courier New', monospace;">Welcome to Aphasia Centre</h1>
+                <p class="mt-4 max-w-md mx-auto text-lg sm:text-xl md:mt-5 md:max-w-3xl">
+                    Empowering individuals and families affected by aphasia through education, support, and resources.
+                </p>
+                <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
+                    <div class="rounded-md shadow">
+                        <a href="#learn-more" class="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10 transition">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="learn-more" class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 text-center mb-12" style="font-family: 'Courier New', monospace;">Understanding Aphasia</h2>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="bg-white overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
+                        <div class="p-5">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto mb-4">
+                                <i class="fas fa-brain text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 text-center">What is Aphasia?</h3>
+                            <p class="mt-2 text-base text-gray-500 text-center">
+                                Aphasia is a language disorder that affects a person's ability to communicate. It can impact speaking, listening, reading, and writing skills.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 px-5 py-3">
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 transition">
+                                    Learn more about aphasia <span aria-hidden="true">&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
+                        <div class="p-5">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto mb-4">
+                                <i class="fas fa-hands-helping text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 text-center">Support and Resources</h3>
+                            <p class="mt-2 text-base text-gray-500 text-center">
+                                Discover a wealth of resources, including communication tips, therapy options, and support groups for individuals with aphasia and their caregivers.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 px-5 py-3">
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 transition">
+                                    Explore our resources <span aria-hidden="true">&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
+                        <div class="p-5">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white mx-auto mb-4">
+                                <i class="fas fa-book-reader text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-900 text-center">Education Center</h3>
+                            <p class="mt-2 text-base text-gray-500 text-center">
+                                Access our comprehensive education center to learn about different types of aphasia, treatment approaches, and the latest research in the field.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 px-5 py-3">
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 transition">
+                                    Visit our education center <span aria-hidden="true">&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="bg-indigo-700 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold mb-8">Ready to Explore Our Aphasia Exercises?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <a href="listening-impairments.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-100 transition transform hover:scale-105">
+                        Listening Exercises
+                    </a>
+                    <a href="reading-impairments.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-100 transition transform hover:scale-105">
+                        Reading Exercises
+                    </a>
+                    <a href="writing-impairments.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-100 transition transform hover:scale-105">
+                        Writing Exercises
+                    </a>
+                    <a href="speaking-impairments.html" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-100 transition transform hover:scale-105">
+                        Speaking Exercises
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="mb-4 md:mb-0" >&copy; 2024 Aphasia Corner. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <span class="sr-only">Facebook</span>
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <span class="sr-only">Twitter</span>
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <span class="sr-only">Instagram</span>
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate hero section
+            gsap.from(".hero h1", {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+            gsap.from(".hero p", {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.3,
+                ease: "power3.out"
+            });
+
+            gsap.from(".hero a", {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.6,
+                ease: "power3.out"
+            });
+
+            // Animate features section
+            gsap.from("#learn-more .bg-white", {
+                scrollTrigger: {
+                    trigger: "#learn-more",
+                    start: "top center"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+
+            // Animate CTA section
+            gsap.from(".bg-indigo-700 h2", {
+                scrollTrigger: {
+                    trigger: ".bg-indigo-700",
+                    start: "top center"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+
+            gsap.from(".bg-indigo-700 a", {
+                scrollTrigger: {
+                    trigger: ".bg-indigo-700",
+                    start: "top center"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                stagger: 0.2,
+                delay: 0.2,
+                ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>

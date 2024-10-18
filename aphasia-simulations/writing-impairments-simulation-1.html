@@ -10,61 +10,84 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
     <style>
         body {
-            background-color: #f5f5f5;
+            background-color: #f0f4f8;
             font-family: 'Roboto', sans-serif;
+            color: #2c3e50;
         }
 
         .navbar {
-            background-color: #2c3e50;
+            background-color: #3498db;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: #fff !important;
         }
 
         .nav-link {
-            color: #ecf0f1 !important;
+            color: #fff !important;
+            transition: all 0.3s ease;
         }
 
-        .nav-link.active {
-            font-weight: 500;
-            border-bottom: 2px solid #3498db;
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
         }
 
         .card {
             border: none;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
+
 
         .btn-primary {
             background-color: #3498db !important;
-            transition: background-color 0.3s ease;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
             background-color: #2980b9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
 
         #task-image img {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        #task-image img:hover {
+            transform: scale(1.05);
         }
 
         #sim-input {
             border: 2px solid #3498db;
-            border-radius: 8px;
-            padding: 10px;
+            border-radius: 25px;
+            padding: 15px;
             font-size: 1.1em;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         #sim-input:focus {
             border-color: #2980b9;
-            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
         }
 
         .console-small {
             background-color: #ecf0f1;
-            border-radius: 8px;
-            padding: 15px;
+            border-radius: 15px;
+            padding: 20px;
             margin-top: 20px;
         }
 
@@ -74,6 +97,12 @@
             padding: 20px;
             margin-top: 30px;
             border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        #quick-desc:hover {
+            background-color: #d1eaf5;
+            transform: translateX(5px);
         }
 
         .feedback {
@@ -81,6 +110,7 @@
             font-weight: bold;
             margin-top: 20px;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
         .feedback.correct {
@@ -89,6 +119,12 @@
 
         .feedback.incorrect {
             color: #e74c3c;
+        }
+
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         .progress-bar {
@@ -101,21 +137,48 @@
             font-size: 1.1em;
             margin-top: 10px;
             text-align: center;
+            color: #34495e;
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-item a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #2980b9;
+        }
+
+        .breadcrumb-item.active {
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 2rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="../index.html" style="font-family: 'Courier New', monospace;">Aphasia</a>
+            <a class="navbar-brand" href="../index.html">Aphasia Corner</a>
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Introduction</a></li>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="listening-impairments.html">Listening</a></li>
                     <li class="nav-item"><a class="nav-link" href="reading-impairments.html">Reading</a></li>
                     <li class="nav-item"><a class="nav-link active" href="writing-impairments.html">Writing</a></li>
@@ -130,16 +193,16 @@
             <div class="col-lg-8 mx-auto">
                 <div class="card">
                     <div class="card-body p-5">
-                        <h2 class="card-title text-center mb-4" style="font-family: 'Courier New', monospace;">Simulating Semantic Confusions</h2>
+                        <h1 class="card-title text-center mb-4" style="font-family: 'Courier New', monospace; color: #2c3e50;">Simulating Semantic Confusions</h1>
 
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="writing-impairments.html">Overview</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Exercise 1</li>
+                                <li class="breadcrumb-item"><a href="writing-impairments.html">Writing Impairments</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Exercise 1: Semantic Confusions</li>
                             </ol>
                         </nav>
 
-                        <h3 class="mt-4 mb-3">Write the name of the object you see in the picture.</h3>
+                        <h3 class="mt-4 mb-3 text-center">Identify the object in the image below:</h3>
 
                         <div id="task" class="text-center mb-4">
                             <div id="task-image">
@@ -148,25 +211,27 @@
                         </div>
 
                         <div id="answers" class="mb-4">
-                            <input id="sim-input" type="text" class="form-control" placeholder="Type your answer here" />
+                            <input id="sim-input" type="text" class="form-control" placeholder="Type your answer here" aria-label="Type your answer" />
                         </div>
 
-                        <div class="feedback" id="feedback"></div>
+                        <div class="feedback" id="feedback" role="alert" aria-live="assertive"></div>
 
                         <div class="console-small d-flex justify-content-between align-items-center">
-                            <button class="btn btn-primary next">Submit</button>
+                            <button class="btn btn-primary next">
+                                <i class="fas fa-paper-plane me-2"></i>Submit
+                            </button>
                             <span>Question <span id="sim-current-count">1</span> of <span id="sim-total-count">5</span></span>
                         </div>
 
                         <div class="progress mt-4">
-                            <div class="progress-bar" role="progressbar" style="width: 20%;" id="progress-bar"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 20%;" id="progress-bar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
 
                         <div id="progress-text" class="mt-2">Progress: 20%</div>
 
                         <div id="quick-desc" class="mt-4">
-                            <p class="mb-0">To simulate writing impairment, a word from the same category is displayed
-                                instead of the word intended.</p>
+                            <h4 class="mb-3">What's happening here?</h4>
+                            <p class="mb-0">This exercise simulates a writing impairment known as semantic confusion. In this scenario, a word from the same category might be used instead of the intended word. For example, saying "cat" when you mean "dog".</p>
                         </div>
                     </div>
                 </div>
@@ -195,8 +260,8 @@
             function loadQuestion(index) {
                 var question = questionsData.questions[index - 1];
                 $("#image").attr("src", question.image_url);
-                $("#sim-input").val('');
-                $("#feedback").text('');
+                $("#sim-input").val('').focus();
+                $("#feedback").text('').removeClass('correct incorrect');
                 $("#sim-current-count").text(index);
                 updateProgress(index);
             }
@@ -205,36 +270,43 @@
                 var question = questionsData.questions[CURRENT_QUESTION - 1];
                 var userAnswer = $("#sim-input").val().trim().toLowerCase();
                 if (userAnswer === question.confused_word.toLowerCase()) {
-                    $("#feedback").text("Correct!").addClass('correct').removeClass('incorrect');
+                    $("#feedback").text("Correct! This simulates the semantic confusion in writing impairments.").addClass('correct').removeClass('incorrect');
                 } else {
-                    $("#feedback").text("Incorrect. The correct word was: " + question.confused_word).addClass('incorrect').removeClass('correct');
+                    $("#feedback").text("Not quite. In this simulation, '" + question.confused_word + "' would be the expected confusion. Try again!").addClass('incorrect').removeClass('correct');
                 }
             }
 
             function updateProgress(index) {
                 var progress = (index / questionsData.questions.length) * 100;
-                $("#progress-bar").css('width', progress + '%');
-                $("#progress-text").text('Progress: ' + progress + '%');
+                $("#progress-bar").css('width', progress + '%').attr('aria-valuenow', progress);
+                $("#progress-text").text('Progress: ' + Math.round(progress) + '%');
             }
 
             loadQuestion(CURRENT_QUESTION);
 
             $(".next").click(function () {
+                if ($("#sim-input").val().trim() === '') {
+                    $("#feedback").text("Please enter an answer before submitting.").addClass('incorrect').removeClass('correct');
+                    return;
+                }
+                
                 checkAnswer();
                 if (CURRENT_QUESTION < questionsData.questions.length) {
                     CURRENT_QUESTION++;
                     setTimeout(function () {
                         loadQuestion(CURRENT_QUESTION);
-                    }, 1500); // Delay to show feedback
+                    }, 2000); // Increased delay to show feedback
                 } else {
                     setTimeout(function () {
                         window.location.href = NEXT_URL;
-                    }, 1500); // Delay before navigating to the next simulation
+                    }, 2000); // Delay before navigating to the next simulation
                 }
             });
 
-            $("#sim-input").on('input', function () {
-                // Optional: You can add a suggestion feature here if needed
+            $("#sim-input").on('keypress', function(e) {
+                if (e.which == 13) {
+                    $(".next").click();
+                }
             });
         });
     </script>

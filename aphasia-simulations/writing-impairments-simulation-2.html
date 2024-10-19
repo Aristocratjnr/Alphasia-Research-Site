@@ -5,88 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Simulating Writing Impairments - Visual Confusions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                    },
+                },
+            },
         }
-    </style>
+    </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
+<body class="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl mx-auto">
-        <div class="bg-white shadow-xl rounded-lg overflow-hidden">
-            <div class="p-6">
-                <h1 class="text-3xl font-bold text-center text-gray-900 mb-6">Simulating Visual Confusions</h1>
-                
-                <nav class="mb-4">
-                    <ol class="flex items-center space-x-2 text-sm text-gray-500">
-                        <li><a href="writing-impairments.html" class="hover:text-blue-600">Writing Impairments</a></li>
-                        <li><span class="mx-2">/</span></li>
-                        <li class="font-medium text-gray-900">Exercise 2</li>
-                    </ol>
-                </nav>
+        <h1 class="text-3xl font-bold text-center text-gray-900 mb-8">Aphasia Exercises</h1>
 
-                <h2 class="text-xl text-center mb-6">Write the name of the object you see in the picture.</h2>
+        <nav class="mb-8">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="../index.html" class="text-blue-600 hover:text-blue-800">Introduction</a></li>
+                <li><a href="listening-impairments.html" class="text-blue-600 hover:text-blue-800">Listening</a></li>
+                <li><a href="reading-impairments.html" class="text-blue-600 hover:text-blue-800">Reading</a></li>
+                <li><a href="writing-impairments.html" class="text-blue-600 hover:text-blue-800 font-bold">Writing</a></li>
+                <li><a href="speaking-impairments.html" class="text-blue-600 hover:text-blue-800">Speaking</a></li>
+            </ul>
+        </nav>
 
-                <div class="mb-6 text-center">
-                    <img id="question-image" src="" alt="Object to identify" class="mx-auto max-w-full h-auto rounded-lg shadow-md">
-                </div>
+        <nav class="mb-12">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="writing-impairments.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Overview</a></li>
+                <li><a href="writing-impairments-simulation-1.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Exercise 1</a></li>
+                <li><a href="writing-impairments-simulation-2.html" class="px-3 py-2 bg-blue-600 rounded-full text-white">Exercise 2</a></li>
+                <li><a href="writing-impairments-simulation-3.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Exercise 3</a></li>
+                <li><a href="writing-impairments-communication-tips.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Communication Tips</a></li>
+            </ul>
+        </nav>
 
-                <div class="mb-6">
-                    <input
-                        type="text"
-                        id="user-input"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Type your answer here"
-                    >
-                </div>
+        <h2 class="text-2xl font-semibold text-center text-gray-900 mb-8">Simulating Visual Confusions</h2>
 
-                <div class="flex justify-between items-center mb-6">
-                    <button id="submit-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                        Submit Answer
-                    </button>
-                    <span class="text-sm text-gray-600">
-                        Question <span id="current-question">1</span> of <span id="total-questions">5</span>
-                    </span>
-                </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">
+                Write the name of the object you see in the picture.
+            </h3>
 
-                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
-                    <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 20%"></div>
-                </div>
+            <div class="mb-6 text-center">
+                <img id="question-image" src="" alt="Object to identify" class="mx-auto max-w-full h-auto rounded-lg shadow-md">
+            </div>
 
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-md">
-                    <p class="text-sm text-blue-700">
-                        <i class="fas fa-info-circle mr-2"></i>
-                        To simulate writing impairment, a word that looks similar to the typed word is displayed.
-                    </p>
-                </div>
+            <div class="mb-6">
+                <input
+                    type="text"
+                    id="user-input"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Type your answer here"
+                >
+            </div>
+
+            <div class="flex justify-between items-center mb-6">
+                <button id="submit-btn" class="flex items-center justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Submit Answer
+                </button>
+                <span class="text-sm text-gray-600">
+                    Question <span id="current-question">1</span> of <span id="total-questions">5</span>
+                </span>
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 20%"></div>
+            </div>
+
+            <div class="mt-8 bg-blue-50 border-l-4 border-blue-400 p-4 rounded-md">
+                <p class="text-sm text-blue-700">
+                    <i data-lucide="info" class="inline-block mr-2"></i>
+                    To simulate writing impairment, a word that looks similar to the typed word is displayed.
+                </p>
             </div>
         </div>
 
-        <!-- Modal -->
-        <div id="modal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title"></h3>
-                        <div class="mt-2">
-                            <p class="text-sm text-gray-500" id="modal-content"></p>
-                        </div>
+        <div class="flex justify-end">
+            <a href="writing-impairments-simulation-3.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Next Exercise
+                <i data-lucide="chevron-right" class="ml-2 -mr-1 h-5 w-5" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed z-10 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title"></h3>
+                    <div class="mt-2">
+                        <p class="text-sm text-gray-500" id="modal-content"></p>
                     </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button type="button" id="modal-close" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                            Next Question
-                        </button>
-                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" id="modal-close" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        Next Question
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        lucide.createIcons();
+
         const questionsData = [
             { image_url: "/static/assets/images/horse.jpg", correct_word: "horse", confused_word: "house" },
             { image_url: "/static/assets/images/glasses.jpg", correct_word: "glasses", confused_word: "jellies" },

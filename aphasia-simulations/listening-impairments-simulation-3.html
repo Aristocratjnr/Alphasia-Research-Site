@@ -122,21 +122,18 @@
 
         const playButton = document.getElementById('playButton');
         const answersContainer = document.getElementById('answers');
-        let audio;
+        let audio = new Audio('/static/assets/audio/listening-sim-3.mp3');
         let isPlaying = false;
 
+        // Attach event listeners
         playButton.addEventListener('click', togglePlay);
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            updatePlayButton();
+            showAnswers();
+        });
 
         function togglePlay() {
-            if (!audio) {
-                audio = new Audio('/static/assets/audio/listening-sim-3.mp3');
-                audio.addEventListener('ended', () => {
-                    isPlaying = false;
-                    updatePlayButton();
-                    showAnswers();
-                });
-            }
-
             if (isPlaying) {
                 audio.pause();
             } else {

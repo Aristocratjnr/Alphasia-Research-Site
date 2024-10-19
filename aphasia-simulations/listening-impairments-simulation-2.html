@@ -17,6 +17,12 @@
                             600: '#2563eb',
                             700: '#1d4ed8',
                         },
+                        green: {
+                            500: '#10b981',
+                        },
+                        red: {
+                            500: '#ef4444',
+                        },
                     },
                 },
             },
@@ -54,49 +60,13 @@
                 Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listen to the audio.
             </h3>
 
-            <div id="task" class="mb-6">
-                <button id="play-button" class="flex items-center justify-center w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
-                    <i data-lucide="play" class="mr-2"></i>
-                    <span>PLAY</span>
-                </button>
-            </div>
+            <button id="playButton" class="flex items-center justify-center w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                <i data-lucide="play" class="mr-2"></i>
+                <span>PLAY</span>
+            </button>
 
-            <div id="answers" class="space-y-6 hidden">
-                <div>
-                    <h4 class="text-lg font-medium text-gray-900 mb-2">1. Caterpillars eat:</h4>
-                    <ul class="space-y-2">
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>plants only</a></li>
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>insects only</a></li>
-                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">c</span>plants and insects</a></li>
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">d</span>pollen and dew</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-medium text-gray-900 mb-2">2. To defend themselves, some caterpillars can make themselves look like snakes by:</h4>
-                    <ul class="space-y-2">
-                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>inflating their head</a></li>
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>growing additional eyes</a></li>
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">c</span>stretching their bodies</a></li>
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">d</span>developing a rattle on their tail</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-medium text-gray-900 mb-2">3. Caterpillars can store toxins in the adult butterfly stage:</h4>
-                    <ul class="space-y-2">
-                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>true</a></li>
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>false</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-medium text-gray-900 mb-2">4. Red and orange markings let other animals know that butterflies are good to eat:</h4>
-                    <ul class="space-y-2">
-                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>true</a></li>
-                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>false</a></li>
-                    </ul>
-                </div>
+            <div id="answers" class="space-y-6 hidden mt-6">
+                <!-- Questions will be dynamically inserted here -->
             </div>
 
             <div id="quick-desc" class="mt-8 bg-blue-50 border-l-4 border-blue-400 p-4 rounded-md hidden">
@@ -115,55 +85,127 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../static/js/jwplayer/jwplayer.js"></script>
     <script>
         lucide.createIcons();
 
-        jwplayer("player").setup({
-            file: "../static/assets/audio/listening-sim-2.mp3",
-            width: 0,
-            height: 0,
-            events: {
-                onComplete: function () {
-                    $("#play-button").removeClass("bg-red-600 hover:bg-red-700").addClass("bg-blue-600 hover:bg-blue-700");
-                    $("#play-button i").attr("data-lucide", "play");
-                    lucide.createIcons();
-                    $("#play-button span").text("PLAY");
-                    $("#answers").removeClass("hidden");
-                    $("#quick-desc").removeClass("hidden");
-                },
+        const questions = [
+            {
+                id: 1,
+                question: 'Caterpillars eat:',
+                answers: [
+                    { id: 'a', text: 'plants only', correct: false },
+                    { id: 'b', text: 'insects only', correct: false },
+                    { id: 'c', text: 'plants and insects', correct: true },
+                    { id: 'd', text: 'pollen and dew', correct: false },
+                ],
             },
-        });
+            {
+                id: 2,
+                question: 'To defend themselves, some caterpillars can make themselves look like snakes by:',
+                answers: [
+                    { id: 'a', text: 'inflating their head', correct: true },
+                    { id: 'b', text: 'growing additional eyes', correct: false },
+                    { id: 'c', text: 'stretching their bodies', correct: false },
+                    { id: 'd', text: 'developing a rattle on their tail', correct: false },
+                ],
+            },
+            {
+                id: 3,
+                question: 'Caterpillars can store toxins in the adult butterfly stage:',
+                answers: [
+                    { id: 'a', text: 'true', correct: true },
+                    { id: 'b', text: 'false', correct: false },
+                ],
+            },
+            {
+                id: 4,
+                question: 'Red and orange markings let other animals know that butterflies are good to eat:',
+                answers: [
+                    { id: 'a', text: 'true', correct: false },
+                    { id: 'b', text: 'false', correct: true },
+                ],
+            },
+        ];
 
-        $(document).ready(function() {
-            $("#play-button").click(function(e) {
-                e.preventDefault();
-                var player = jwplayer("player");
-                if ($(this).hasClass("bg-red-600")) {
-                    player.pause();
-                    $(this).removeClass("bg-red-600 hover:bg-red-700").addClass("bg-blue-600 hover:bg-blue-700");
-                    $(this).find("i").attr("data-lucide", "play");
-                    $(this).find("span").text("PLAY");
-                } else {
-                    player.play();
-                    $(this).removeClass("bg-blue-600 hover:bg-blue-700").addClass("bg-red-600 hover:bg-red-700");
-                    $(this).find("i").attr("data-lucide", "pause");
-                    $(this).find("span").text("PAUSE");
-                }
-                lucide.createIcons();
+        const playButton = document.getElementById('playButton');
+        const answersContainer = document.getElementById('answers');
+        const quickDesc = document.getElementById('quick-desc');
+        let audio;
+        let isPlaying = false;
+
+        playButton.addEventListener('click', togglePlay);
+
+        function togglePlay() {
+            if (!audio) {
+                audio = new Audio('/static/assets/audio/listening-sim-2.mp3'); // Ensure this path is correct
+                audio.addEventListener('ended', showAnswers);
+            }
+
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            isPlaying = !isPlaying;
+            updatePlayButton();
+        }
+
+        function updatePlayButton() {
+            const icon = playButton.querySelector('i');
+            const text = playButton.querySelector('span');
+            if (isPlaying) {
+                icon.setAttribute('data-lucide', 'pause');
+                text.textContent = 'PAUSE';
+                playButton.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                playButton.classList.add('bg-red-600', 'hover:bg-red-700');
+            } else {
+                icon.setAttribute('data-lucide', 'play');
+                text.textContent = 'PLAY';
+                playButton.classList.remove('bg-red-600', 'hover:bg-red-700');
+                playButton.classList.add('bg-blue-600', 'hover:bg-blue-700');
+            }
+        }
+
+        function showAnswers() {
+            answersContainer.classList.remove('hidden');
+            answersContainer.innerHTML = questions.map(q => `
+                <div class="border-b pb-4 mb-4">
+                    <h4 class="font-medium text-gray-800">${q.question}</h4>
+                    <ul class="mt-2">
+                        ${q.answers.map(a => `
+                            <li>
+                                <button class="sim-answer w-full text-left bg-gray-200 rounded-md p-2 my-2 hover:bg-gray-300" data-correct="${a.correct}">
+                                    ${a.text}
+                                </button>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+
+            quickDesc.classList.remove('hidden');
+
+            document.querySelectorAll('.sim-answer').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const isCorrect = e.currentTarget.dataset.correct === 'true';
+                    highlightAnswer(e.currentTarget, isCorrect);
+                });
+            });
+        }
+
+        function highlightAnswer(button, isCorrect) {
+            // Remove existing highlights
+            document.querySelectorAll('.sim-answer').forEach(btn => {
+                btn.classList.remove('bg-green-500', 'bg-red-500', 'text-white');
             });
 
-            $(".sim-answer").click(function(e) {
-                e.preventDefault();
-                $(this).closest('ul').find('.sim-answer').removeClass('bg-green-100 text-green-800 bg-red-100 text-red-800').addClass('bg-gray-100 hover:bg-gray-200');
-                if ($(this).hasClass('correct-answer')) {
-                    $(this).removeClass('bg-gray-100 hover:bg-gray-200').addClass('bg-green-100 text-green-800');
-                } else {
-                    $(this).removeClass('bg-gray-100 hover:bg-gray-200').addClass('bg-red-100 text-red-800');
-                }
-            });
-        });
+            // Highlight the selected button
+            if (isCorrect) {
+                button.classList.add('bg-green-500', 'text-white');
+            } else {
+                button.classList.add('bg-red-500', 'text-white');
+            }
+        }
     </script>
 </body>
 </html>

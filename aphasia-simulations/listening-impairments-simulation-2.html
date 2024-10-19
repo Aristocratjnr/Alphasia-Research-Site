@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Listening Comprehension Impairment</title>
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon"> 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -22,16 +22,18 @@
         }
         h1, h2, h3, h4 {
             color: #2c3e50;
-            text-align: center; /* Center align headings */
+            text-align: center;
         }
         .nav-tabs, .nav-pills {
-            justify-content: center; /* Center tabs */
+            justify-content: center;
         }
         .nav-link {
-            margin: 0 5px; /* Add some spacing between tabs */
+            margin: 0 5px;
         }
         #play-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 10px 20px;
             background-color: #3498db;
             color: white;
@@ -58,7 +60,8 @@
             margin-bottom: 10px;
         }
         .sim-answer {
-            display: block;
+            display: flex;
+            align-items: center;
             padding: 10px;
             background-color: #ecf0f1;
             color: #34495e;
@@ -70,7 +73,8 @@
             background-color: #bdc3c7;
         }
         .console-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             padding: 10px 20px;
             background-color: #2ecc71;
             color: white;
@@ -91,17 +95,17 @@
         }
         @media (max-width: 600px) {
             #play-button, .console-button {
-                width: 100%; /* Full width on small screens */
-                padding: 15px; /* Larger padding for touch targets */
+                width: 100%;
+                padding: 15px;
             }
             .sim-answer {
-                font-size: 16px; /* Larger font size for readability */
+                font-size: 16px;
             }
             h1, h2 {
-                font-size: 24px; /* Responsive font size */
+                font-size: 24px;
             }
             h3, h4 {
-                font-size: 20px; /* Responsive font size */
+                font-size: 20px;
             }
         }
     </style>
@@ -152,7 +156,10 @@
             <h5 class="mb-3">Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listened to the audio.</h5>
 
             <div id="task" class="mb-4">
-                <a id="play-button" href="#"><i class="fas fa-play me-2"></i>PLAY</a>
+                <a id="play-button" href="#">
+                    <i data-lucide="play" class="me-2"></i>
+                    <span>PLAY</span>
+                </a>
             </div>
 
             <div id="answers" style="display: none;">
@@ -188,7 +195,7 @@
             <div class="console-small mt-4">
                 <a href="listening-impairments-simulation-3.html" class="console-button next">
                     <span>Next Exercise</span>
-                    <i class="fas fa-chevron-right ms-2"></i>
+                    <i data-lucide="chevron-right" class="ms-2"></i>
                 </a>
             </div>
 
@@ -202,6 +209,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
     <script src="../static/js/jwplayer/jwplayer.js"></script>
     <script>
+        lucide.createIcons();
+
         jwplayer("player").setup({
             file: "../static/assets/audio/listening-sim-2.mp3",
             width: 0,
@@ -209,6 +218,9 @@
             events: {
                 onComplete: function () {
                     $("#play-button").removeClass("pause");
+                    $("#play-button i").attr("data-lucide", "play");
+                    lucide.createIcons();
+                    $("#play-button span").text("PLAY");
                     $("#answers").fadeIn();
                     $("#quick-desc").fadeIn();
                 },
@@ -222,12 +234,15 @@
                 if ($(this).hasClass("pause")) {
                     player.pause();
                     $(this).removeClass("pause");
-                    $(this).html('<i class="fas fa-play me-2"></i>PLAY');
+                    $(this).find("i").attr("data-lucide", "play");
+                    $(this).find("span").text("PLAY");
                 } else {
                     player.play();
                     $(this).addClass("pause");
-                    $(this).html('<i class="fas fa-pause me-2"></i>PAUSE');
+                    $(this).find("i").attr("data-lucide", "pause");
+                    $(this).find("span").text("PAUSE");
                 }
+                lucide.createIcons();
             });
 
             $(".sim-answer").click(function(e) {

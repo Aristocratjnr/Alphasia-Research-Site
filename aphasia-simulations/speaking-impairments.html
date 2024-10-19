@@ -1,140 +1,106 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-  rel="stylesheet"
-/>
-<!-- Created for use in the Voices of Hope for Aphasia site developed in collaboration with the University of Florida Chapter of the Association for Information Systems -->
-<!-- Managing Credit: Justin H, Jashmina P -->
-<!-- Technical Analysts: Devin D, Manuel U, Valdemar T -->
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Speaking Impairments Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#f59e0b',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans" x-data="{ mobileMenuOpen: false }">
+  
 
-    <link
-      rel="stylesheet"
-      href="../static/css/reset-min.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/css/main.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <nav class="mb-8">
+            <ul class="flex flex-wrap justify-center space-x-4">
+                <li class="mb-2"><a href="speaking-impairments.html" class="px-4 py-2 rounded-full bg-secondary text-white font-medium shadow-md hover:bg-orange-600 transition duration-300">Overview</a></li>
+                <li class="mb-2"><a href="speaking-impairments-simulation-1.html" class="px-4 py-2 rounded-full bg-white hover:bg-gray-100 transition duration-300 shadow-md">Exercise 1</a></li>
+                <li class="mb-2"><a href="speaking-impairments-simulation-2.html" class="px-4 py-2 rounded-full bg-white hover:bg-gray-100 transition duration-300 shadow-md">Exercise 2</a></li>
+                <li class="mb-2"><a href="speaking-impairments-communication-tips.html" class="px-4 py-2 rounded-full bg-white hover:bg-gray-100 transition duration-300 shadow-md">Communication Tips</a></li>
+            </ul>
+        </nav>
 
-    <!--[if lte IE 6]>
-      <script src="../static/js/ie-transparent-min.js"></script>
-      <script src="../static/js/ie-png-fix.js"></script>
-      <script>
-        DD_belatedPNG.fix("#example, .example");
-      </script>
-      <link
-        type="text/css"
-        rel="stylesheet"
-        href="../static/css/ie.css"
-        media="screen"
-      />
-    <![endif]-->
-    <!--[if IE 7
-      ]><link
-        type="text/css"
-        rel="stylesheet"
-        href="../static/css/ie7.css"
-        media="screen"
-    /><![endif]-->
-
-    <script type="text/javascript" src="../static/js/jquery.js"></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.hoverIntent.minified.js"
-      charset="utf-8"
-    ></script>
-    <script type="text/javascript" src="../static/js/application.js"></script>
-  </head>
-  <body>
-    <div id="container">
-      <!--#set var="page" value="about-aphasia" -->
-      <!--#include virtual="../header.html" -->
-
-      <div id="content">
-        <h1>Aphasia Exercises</h1>
-
-        <div id="sim-nav" class="card">
-          <ul class="clearfix">
-            <li><a href="../index.html">Introduction</a></li>
-            <li><a href="listening-impairments.html">Listening</a></li>
-            <li><a href="reading-impairments.html">Reading</a></li>
-            <li><a href="writing-impairments.html">Writing</a></li>
-            <li>
-              <a class="selected" href="speaking-impairments.html">Speaking</a>
-            </li>
-          </ul>
-        </div>
-        <div id="sim-sub-nav">
-          <ul class="clearfix">
-            <li class="selected">
-              <a href="speaking-impairments.html">Overview</a>
-            </li>
-            <li>
-              <a href="speaking-impairments-simulation-1.html"> Exercise 1</a>
-            </li>
-            <li>
-              <a href="speaking-impairments-simulation-2.html"> Exercise 2</a>
-            </li>
-            <li>
-              <a href="speaking-impairments-communication-tips.html"
-                >Communication Tips</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <h2>Speaking Impairments</h2>
-
-        <div id="simulation">
-          <div id="sim-content">
-            <img
-              src="https://www.riversideonline.com/-/media/patients-and-visitors/healthy-you/aphasia--blog-banner.ashx"
-              width="900px"
-              style="margin-bottom: 20px"
-            />
-            <p>
-              There are a number of different kinds of problems that might
-              hinder a person with aphasia from being able to say what they
-              would like to say. The first thing to emphasize is that people
-              with aphasia know what they would like to say, but they have
-              difficulty finding the words they need to communicate their
-              message.
-            </p>
-
-          </div>
-          <p class="start-button">
-            <a
-              class="small-button button orange clearfix"
-              href="speaking-impairments-simulation-1.html"
-              >Next...</a
-            >
-          </p>
-        </div>
-      </div>
+        <main class="bg-white shadow-xl rounded-lg overflow-hidden">
+            <div class="p-6 md:p-8">
+                <h2 class="text-3xl font-bold mb-6 text-primary">Speaking Impairments in Aphasia</h2>
+                <div class="mb-8">
+                    <img src="https://www.riversideonline.com/-/media/patients-and-visitors/healthy-you/aphasia--blog-banner.ashx" alt="Aphasia illustration" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="prose max-w-none">
+                    <p class="mb-4 text-lg">
+                        Speaking impairments in aphasia can significantly impact a person's ability to communicate verbally. It's crucial to understand that individuals with aphasia often know what they want to say but struggle to find the right words or form coherent sentences.
+                    </p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700">Common Speaking Challenges</h3>
+                    <ul class="list-disc pl-6 mb-6 space-y-2">
+                        <li><strong>Word Retrieval (Anomia):</strong> Difficulty in recalling the names of objects, people, or concepts.</li>
+                        <li><strong>Unintended Words or Sounds:</strong> Producing words or sounds that are different from what was intended.</li>
+                        <li><strong>Sentence Formation:</strong> Struggles with putting words together in the correct order or forming complete sentences.</li>
+                        <li><strong>Pronunciation:</strong> Challenges in articulating words correctly, even when the person knows what they want to say.</li>
+                    </ul>
+                    <p class="mb-4">
+                        Understanding these challenges is crucial for effective communication with individuals who have aphasia. In the following exercises, we'll explore some of these difficulties in more detail and practice strategies to overcome them.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 flex justify-between items-center">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300">
+                    <i data-lucide="chevron-left" class="mr-2 h-5 w-5"></i>
+                    Back to Introduction
+                </a>
+                <a href="speaking-impairments-simulation-1.html" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-secondary hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition duration-300">
+                    Start Exercise 1
+                    <i data-lucide="chevron-right" class="ml-2 h-5 w-5"></i>
+                </a>
+            </div>
+        </main>
     </div>
-  </body>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Aphasia Corner. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">Facebook</span>
+                        <i data-lucide="facebook" class="h-6 w-6"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">Twitter</span>
+                        <i data-lucide="twitter" class="h-6 w-6"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <span class="sr-only">Instagram</span>
+                        <i data-lucide="instagram" class="h-6 w-6"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
 </html>

@@ -9,28 +9,49 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f0f4f8;
             font-family: 'Roboto', sans-serif;
+            color: #333;
         }
         .navbar {
             background-color: #3f51b5;
         }
         .nav-link {
-            color: rgb(137, 131, 131) !important;
+            color: #6499cd !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #68601d !important;
         }
         .nav-link.active {
             font-weight: bold;
-            border-bottom: 2px solid white;
+            border-bottom: 2px solid #6d6621;
         }
         .card {
             border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
         }
         .btn-next {
             background-color: #ff9800;
+            border-radius: 30px;
+            transition: background-color 0.3s, transform 0.3s;
         }
         .btn-next:hover {
             background-color: #f57c00;
+            transform: scale(1.05);
+        }
+        .list-group-item {
+            font-size: 1.1rem;
+            border: none;
+            padding: 15px 20px;
+            border-left: 4px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .list-group-item:hover {
+            border-left: 4px solid #3f51b5;
+            background-color: #e9ecef;
         }
         @media (max-width: 768px) {
             .container {
@@ -47,34 +68,6 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html" style="font-family: 'Courier New', monospace;">Aphasia</a>
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">Introduction</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="listening-impairments.html">Listening</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="reading-impairments.html">Reading</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="writing-impairments.html">Writing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="speaking-impairments.html">Speaking</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div class="container mt-5">
         <h1 class="text-center mb-4">Reading Impairments Communication Tips</h1>
         
@@ -98,7 +91,7 @@
 
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">General Strategies for Helping People with Aphasia Understand Written Language</h5>
+                <h5 class="card-title text-center mb-4">General Strategies for Helping People with Aphasia Understand Written Language</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <i class="fas fa-image me-2 text-primary"></i>

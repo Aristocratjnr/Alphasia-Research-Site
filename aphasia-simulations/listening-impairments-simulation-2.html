@@ -4,209 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Listening Comprehension Impairment</title>
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                    },
+                },
+            },
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3, h4 {
-            color: #2c3e50;
-            text-align: center;
-        }
-        .nav-tabs, .nav-pills {
-            justify-content: center;
-        }
-        .nav-link {
-            margin: 0 5px;
-        }
-        #play-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-        }
-        #play-button:hover {
-            background-color: #2980b9;
-        }
-        #answers {
-            background-color: white;
-            border-radius: 5px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .new-answers {
-            list-style-type: none;
-            padding: 0;
-        }
-        .new-answers li {
-            margin-bottom: 10px;
-        }
-        .sim-answer {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background-color: #ecf0f1;
-            color: #34495e;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .sim-answer:hover {
-            background-color: #bdc3c7;
-        }
-        .console-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #2ecc71;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-        }
-        .console-button:hover {
-            background-color: #27ae60;
-        }
-        #quick-desc {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e8f6f3;
-            border-left: 5px solid #1abc9c;
-            border-radius: 5px;
-        }
-        @media (max-width: 600px) {
-            #play-button, .console-button {
-                width: 100%;
-                padding: 15px;
-            }
-            .sim-answer {
-                font-size: 16px;
-            }
-            h1, h2 {
-                font-size: 24px;
-            }
-            h3, h4 {
-                font-size: 20px;
-            }
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4" style="font-family: 'Courier New', monospace;">Aphasia Exercises</h1>
+<body class="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-900 mb-8">Aphasia Exercises</h1>
 
-        <ul class="nav nav-tabs mb-4">
-            <li class="nav-item">
-                <a class="nav-link" href="../index.html">Introduction</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="listening-impairments.html">Listening</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="reading-impairments.html">Reading</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="writing-impairments.html">Writing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="speaking-impairments.html">Speaking</a>
-            </li>
-        </ul>
+        <nav class="mb-8">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="../index.html" class="text-blue-600 hover:text-blue-800">Introduction</a></li>
+                <li><a href="listening-impairments.html" class="text-blue-600 hover:text-blue-800 font-bold">Listening</a></li>
+                <li><a href="reading-impairments.html" class="text-blue-600 hover:text-blue-800">Reading</a></li>
+                <li><a href="writing-impairments.html" class="text-blue-600 hover:text-blue-800">Writing</a></li>
+                <li><a href="speaking-impairments.html" class="text-blue-600 hover:text-blue-800">Speaking</a></li>
+            </ul>
+        </nav>
 
-        <ul class="nav nav-pills mb-4">
-            <li class="nav-item">
-                <a class="nav-link" href="listening-impairments.html">Overview</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="listening-impairments-simulation-1.html">Exercise 1</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="listening-impairments-simulation-2.html">Exercise 2</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="listening-impairments-simulation-3.html">Exercise 3</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="listening-impairments-communication-tips.html">Communication Tips</a>
-            </li>
-        </ul>
+        <nav class="mb-12">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="listening-impairments.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Overview</a></li>
+                <li><a href="listening-impairments-simulation-1.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Exercise 1</a></li>
+                <li><a href="listening-impairments-simulation-2.html" class="px-3 py-2 bg-blue-600 rounded-full text-white">Exercise 2</a></li>
+                <li><a href="listening-impairments-simulation-3.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Exercise 3</a></li>
+                <li><a href="listening-impairments-communication-tips.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Communication Tips</a></li>
+            </ul>
+        </nav>
 
-        <h2 class="mb-4" style="font-family: 'Courier New', monospace;">Simulating Slow Rise Time and Intermittent Lexical Retrieval in Listening Comprehension Impairment</h2>
+        <h2 class="text-2xl font-semibold text-center text-gray-900 mb-8">Simulating Slow Rise Time and Intermittent Lexical Retrieval in Listening Comprehension Impairment</h2>
 
-        <div id="simulation" class="card p-4">
-            <h5 class="mb-3">Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listened to the audio.</h5>
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">
+                Listen to the paragraph, and then answer the questions by clicking on the answer. Questions will be revealed after you listen to the audio.
+            </h3>
 
-            <div id="task" class="mb-4">
-                <a id="play-button" href="#">
-                    <i data-lucide="play" class="me-2"></i>
+            <div id="task" class="mb-6">
+                <button id="play-button" class="flex items-center justify-center w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
+                    <i data-lucide="play" class="mr-2"></i>
                     <span>PLAY</span>
-                </a>
+                </button>
             </div>
 
-            <div id="answers" style="display: none;">
-                <h4>1. Caterpillars eat:</h4>
-                <ul class="new-answers">
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">a</span>plants only</a></li>
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">b</span>insects only</a></li>
-                    <li><a class="sim-answer correct-answer" href="#"><span class="order">c</span>plants and insects</a></li>
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">d</span>pollen and dew</a></li>
-                </ul>
+            <div id="answers" class="space-y-6 hidden">
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">1. Caterpillars eat:</h4>
+                    <ul class="space-y-2">
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>plants only</a></li>
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>insects only</a></li>
+                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">c</span>plants and insects</a></li>
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">d</span>pollen and dew</a></li>
+                    </ul>
+                </div>
 
-                <h4 class="mt-4">2. To defend themselves, some caterpillars can make themselves look like snakes by:</h4>
-                <ul class="new-answers">
-                    <li><a class="sim-answer correct-answer" href="#"><span class="order">a</span>inflating their head</a></li>
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">b</span>growing additional eyes</a></li>
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">c</span>stretching their bodies</a></li>
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">d</span>developing a rattle on their tail</a></li>
-                </ul>
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">2. To defend themselves, some caterpillars can make themselves look like snakes by:</h4>
+                    <ul class="space-y-2">
+                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>inflating their head</a></li>
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>growing additional eyes</a></li>
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">c</span>stretching their bodies</a></li>
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">d</span>developing a rattle on their tail</a></li>
+                    </ul>
+                </div>
 
-                <h4 class="mt-4">3. Caterpillars can store toxins in the adult butterfly stage:</h4>
-                <ul class="new-answers">
-                    <li><a class="sim-answer correct-answer" href="#"><span class="order">a</span>true</a></li>
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">b</span>false</a></li>
-                </ul>
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">3. Caterpillars can store toxins in the adult butterfly stage:</h4>
+                    <ul class="space-y-2">
+                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>true</a></li>
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>false</a></li>
+                    </ul>
+                </div>
 
-                <h4 class="mt-4">4. Red and orange markings let other animals know that butterflies are good to eat:</h4>
-                <ul class="new-answers">
-                    <li><a class="sim-answer wrong-answer" href="#"><span class="order">a</span>true</a></li>
-                    <li><a class="sim-answer correct-answer" href="#"><span class="order">b</span>false</a></li>
-                </ul>
+                <div>
+                    <h4 class="text-lg font-medium text-gray-900 mb-2">4. Red and orange markings let other animals know that butterflies are good to eat:</h4>
+                    <ul class="space-y-2">
+                        <li><a class="sim-answer wrong-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">a</span>true</a></li>
+                        <li><a class="sim-answer correct-answer block p-3 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors duration-200" href="#"><span class="inline-block w-6 h-6 mr-2 rounded-full bg-gray-300 text-center leading-6">b</span>false</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="console-small mt-4">
-                <a href="listening-impairments-simulation-3.html" class="console-button next">
-                    <span>Next Exercise</span>
-                    <i data-lucide="chevron-right" class="ms-2"></i>
-                </a>
+            <div id="quick-desc" class="mt-8 bg-blue-50 border-l-4 border-blue-400 p-4 rounded-md hidden">
+                <p class="text-sm text-blue-700">
+                    <i data-lucide="info" class="inline-block mr-2"></i>
+                    To simulate listening comprehension impairments, the audio has been altered and some words were made incomprehensible.
+                </p>
             </div>
+        </div>
 
-            <div id="quick-desc" class="mt-4" style="display: none;">
-                <p>To simulate listening comprehension impairments, the audio has been altered and some words were made incomprehensible.</p>
-            </div>
+        <div class="flex justify-end">
+            <a href="listening-impairments-simulation-3.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Next Exercise
+                <i data-lucide="chevron-right" class="ml-2 -mr-1 h-5 w-5" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
     <script src="../static/js/jwplayer/jwplayer.js"></script>
     <script>
         lucide.createIcons();
@@ -217,12 +126,12 @@
             height: 0,
             events: {
                 onComplete: function () {
-                    $("#play-button").removeClass("pause");
+                    $("#play-button").removeClass("bg-red-600 hover:bg-red-700").addClass("bg-blue-600 hover:bg-blue-700");
                     $("#play-button i").attr("data-lucide", "play");
                     lucide.createIcons();
                     $("#play-button span").text("PLAY");
-                    $("#answers").fadeIn();
-                    $("#quick-desc").fadeIn();
+                    $("#answers").removeClass("hidden");
+                    $("#quick-desc").removeClass("hidden");
                 },
             },
         });
@@ -231,14 +140,14 @@
             $("#play-button").click(function(e) {
                 e.preventDefault();
                 var player = jwplayer("player");
-                if ($(this).hasClass("pause")) {
+                if ($(this).hasClass("bg-red-600")) {
                     player.pause();
-                    $(this).removeClass("pause");
+                    $(this).removeClass("bg-red-600 hover:bg-red-700").addClass("bg-blue-600 hover:bg-blue-700");
                     $(this).find("i").attr("data-lucide", "play");
                     $(this).find("span").text("PLAY");
                 } else {
                     player.play();
-                    $(this).addClass("pause");
+                    $(this).removeClass("bg-blue-600 hover:bg-blue-700").addClass("bg-red-600 hover:bg-red-700");
                     $(this).find("i").attr("data-lucide", "pause");
                     $(this).find("span").text("PAUSE");
                 }
@@ -247,11 +156,11 @@
 
             $(".sim-answer").click(function(e) {
                 e.preventDefault();
-                $(this).closest('ul').find('.sim-answer').removeClass('bg-success text-white bg-danger');
+                $(this).closest('ul').find('.sim-answer').removeClass('bg-green-100 text-green-800 bg-red-100 text-red-800').addClass('bg-gray-100 hover:bg-gray-200');
                 if ($(this).hasClass('correct-answer')) {
-                    $(this).addClass('bg-success text-white');
+                    $(this).removeClass('bg-gray-100 hover:bg-gray-200').addClass('bg-green-100 text-green-800');
                 } else {
-                    $(this).addClass('bg-danger text-white');
+                    $(this).removeClass('bg-gray-100 hover:bg-gray-200').addClass('bg-red-100 text-red-800');
                 }
             });
         });

@@ -4,237 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Reading Impairment Phonological</title>
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .images {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        .image-container {
-            text-align: center;
-            margin: 10px;
-            flex: 1 1 40%;
-        }
-        .image-container img {
-            max-width: 70%;
-            height: 70%;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .confirmation {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .console {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .next-button {
-            background-color: #ff9800;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 16px;
-        }
-        .next-button:hover {
-            background-color: #f57c00;
-        }
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #f57c00;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-        .progress {
-            height: 100%;
-            background-color: #3b6f91;
-            transition: width 0.3s;
-        }
-        #description {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-left: 4px solid #3498db;
-            display: none;
-        }
-        .nav-tabs .nav-link {
-          color: #34495e;
-      }
-      .nav-tabs .nav-link.active {
-          color: #2c3e50;
-          font-weight: bold;
-      }
-    </style>
-</head>
-<body>
-    <ul class="nav nav-tabs mb-4">
-      <li class="nav-item">
-          <a class="nav-link" href="reading-impairments.html">Overview</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link active" href="reading-impairments-simulation-1.html">Exercise 1</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link " href="reading-impairments-simulation-2.html">Exercise 2</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" href="reading-impairments-simulation-3.html">Exercise 3</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reading-impairments-communication-tips.html">Communication Tips💡</a>
-    </li>
-  </ul>
-
-    <div class="card">
-        <center><h3 style="font-family: 'Courier New', monospace;"><b>Simulating Phonological and Semantic Errors</b></h2></center>
-        <h6 style="text-align: center;">Read the instruction and click on the picture that corresponds to the instruction.</h3><br/>
-
-        <div id="task">
-            <p class="question" style="text-align: center;">Click on... <span id="questionText"></span></p>
-        </div>
-
-        <div class="images">
-            <div class="image-container">
-                <img id="img1" src="" alt="Option 1" onclick="selectAnswer(true)">
-                <div class="confirmation" id="confirmation1"></div>
-            </div>
-            <div class="image-container">
-                <img id="img2" src="" alt="Option 2" onclick="selectAnswer(false)">
-                <div class="confirmation" id="confirmation2"></div>
-            </div>
-        </div>
-
-        <div id="description"></div>
-
-        <div class="console">
-            <button class="next-button" onclick="nextQuestion()">Next Question</button>
-            <span><span id="currentQuestion">1</span> of <span id="totalQuestions"></span></span>
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress" id="progressBar"></div>
-        </div>
-    </div>
-    <footer class="text-center mt-8">
-      <p class="text-gray-600 text-sm" style="font-family: 'Courier New', monospace;">
-        &copy; <span id="currentYear"></span> Aphasia Corner. All rights reserved. <br/>Developed by <code>Aristocratjnr</code>
-      </p>
-    </footer>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-      const questionsData = {
-          questions: [
-              {
-                  text: "ne$e",
-                  correct_image_url: "../static/assets/images/nose.jpg", // Correct answer
-                  wrong_image_url: "../static/assets/images/hose.jpg",
-                  description: "Now, that was confusing, wasn't it? The person with aphasia may perceive some parts of the word correctly, but not others. In this example, instead of NOSE, they may perceive what was written as NE$E."
-              },
-              {
-                  text: "hammer",
-                  correct_image_url: "../static/assets/images/screwdriver.jpg", // Correct answer
-                  wrong_image_url: "../static/assets/images/saw.jpg",
-                  description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of SCREWDRIVER, they may perceive what was written as HAMMER."
-              },
-              {
-                  text: "ook",
-                  correct_image_url: "../static/assets/images/book.jpg", // Correct answer
-                  wrong_image_url: "../static/assets/images/hook.jpg",
-                  description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of BOOK, they may perceive what was written as OOK."
-              },
-              {
-                  text: "cow",
-                  correct_image_url: "../static/assets/images/horse.jpg", // Correct answer
-                  wrong_image_url: "../static/assets/images/cat.jpg",
-                  description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of HORSE, they may perceive what was written as COW."
-              },
-              {
-                  text: "orange",
-                  correct_image_url: "../static/assets/images/apple.jpg", // Correct answer
-                  wrong_image_url: "../static/assets/images/banana.jpg",
-                  description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of APPLE, they may perceive what was written as ORANGE."
-              }
-          ]
-      };
-  
-      let currentQuestion = 0;
-  
-      function loadQuestion() {
-          const question = questionsData.questions[currentQuestion];
-          document.getElementById('questionText').textContent = question.text;
-          document.getElementById('img1').src = question.correct_image_url; // First image is correct
-          document.getElementById('img2').src = question.wrong_image_url;   // Second image is wrong
-          document.getElementById('confirmation1').textContent = '';
-          document.getElementById('confirmation2').textContent = '';
-          document.getElementById('description').style.display = 'none';
-          document.getElementById('currentQuestion').textContent = currentQuestion + 1;
-          document.getElementById('totalQuestions').textContent = questionsData.questions.length;
-          updateProgressBar();
-      }
-  
-      function selectAnswer(selectedImage) {
-          const question = questionsData.questions[currentQuestion];
-          const isCorrect = selectedImage.src === question.correct_image_url;
-  
-          const correctIndex = isCorrect ? 2 : 1;
-          const incorrectIndex = isCorrect ? 1 : 2;
-  
-          document.getElementById(`confirmation${correctIndex}`).textContent = '✓ Correct';
-          document.getElementById(`confirmation${correctIndex}`).style.color = '#2ecc71';
-          document.getElementById(`confirmation${incorrectIndex}`).textContent = '✗ Incorrect';
-          document.getElementById(`confirmation${incorrectIndex}`).style.color = '#e74c3c';
-          document.getElementById('description').textContent = question.description;
-          document.getElementById('description').style.display = 'block';
-      }
-  
-      function nextQuestion() {
-          currentQuestion++;
-          if (currentQuestion >= questionsData.questions.length) {
-              currentQuestion = 0; // Loop back to the first question
-          }
-          loadQuestion();
-      }
-  
-      function updateProgressBar() {
-          const progress = ((currentQuestion + 1) / questionsData.questions.length) * 100;
-          document.getElementById('progressBar').style.width = `${progress}%`;
-      }
-  
-      // Initialize the first question
-      loadQuestion();
-  </script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b6f91',
+                        secondary: '#f57c00',
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-900 mb-8">Aphasia Exercises</h1>
+
+        <nav class="mb-8">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="../index.html" class="text-blue-600 hover:text-blue-800">Introduction</a></li>
+                <li><a href="listening-impairments.html" class="text-blue-600 hover:text-blue-800">Listening</a></li>
+                <li><a href="reading-impairments.html" class="text-blue-600 hover:text-blue-800 font-bold">Reading</a></li>
+                <li><a href="writing-impairments.html" class="text-blue-600 hover:text-blue-800">Writing</a></li>
+                <li><a href="speaking-impairments.html" class="text-blue-600 hover:text-blue-800">Speaking</a></li>
+            </ul>
+        </nav>
+
+        <nav class="mb-12">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="reading-impairments.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Overview</a></li>
+                <li><a href="reading-impairments-simulation-1.html" class="px-3 py-2 bg-blue-600 rounded-full text-white">Exercise 1</a></li>
+                <li><a href="reading-impairments-simulation-2.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Exercise 2</a></li>
+                <li><a href="reading-impairments-simulation-3.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Exercise 3</a></li>
+                <li><a href="reading-impairments-communication-tips.html" class="px-3 py-2 bg-gray-200 rounded-full text-gray-700 hover:bg-gray-300">Communication Tips</a></li>
+            </ul>
+        </nav>
+
+        <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-center text-gray-900 mb-6">Simulating Phonological and Semantic Errors</h2>
+            <p class="text-center text-gray-600 mb-8">Read the instruction and click on the picture that corresponds to the instruction.</p>
+
+            <div id="task" class="mb-8">
+                <p class="text-xl font-medium text-center">Click on... <span id="questionText" class="text-primary font-bold"></span></p>
+            </div>
+
+            <div id="images" class="grid grid-cols-2 gap-8 mb-8">
+                <div class="image-container">
+                    <img id="img1" src="" alt="Option 1" class="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                    <div id="confirmation1" class="mt-2 text-center font-semibold"></div>
+                </div>
+                <div class="image-container">
+                    <img id="img2" src="" alt="Option 2" class="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+                    <div id="confirmation2" class="mt-2 text-center font-semibold"></div>
+                </div>
+            </div>
+
+            <div id="description" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-md mb-8 hidden"></div>
+
+            <div class="flex justify-between items-center mb-4">
+                <button id="nextButton" class="bg-secondary text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors duration-300 flex items-center">
+                    Next Question
+                    <i data-lucide="chevron-right" class="ml-2"></i>
+                </button>
+                <span class="text-gray-600">
+                    Question <span id="currentQuestion" class="font-semibold">1</span> of <span id="totalQuestions" class="font-semibold"></span>
+                </span>
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="progressBar" class="bg-primary h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <footer class="text-center mt-8">
+            <p class="text-gray-600 text-sm">
+                &copy; <span id="currentYear"></span> Aphasia Corner. All rights reserved.<br>
+                Developed by <code class="bg-gray-200 px-1 py-0.5 rounded">Aristocratjnr</code>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const questionsData = {
+            questions: [
+                {
+                    text: "ne$e",
+                    correct_image_url: "../static/assets/images/nose.jpg",
+                    wrong_image_url: "../static/assets/images/hose.jpg",
+                    description: "Now, that was confusing, wasn't it? The person with aphasia may perceive some parts of the word correctly, but not others. In this example, instead of NOSE, they may perceive what was written as NE$E."
+                },
+                {
+                    text: "hammer",
+                    correct_image_url: "../static/assets/images/screwdriver.jpg",
+                    wrong_image_url: "../static/assets/images/saw.jpg",
+                    description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of SCREWDRIVER, they may perceive what was written as HAMMER."
+                },
+                {
+                    text: "ook",
+                    correct_image_url: "../static/assets/images/book.jpg",
+                    wrong_image_url: "../static/assets/images/hook.jpg",
+                    description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of BOOK, they may perceive what was written as OOK."
+                },
+                {
+                    text: "cow",
+                    correct_image_url: "../static/assets/images/horse.jpg",
+                    wrong_image_url: "../static/assets/images/cat.jpg",
+                    description: "Sometimes, the person with aphasia may think of a word related to the one that is seen. In this example, instead of HORSE, they may perceive what was written as COW."
+                },
+                {
+                    text: "orange",
+                    correct_image_url: "../static/assets/images/apple.jpg",
+                    wrong_image_url: "../static/assets/images/banana.jpg",
+                    description: "Sometimes, some important parts of words are perceived but other parts may not be. In this example, instead of APPLE, they may perceive what was written as ORANGE."
+                }
+            ]
+        };
+
+        let currentQuestion = 0;
+        let answered = false;
+
+        function loadQuestion() {
+            const question = questionsData.questions[currentQuestion];
+            document.getElementById('questionText').textContent = question.text;
+            document.getElementById('img1').src = question.correct_image_url;
+            document.getElementById('img2').src = question.wrong_image_url;
+            document.getElementById('confirmation1').textContent = '';
+            document.getElementById('confirmation2').textContent = '';
+            document.getElementById('description').classList.add('hidden');
+            document.getElementById('currentQuestion').textContent = currentQuestion + 1;
+            document.getElementById('totalQuestions').textContent = questionsData.questions.length;
+            updateProgressBar();
+            answered = false;
+        }
+
+        function selectAnswer(event) {
+            if (answered) return;
+            const selectedImage = event.target;
+            const question = questionsData.questions[currentQuestion];
+            const isCorrect = selectedImage.src === question.correct_image_url;
+
+            const correctIndex = isCorrect ? 2 : 1;
+            const incorrectIndex = isCorrect ? 1 : 2;
+
+            document.getElementById(`confirmation${correctIndex}`).textContent = '✓ Correct';
+            document.getElementById(`confirmation${correctIndex}`).classList.add('text-green-600');
+            document.getElementById(`confirmation${incorrectIndex}`).textContent = '✗ Incorrect';
+            document.getElementById(`confirmation${incorrectIndex}`).classList.add('text-red-600');
+            document.getElementById('description').textContent = question.description;
+            document.getElementById('description').classList.remove('hidden');
+            answered = true;
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion >= questionsData.questions.length) {
+                currentQuestion = 0;
+            }
+            loadQuestion();
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / questionsData.questions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+
+        document.getElementById('images').addEventListener('click', function(event) {
+            if (event.target.tagName === 'IMG') {
+                selectAnswer(event);
+            }
+        });
+
+        document.getElementById('nextButton').addEventListener('click', nextQuestion);
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        loadQuestion();
+    </script>
 </body>
 </html>

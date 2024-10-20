@@ -1,93 +1,98 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Writing Impairments Communication Tips</title>
-    <link rel="icon" href=".//images/favicon.ico" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Roboto', sans-serif;
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Courier New', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#3498db',
+                        secondary: '#f39c12',
+                    },
+                },
+            },
         }
-        .navbar {
-            background-color: #3498db;
-        }
-        .nav-link {
-            color: white !important;
-        }
-        .nav-link.active {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-        .card {
-            border: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-      
-        .btn-floating {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .list-group-item {
-            border: none;
-            display: flex;
-            align-items: center;
-        }
-        .list-group-item:hover {
-            background-color: #e9ecef;
-            transition: background-color 0.2s;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        @media (max-width: 768px) {
-            .btn-floating {
-                bottom: 15px;
-                right: 15px;
-            }
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <div class="container mt-5">
-        <div class="header">
-            <h1 class="display-4">Writing Impairments Communication Tips</h1>
-        </div>
-        
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Tips for Effective Communication</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <i class="fas fa-pencil-alt me-2 text-primary"></i>
-                                Encourage the person to write the first letter, or draw slots for how many letters there are in the word.
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fas fa-comments me-2 text-primary"></i>
-                                Encourage the person to speak, draw, or gesture to communicate the message they are trying to get across.
-                            </li>
-                        </ul>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <nav class="bg-primary text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="../index.html" class="font-mono text-xl font-bold">Aphasia Corner</a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="../index.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition duration-150 ease-in-out">Introduction</a>
+                        <a href="listening-impairments.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition duration-150 ease-in-out">Listening</a>
+                        <a href="reading-impairments.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition duration-150 ease-in-out">Reading</a>
+                        <a href="writing-impairments.html" class="px-3 py-2 rounded-md text-sm font-medium bg-blue-700">Writing</a>
+                        <a href="speaking-impairments.html" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600 transition duration-150 ease-in-out">Speaking</a>
                     </div>
                 </div>
             </div>
         </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 class="text-4xl font-bold text-center text-primary mb-8">Writing Impairments Communication Tips</h1>
+        
+        <nav class="mb-8">
+            <ul class="flex justify-center space-x-4">
+                <li><a href="writing-impairments.html" class="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-150 ease-in-out">Overview</a></li>
+                <li><a href="writing-impairments-simulation-1.html" class="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-150 ease-in-out">Exercise 1</a></li>
+                <li><a href="writing-impairments-simulation-2.html" class="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-150 ease-in-out">Exercise 2</a></li>
+                <li><a href="writing-impairments-communication-tips.html" class="px-4 py-2 rounded-full bg-secondary text-white font-medium">Communication Tips</a></li>
+            </ul>
+        </nav>
+
+        <main class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">Tips for Effective Communication</h2>
+                <ul class="space-y-4">
+                    <li class="flex items-start bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="pencil" class="w-6 h-6 mr-3 text-primary flex-shrink-0"></i>
+                        <span>Encourage the person to write the first letter, or draw slots for how many letters there are in the word.</span>
+                    </li>
+                    <li class="flex items-start bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="message-circle" class="w-6 h-6 mr-3 text-primary flex-shrink-0"></i>
+                        <span>Encourage the person to speak, draw, or gesture to communicate the message they are trying to get across.</span>
+                    </li>
+                    <li class="flex items-start bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="clock" class="w-6 h-6 mr-3 text-primary flex-shrink-0"></i>
+                        <span>Be patient and allow extra time for the person to express themselves through writing.</span>
+                    </li>
+                    <li class="flex items-start bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="list" class="w-6 h-6 mr-3 text-primary flex-shrink-0"></i>
+                        <span>Offer multiple-choice options or a list of words to choose from if the person is struggling to write a specific word.</span>
+                    </li>
+                    <li class="flex items-start bg-blue-50 p-4 rounded-lg">
+                        <i data-lucide="smartphone" class="w-6 h-6 mr-3 text-primary flex-shrink-0"></i>
+                        <span>Consider using assistive technology or apps designed to help with writing and communication for individuals with aphasia.</span>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <div class="mt-8 flex justify-end">
+            <a href="speaking-impairments.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-secondary hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition duration-150 ease-in-out">
+                Next: Speaking Impairments
+                <i data-lucide="chevron-right" class="ml-2 -mr-1 h-5 w-5"></i>
+            </a>
+        </div>
     </div>
 
-    <a href="speaking-impairments.html" class="btn-floating btn-lg btn-primary">
-        <i class="fas fa-arrow-right"></i>
-    </a>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

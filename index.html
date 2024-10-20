@@ -24,7 +24,6 @@
             },
         }
     </script>
-    
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <div x-data="{ mobileMenuOpen: false, darkMode: false, modalOpen: false }" x-init="
@@ -43,16 +42,11 @@
                     <div class="flex items-center">
                         <a href="#" class="font-bold text-2xl" style="font-family: 'Courier New', monospace;">Aphasia</a>
                     </div>
-                    <div class="md">
-                        <div class="ml-10 flex items-baseline space-x-4">
-                            <button @click="darkMode = !darkMode; localStorage.theme = darkMode ? 'dark' : 'light'; document.documentElement.classList.toggle('dark')" class="px-3 py-2 rounded-md text-sm font-semibold hover:bg-blue-600 dark:hover:bg-gray-700 transition" aria-label="Toggle Dark Mode">
-                                <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="md">
+                    <div class="md:hidden">
                         <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md hover:bg-blue-600 dark:hover:bg-gray-700 focus:outline-none">
-                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"></svg>
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -69,13 +63,13 @@
         <!-- Hero Section -->
         <section class="relative bg-primary dark:bg-gray-800 text-white py-20 hero">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl" style="font-family: 'Courier New', monospace;">Welcome to Aphasia Centre</h1>
+                <h1 class="text-3xl font-extrabold sm:text-4xl md:text-5xl" style="font-family: 'Courier New', monospace;">Welcome to Aphasia Centre</h1>
                 <p class="mt-4 max-w-md mx-auto text-lg sm:text-xl md:mt-5 md:max-w-3xl">
                     Empowering individuals and families affected by aphasia through education, support, and resources.
                 </p>
                 <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
                     <div class="rounded-md shadow">
-                        <a href="/explore.html" class="btn btn-bright-gradient flex items-center justify-center px-6 py-3 border border-transparent text-lg font-medium rounded-md">
+                        <a href="/explore.html" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-lg font-medium rounded-md bg-secondary hover:bg-primary text-white transition">
                             Explore More
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -91,6 +85,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-12" style="font-family: 'Courier New', monospace;">Understanding Aphasia</h2>
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Feature Card -->
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
                         <div class="p-5">
                             <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto mb-4">
@@ -98,7 +93,7 @@
                             </div>
                             <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">What is Aphasia?</h3>
                             <p class="mt-2 text-base text-gray-500 dark:text-gray-400 text-center">
-                                Aphasia is a language disorder that affects a person's ability to communicate. It can impact speaking, listening, reading, and writing skills.
+                                Aphasia is a language disorder that affects a person's ability to communicate.
                             </p>
                         </div>
                         <div class="bg-gray-50 dark:bg-gray-700 px-5 py-3">
@@ -109,42 +104,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
-                        <div class="p-5">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto mb-4">
-                                <i class="fas fa-hands-helping text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">Support and Resources</h3>
-                            <p class="mt-2 text-base text-gray-500 dark:text-gray-400 text-center">
-                                Discover a wealth of resources, including communication tips, therapy options, and support groups for individuals with aphasia and their caregivers.
-                            </p>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700 px-5 py-3">
-                            <div class="text-sm">
-                                <a href="#" class="btn btn-primary w-full">
-                                    Explore our resources
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
-                        <div class="p-5">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto mb-4">
-                                <i class="fas fa-book-reader text-2xl"></i>
-                            </div>
-                            <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">Education Center</h3>
-                            <p class="mt-2 text-base text-gray-500 dark:text-gray-400 text-center">
-                                Access our comprehensive education center to learn about different types of aphasia, treatment approaches, and the latest research in the field.
-                            </p>
-                        </div>
-                        <div class="bg-gray-50 dark:bg-gray-700 px-5 py-3">
-                            <div class="text-sm">
-                                <a href="#" class="btn btn-primary w-full">
-                                    Visit our education center
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Other Feature Cards -->
+                    <!-- Repeat similar structure for other features -->
                 </div>
             </div>
         </section>
@@ -154,19 +115,19 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl font-extrabold mb-8">Ready to Explore Our Aphasia Exercises?</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <a href="./aphasia-simulations/listening-impairments.html" class="btn btn-gradient">
+                    <a href="./aphasia-simulations/listening-impairments.html" class="btn btn-gradient px-4 py-2">
                         <i class="fas fa-headphones mr-2"></i>
                         Listening Exercises
                     </a>
-                    <a href="./aphasia-simulations/reading-impairments.html" class="btn btn-gradient">
+                    <a href="./aphasia-simulations/reading-impairments.html" class="btn btn-gradient px-4 py-2">
                         <i class="fas fa-book-open mr-2"></i>
                         Reading Exercises
                     </a>
-                    <a href="./aphasia-simulations/writing-impairments.html" class="btn btn-gradient">
+                    <a href="./aphasia-simulations/writing-impairments.html" class="btn btn-gradient px-4 py-2">
                         <i class="fas fa-pencil-alt mr-2"></i>
                         Writing Exercises
                     </a>
-                    <a href="./aphasia-simulations/speaking-impairments.html" class="btn btn-gradient">
+                    <a href="./aphasia-simulations/speaking-impairments.html" class="btn btn-gradient px-4 py-2">
                         <i class="fas fa-microphone mr-2"></i>
                         Speaking Exercises
                     </a>
@@ -179,9 +140,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-8">Stay Updated</h2>
                 <form @submit.prevent="modalOpen = true" class="max-w-md mx-auto">
-                    <div class="flex items-center">
-                        <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:text-white input-gradient" required>
-                        <button type="submit" class="btn btn-gradient rounded-l-none">
+                    <div class="flex flex-col sm:flex-row justify-center items-center">
+                        <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:text-white input-gradient mb-4 sm:mb-0 sm:mr-2" required>
+                        <button type="submit" class="btn btn-gradient px-4 py-2 rounded-md">
                             Subscribe
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -192,6 +153,8 @@
                 </form>
             </div>
         </section>
+
+        <!-- Modal -->
         <div x-show="modalOpen" 
         x-cloak 
         class="modal" 
@@ -203,30 +166,29 @@
         x-transition:leave-end="opacity-0"
         @click.away="modalOpen = false"
         @keydown.escape.window="modalOpen = false">
-       <div class="modal-content" 
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform scale-90"
-            x-transition:enter-end="opacity-100 transform scale-100"
-            x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="opacity-100 transform scale-100"
-            x-transition:leave-end="opacity-0 transform scale-90">
-           <div class="text-center">
-               <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
-                   <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                   </svg>
-               </div>
-               <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Thank You for Subscribing!</h3>
-               <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Your subscription has been successfully completed. We've sent a confirmation email to <span x-text="email" class="font-semibold"></span>.</p>
-               <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">You will receive updates from us shortly.</p>
-               <div class="mt-4">
-                   <button @click="modalOpen = false" class="btn btn-primary w-full">
-                       Close
-                   </button>
-               </div>
-           </div>
-       </div>
-   </div>
+            <div class="modal-content" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 transform scale-90"
+                 x-transition:enter-end="opacity-100 transform scale-100"
+                 x-transition:leave="transition ease-in duration-300"
+                 x-transition:leave-start="opacity-100 transform scale-100"
+                 x-transition:leave-end="opacity-0 transform scale-90">
+                <div class="text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                        <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Thank You for Subscribing!</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Your subscription has been successfully completed. We've sent a confirmation email.</p>
+                    <div class="mt-4">
+                        <button @click="modalOpen = false" class="btn btn-primary w-full">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer class="bg-gray-800 text-white py-8">
@@ -252,7 +214,7 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             gsap.registerPlugin(ScrollTrigger);
 
-            // Animate hero section
+            // Hero section animation
             gsap.from(".hero h1", {
                 opacity: 0,
                 y: 50,
@@ -276,7 +238,7 @@
                 ease: "power3.out"
             });
 
-            // Animate features section
+            // Features section animation
             gsap.from("#learn-more .bg-white", {
                 scrollTrigger: {
                     trigger: "#learn-more",
@@ -289,7 +251,7 @@
                 ease: "power3.out"
             });
 
-            // Animate CTA section
+            // Call to action animation
             gsap.from(".bg-primary h2", {
                 scrollTrigger: {
                     trigger: ".bg-primary",

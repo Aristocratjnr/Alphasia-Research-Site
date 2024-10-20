@@ -1,177 +1,160 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css"
-  rel="stylesheet"
-/>
-<!-- Created for use in the Voices of Hope for Aphasia site developed in collaboration with the University of Florida Chapter of the Association for Information Systems -->
-<!-- Managing Credit: Justin H, Jashmina P -->
-<!-- Technical Analysts: Devin D, Manuel U, Valdemar T -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aphasia Corner: Simulating Speaking Impairments - Semantic Errors</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#f59e0b',
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <header class="mb-8">
+            <nav>
+                <ul class="flex justify-center space-x-4">
+                    <li><a href="speaking-impairments.html" class="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-150 ease-in-out">Overview</a></li>
+                    <li><a href="speaking-impairments-simulation-1.html" class="px-4 py-2 rounded-full bg-secondary text-white font-medium">Exercise 1</a></li>
+                    <li><a href="speaking-impairments-simulation-2.html" class="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-150 ease-in-out">Exercise 2</a></li>
+                    <li><a href="speaking-impairments-communication-tips.html" class="px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300 transition duration-150 ease-in-out">Communication Tips</a></li>
+                </ul>
+            </nav>
+        </header>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <title>
-      Aphasia Corner: Simulating Speaking Impairments - Semantic Errors
-    </title>
-
-    <link
-      rel="stylesheet"
-      href="../static/css/reset-min.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/css/main.css"
-      type="text/css"
-      media="screen"
-      title="no title"
-      charset="utf-8"
-    />
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jwplayer/jwplayer.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/jquery.hoverIntent.minified.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="../static/js/application.js"
-      charset="utf-8"
-    ></script>
-  </head>
-  <body>
-    <div id="container">
-      <!--#set var="page" value="about-aphasia" -->
-      <!--#include virtual="../header.html" -->
-      <div id="content">
-        <h1>Aphasia Exercises</h1>
-
-        <div id="sim-nav">
-          <ul class="clearfix">
-            <li><a href="../index.html">Introduction</a></li>
-            <li><a href="listening-impairments.html">Listening</a></li>
-            <li><a href="reading-impairments.html">Reading</a></li>
-            <li><a href="writing-impairments.html">Writing</a></li>
-            <li>
-              <a class="selected" href="speaking-impairments.html">Speaking</a>
-            </li>
-          </ul>
-        </div>
-        <div id="sim-sub-nav">
-          <ul class="clearfix">
-            <li><a href="speaking-impairments.html">Overview</a></li>
-            <li class="selected">
-              <a href="speaking-impairments-simulation-1.html"> Exercise 1</a>
-            </li>
-            <li>
-              <a href="speaking-impairments-simulation-2.html"> Exercise 2</a>
-            </li>
-            <li>
-              <a href="speaking-impairments-communication-tips.html"
-                >Communication Tips</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <h2>Simulating Semantic Errors</h2>
-
-        <div id="simulation" class="card">
-          <h3>
-            Click on the picture to hear how a person with aphasia might
-            describe it.
-          </h3>
-
-          <div id="answers">
-            <ul class="images clearfix" style="margin-left: 330px">
-              <li id="img1">
-                <a href="#"
-                  ><img id="image" src="" width="165" height="130"
-                /></a>
-                <div class="confirmation"></div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="console-small">
-            <a href="#" class="console-button next"
-              ><span>Next Question</span></a
-            >
-            <span id="sim-current-count">1</span> of
-            <span id="sim-total-count">6</span>
-          </div>
-
-          <div id="quick-desc">
-            <p>
-              A person with aphasia might know what an object is, but instead of
-              saying the intended word, a related word is said.
-            </p>
-          </div>
-        </div>
-      </div>
+        <main class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-3xl font-semibold mb-6 text-primary">Simulating Semantic Errors</h2>
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium mb-4 text-gray-700">Click on the picture to hear how a person with aphasia might describe it.</h3>
+                    <div id="image-container" class="flex justify-center mb-4">
+                        <img id="image" src="" alt="Object to describe" class="w-64 h-64 object-cover rounded-lg shadow-md cursor-pointer transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div id="audio-player" class="hidden">
+                        <audio id="audio" src=""></audio>
+                        <button id="play-pause" class="bg-secondary text-white px-4 py-2 rounded-full hover:bg-orange-600 transition duration-150 ease-in-out flex items-center justify-center mx-auto">
+                            <i data-lucide="play" class="mr-2"></i>
+                            <span>Play</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <button id="next-button" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 flex items-center">
+                        Next Question
+                        <i data-lucide="chevron-right" class="ml-2"></i>
+                    </button>
+                    <span class="text-gray-600">
+                        Question <span id="current-question" class="font-semibold">1</span> of <span id="total-questions" class="font-semibold">5</span>
+                    </span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                    <div id="progress-bar" class="bg-primary h-2.5 rounded-full transition-all duration-500 ease-out" style="width: 20%"></div>
+                </div>
+                <div id="quick-desc" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-md">
+                    <p class="text-sm text-blue-700">
+                        A person with aphasia might know what an object is, but instead of saying the intended word, a related word is said.
+                    </p>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <div style="display: none; visibility: hidden"><div id="player"></div></div>
-    <script type="text/javascript">
-      var CURRENT_QUESTION = 1;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        lucide.createIcons();
 
-      jwplayer("player").setup({
-        flashplayer: "../static/js/jwplayer/player.swf",
-        width: 0,
-        height: 0,
-      });
+        const questionsData = {
+            questions: [
+                {
+                    audio_url: "../static/assets/audio/sleep.mp3",
+                    image_url: "../static/assets/images/bed.jpg",
+                },
+                {
+                    audio_url: "../static/assets/audio/apple.mp3",
+                    image_url: "../static/assets/images/banana.jpg",
+                },
+                {
+                    audio_url: "../static/assets/audio/you-write-it.mp3",
+                    image_url: "../static/assets/images/pencil.jpg",
+                },
+                {
+                    audio_url: "../static/assets/audio/well-eat.mp3",
+                    image_url: "../static/assets/images/plate.jpg",
+                },
+                {
+                    audio_url: "../static/assets/audio/valley.mp3",
+                    image_url: "../static/assets/images/mountain.jpg",
+                },
+            ],
+        };
 
-      var questionsData = {
-        questions: [
-          {
-            audio_url: "../static/assets/audio/sleep.mp3",
-            image_url: "../static/assets/images/bed.jpg",
-          },
-          {
-            audio_url: "../static/assets/audio/apple.mp3",
-            image_url: "../static/assets/images/banana.jpg",
-          },
-          {
-            audio_url: "../static/assets/audio/you-write-it.mp3",
-            image_url: "../static/assets/images/pencil.jpg",
-          },
-          {
-            audio_url: "../static/assets/audio/well-eat.mp3",
-            image_url: "../static/assets/images/plate.jpg",
-          },
-          {
-            audio_url: "../static/assets/audio/valley.mp3",
-            image_url: "../static/assets/images/mountain.jpg",
-          },
-        ],
-      };
+        let currentQuestion = 0;
+        const totalQuestions = questionsData.questions.length;
 
-      $(document).ready(function () {
-        speakingSim1DocReady("speaking-impairments-simulation-2.html");
-      });
+        const image = document.getElementById('image');
+        const audio = document.getElementById('audio');
+        const playPauseBtn = document.getElementById('play-pause');
+        const nextButton = document.getElementById('next-button');
+        const currentQuestionSpan = document.getElementById('current-question');
+        const totalQuestionsSpan = document.getElementById('total-questions');
+        const progressBar = document.getElementById('progress-bar');
+        const audioPlayer = document.getElementById('audio-player');
+
+        function loadQuestion() {
+            const question = questionsData.questions[currentQuestion];
+            image.src = question.image_url;
+            audio.src = question.audio_url;
+            currentQuestionSpan.textContent = currentQuestion + 1;
+            totalQuestionsSpan.textContent = totalQuestions;
+            updateProgress();
+            audioPlayer.classList.add('hidden');
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        image.addEventListener('click', () => {
+            audioPlayer.classList.remove('hidden');
+        });
+
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = '<i data-lucide="pause" class="mr-2"></i><span>Pause</span>';
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i data-lucide="play" class="mr-2"></i><span>Play</span>';
+            }
+            lucide.createIcons();
+        });
+
+        audio.addEventListener('ended', () => {
+            playPauseBtn.innerHTML = '<i data-lucide="play" class="mr-2"></i><span>Play</span>';
+            lucide.createIcons();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentQuestion = (currentQuestion + 1) % totalQuestions;
+            loadQuestion();
+        });
+
+        loadQuestion();
     </script>
-  </body>
+</body>
 </html>

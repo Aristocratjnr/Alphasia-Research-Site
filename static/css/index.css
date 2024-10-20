@@ -1,0 +1,61 @@
+[x-cloak] { display: none !important; }
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .btn {
+            @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+        }
+        .btn-primary {
+            @apply text-white bg-primary hover:bg-blue-700 focus:ring-blue-500;
+        }
+        .btn-secondary {
+            @apply text-primary bg-white hover:bg-gray-100 focus:ring-primary;
+        }
+        .btn-gradient {
+            @apply text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800;
+        }
+        .input-gradient {
+            @apply bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-800 border-2 border-blue-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-400;
+        }
+        .btn-bright-gradient {
+            @apply text-white bg-gradient-to-r from-blue-400 to-purple-500 hover:from-blue-500 hover:to-purple-600 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg;
+        }
+        .modal {
+            @apply fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50;
+        }
+        .modal-content {
+            @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full;
+        }
+        .modal {
+            @apply fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-300;
+        }
+        .modal-content {
+            @apply bg-white dark:bg-gray-800 p-8 rounded-lg shadow-2xl max-w-md w-full transform transition-all duration-300 ease-in-out;
+        }
+        .modal-enter {
+            opacity: 0;
+        }
+        .modal-enter .modal-content {
+            transform: scale(0.9);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transition: opacity 300ms;
+        }
+        .modal-enter-active .modal-content {
+            transform: scale(1);
+        }
+        .modal-exit {
+            opacity: 1;
+        }
+        .modal-exit .modal-content {
+            transform: scale(1);
+        }
+        .modal-exit-active {
+            opacity: 0;
+            transition: opacity 300ms;
+        }
+        .modal-exit-active .modal-content {
+            transform: scale(0.9);
+        }
+    

@@ -1,1 +1,1 @@
----This web app is built for patients with Aphasia.
+---This web app was built for patients with Aphasia.

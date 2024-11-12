@@ -3,314 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Aphasia Centre</title>
+    <title>Aphasia Centre - Empowering Communication</title>
+    <meta name="description" content="Aphasia Centre provides support, resources, and education for individuals and families affected by aphasia.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <link rel="icon" href=".//images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/static/css/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#6366F1',
-                        secondary: '#f59e0b',
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        'primary-dark': '#4338CA',
+                        'secondary-dark': '#059669',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"Courier New"', 'monospace'],
                     },
                 },
             },
         }
     </script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
-    <div x-data="{ mobileMenuOpen: false, darkMode: false, modalOpen: false }" x-init="
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            darkMode = true;
-            document.documentElement.classList.add('dark');
-        } else {
-            darkMode = false;
-            document.documentElement.classList.remove('dark');
-        }
-    ">
-        <!-- Navbar -->
-        <nav class="bg-primary dark:bg-gray-800 text-white shadow-md">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16">
-                    <div class="flex items-center">
-                        <a href="#" class="font-bold text-2xl" style="font-family: 'Courier New', monospace;">Aphasia</a>
+<body class="font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300"
+      x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', mobileMenu: false }"
+      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+      :class="{ 'dark': darkMode }">
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0">
+                        <img class="h-8 w-auto" src="https://via.placeholder.com/150x50?text=Aphasia+Centre" alt="Aphasia Centre Logo">
+                    </a>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                            <a href="#learn-more" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">About Aphasia</a>
+                            <a href="#exercises" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Exercises</a>
+                            <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+                        </div>
                     </div>
-                    <div class="md:hidden">
-                        <button @click="mobileMenuOpen = !mobileMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md hover:bg-blue-600 dark:hover:bg-gray-700 focus:outline-none">
-                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </div>
+                <div class="flex items-center">
+                    <button @click="darkMode = !darkMode" class="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-label="Toggle dark mode">
+                        <svg x-show="!darkMode" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <svg x-show="darkMode" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
+                    <div class="ml-3 md:hidden">
+                        <button @click="mobileMenu = !mobileMenu" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
                 </div>
             </div>
-            <div x-show="mobileMenuOpen" x-cloak class="md:hidden bg-blue-600 dark:bg-gray-700">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <button @click="darkMode = !darkMode; localStorage.theme = darkMode ? 'dark' : 'light'; document.documentElement.classList.toggle('dark')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium hover:bg-blue-700 dark:hover:bg-gray-600 transition">
-                        <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
-                    </button>
-                </div>
-            </div>
         </nav>
+        <div class="md:hidden" id="mobile-menu" x-show="mobileMenu" x-cloak>
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
+                <a href="#learn-more" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">About Aphasia</a>
+                <a href="#exercises" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Exercises</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+            </div>
+        </div>
+    </header>
 
-        <!-- Hero Section -->
-        <section class="relative bg-primary dark:bg-gray-800 text-white py-20 hero">
+    <main>
+        <section class="relative bg-primary dark:bg-gray-800 text-white py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-3xl font-extrabold sm:text-4xl md:text-5xl" style="font-family: 'Courier New', monospace;">Welcome to Aphasia Centre</h1>
-                <p class="mt-4 max-w-md mx-auto text-lg sm:text-xl md:mt-5 md:max-w-3xl">
+                <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl mb-6 font-mono">
+                    Welcome to Aphasia Centre
+                </h1>
+                <p class="mt-4 max-w-md mx-auto text-xl sm:text-2xl md:max-w-3xl">
                     Empowering individuals and families affected by aphasia through education, support, and resources.
                 </p>
-                <div class="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
-                    <div class="rounded-md shadow">
-                        <a href="/explore.html" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-lg font-medium rounded-md bg-secondary hover:bg-primary text-white transition">
-                            Explore More
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+                <a href="#learn-more" class="inline-flex items-center justify-center px-5 py-3 mt-8 text-base font-medium rounded-md text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-dark transition duration-150 ease-in-out">
+                    Explore More
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0">
+                <svg class="w-full h-12 text-white dark:text-gray-900" viewBox="0 0 1440 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 48h1440V0c-211.88 37.673-425.454 57.797-640.723 60.37C584.008 62.944 368.785 42.82 155.213 0H0v48z"></path>
+                </svg>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="learn-more" class="py-12 bg-white dark:bg-gray-900">
+        <section id="learn-more" class="py-16 bg-white dark:bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-12" style="font-family: 'Courier New', monospace;">Understanding Aphasia</h2>
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <!-- Feature Card -->
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-12 font-mono">
+                    Understanding Aphasia
+                </h2>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                         <div class="p-5">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto mb-4">
-                                <i class="fas fa-brain text-2xl"></i>
+                            <div class="flex items-center justify-center mb-4">
+                                <svg class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
                             </div>
-                            <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">What is Aphasia?</h3>
-                            <p class="mt-2 text-base text-gray-500 dark:text-gray-400 text-center">
-                                Aphasia is a language disorder that affects a person's ability to communicate.
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-center mb-2">What is Aphasia?</h3>
+                            <p class="text-base text-gray-600 dark:text-gray-300 text-center">
+                                Aphasia is a language disorder that affects a person's ability to communicate. It can impact speaking, listening, reading, and writing skills.
                             </p>
                         </div>
                         <div class="bg-gray-50 dark:bg-gray-700 px-5 py-3">
-                            <div class="text-sm">
-                                <a href="#" class="btn btn-primary w-full">
-                                    Learn more about aphasia
-                                </a>
-                            </div>
+                            <button class="w-full px-4 py-2 text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-dark transition duration-150 ease-in-out">
+                                Learn more about aphasia
+                            </button>
                         </div>
                     </div>
-                    <!-- Repeat similar structure for other features -->
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                         <div class="p-5">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto mb-4">
-                                <i class="fas fa-hands-helping text-2xl"></i>
+                            <div class="flex items-center justify-center mb-4">
+                                <svg class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
                             </div>
-                            <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">Support and Resources</h3>
-                            <p class="mt-2 text-base text-gray-500 dark:text-gray-400 text-center">
-                                Discover resources, including communication tips, therapy options, and support groups.
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-center mb-2">Support and Resources</h3>
+                            <p class="text-base text-gray-600 dark:text-gray-300 text-center">
+                                Discover a wealth of resources, including communication tips, therapy options, and support groups for individuals with aphasia and their families.
                             </p>
                         </div>
                         <div class="bg-gray-50 dark:bg-gray-700 px-5 py-3">
-                            <div class="text-sm">
-                                <a href="#" class="btn btn-primary w-full">
-                                    Explore our resources
-                                </a>
-                            </div>
+                            <button class="w-full px-4 py-2 text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-dark transition duration-150 ease-in-out">
+                                Explore our resources
+                            </button>
                         </div>
                     </div>
-                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition-transform transform hover:scale-105">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-lg rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                         <div class="p-5">
-                            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto mb-4">
-                                <i class="fas fa-book-reader text-2xl"></i>
+                            <div class="flex items-center justify-center mb-4">
+                                <svg class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
                             </div>
-                            <h3 class="text-lg font-medium text-gray-900 dark:text-white text-center">Education Center</h3>
-                            <p class="mt-2 text-base text-gray-500 dark:text-gray-400 text-center">
-                                Access our education center to learn about types of aphasia and treatment approaches.
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white text-center mb-2">Education Center</h3>
+                            <p class="text-base text-gray-600 dark:text-gray-300 text-center">
+                                Access our comprehensive education center to learn about different types of aphasia, treatment approaches, and the latest research in the field.
                             </p>
                         </div>
                         <div class="bg-gray-50 dark:bg-gray-700 px-5 py-3">
-                            <div class="text-sm">
-                                <a href="#" class="btn btn-primary w-full">
-                                    Visit our education center
-                                </a>
-                            </div>
+                            <button class="w-full px-4 py-2 text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-dark transition duration-150 ease-in-out">
+                                Visit our education center
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="bg-primary dark:bg-gray-800 text-white py-12">
+        <section id="exercises" class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-extrabold mb-8">Ready to Explore Our Aphasia Exercises?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <a href="./aphasia-simulations/listening-impairments.html" class="btn btn-gradient px-4 py-2">
-                        <i class="fas fa-headphones mr-2"></i>
-                        Listening Exercises
-                    </a>
-                    <a href="./aphasia-simulations/reading-impairments.html" class="btn btn-gradient px-4 py-2">
-                        <i class="fas fa-book-open mr-2"></i>
-                        Reading Exercises
-                    </a>
-                    <a href="./aphasia-simulations/writing-impairments.html" class="btn btn-gradient px-4 py-2">
-                        <i class="fas fa-pencil-alt mr-2"></i>
-                        Writing Exercises
-                    </a>
-                    <a href="./aphasia-simulations/speaking-impairments.html" class="btn btn-gradient px-4 py-2">
-                        <i class="fas fa-microphone mr-2"></i>
-                        Speaking Exercises
-                    </a>
+                <h2 class="text-3xl font-extrabold mb-8 font-mono">Ready to Explore Our Aphasia Exercises?</h2>
+                <div class="w-full max-w-3xl mx-auto" x-data="{ activeTab: 'listening' }">
+                    <div class="mb-8">
+                        <div class="inline-flex rounded-md shadow-sm" role="group" aria-label="Exercise types">
+                            <button @click="activeTab = 'listening'" :class="{ 'bg-primary text-white': activeTab === 'listening', 'bg-white text-gray-700': activeTab !== 'listening' }" class="px-4 py-2 text-sm font-medium rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white transition duration-150 ease-in-out">
+                                Listening
+                            </button>
+                            <button @click="activeTab = 'reading'" :class="{ 'bg-primary text-white': activeTab === 'reading', 'bg-white text-gray-700': activeTab !== 'reading' }" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white transition duration-150 ease-in-out">
+                                Reading
+                            </button>
+                            <button @click="activeTab = 'writing'" :class="{ 'bg-primary text-white': activeTab === 'writing', 'bg-white text-gray-700': activeTab !== 'writing' }" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white transition duration-150 ease-in-out">
+                                Writing
+                            </button>
+                            <button @click="activeTab = 'speaking'" :class="{ 'bg-primary text-white': activeTab === 'speaking', 'bg-white text-gray-700': activeTab !== 'speaking' }" class="px-4 py-2 text-sm font-medium rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white transition duration-150 ease-in-out">
+                                Speaking
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-xl rounded-lg" role="tabpanel">
+                        <div class="p-6">
+                            <template x-if="activeTab === 'listening'">
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Listening Exercises</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">Improve your auditory comprehension with our specialized listening exercises. These activities are designed to enhance your ability to process and understand spoken language.</p>
+                                    <a href="./aphasia-simulations/listening-impairments.html" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-dark transition duration-150 ease-in-out">
+                                        <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m0 0l-2.829 2.829-1.414-1.414L5.586 15.536z" />
+                                        </svg>
+                                        Start Listening Exercises
+                                    </a>
+                                </div>
+                            </template>
+                            <template x-if="activeTab === 'reading'">
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Reading Exercises</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">Enhance your reading skills with our curated reading comprehension activities. These exercises are tailored to help you improve your ability to understand written text.</p>
+                                    <a href="./aphasia-simulations/reading-impairments.html" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-dark transition duration-150 ease-in-out">
+                                        <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>
+                                        Start Reading Exercises
+                                    </a>
+                                </div>
+                            </template>
+                            <template x-if="activeTab === 'writing'">
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Writing Exercises</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">Practice your writing skills with our interactive writing exercises. These activities are designed to help you improve your ability to express yourself through written language.</p>
+                                    <a href="./aphasia-simulations/writing-impairments.html" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-dark transition duration-150 ease-in-out">
+                                        <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg>
+                                        Start Writing Exercises
+                                    </a>
+                                </div>
+                            </template>
+                            <template x-if="activeTab === 'speaking'">
+                                <div>
+                                    <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Speaking Exercises</h3>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-6">Improve your verbal communication with our speaking exercises and activities. These exercises are designed to help you enhance your ability to express yourself orally.</p>
+                                    <a href="./aphasia-simulations/speaking-impairments.html" class="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md text-white bg-secondary hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-dark transition duration-150 ease-in-out">
+                                        <svg class="mr-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                        </svg>
+                                        Start Speaking Exercises
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Newsletter Signup -->
-        <section class="bg-gray-100 dark:bg-gray-900 py-12">
+        <section id="contact" class="bg-white dark:bg-gray-900 py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-8">Stay Updated</h2>
-                <form @submit.prevent="modalOpen = true" class="max-w-md mx-auto">
-                    <div class="flex flex-col sm:flex-row justify-center items-center">
-                        <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:text-white input-gradient mb-4 sm:mb-0 sm:mr-2" required>
-                        <button type="submit" class="btn btn-gradient px-4 py-2 rounded-md">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-8 font-mono">Stay Updated</h2>
+                <form id="newsletterForm" x-data="{ email: '', showModal: false }" @submit.prevent="showModal = true" class="max-w-md mx-auto">
+                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <input type="email" x-model="email" placeholder="Enter your email" required class="w-full sm:w-auto px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-gray-800 dark:text-white">
+                        <button type="submit" class="w-full sm:w-auto px-6 py-3 text-base font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-dark transition duration-150 ease-in-out">
                             Subscribe
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                            </svg>
                         </button>
                     </div>
                 </form>
             </div>
         </section>
+    </main>
 
-        <!-- Modal -->
-        <div x-show="modalOpen" 
-        x-cloak 
-        class="modal" 
-        x-transition:enter="modal-enter"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="modal-exit"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        @click.away="modalOpen = false"
-        @keydown.escape.window="modalOpen = false">
-            <div class="modal-content" 
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 transform scale-90"
-                 x-transition:enter-end="opacity-100 transform scale-100"
-                 x-transition:leave="transition ease-in duration-300"
-                 x-transition:leave-start="opacity-100 transform scale-100"
-                 x-transition:leave-end="opacity-0 transform scale-90">
-                <div class="text-center">
-                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
-                        <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Thank You for Subscribing!</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Your subscription has been successfully completed. We've sent a confirmation email.</p>
-                    <div class="mt-4">
-                        <button @click="modalOpen = false" class="btn btn-primary w-full">
-                            Close
-                        </button>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About Us</h3>
+                    <p class="text-gray-400">Aphasia Centre is dedicated to supporting individuals and families affected by aphasia through education, resources, and community.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">Home</a></li>
+                        <li><a href="#learn-more" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">About Aphasia</a></li>
+                        <li><a href="#exercises" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">Exercises</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150 ease-in-out">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-base text-gray-400">&copy; 2024 Aphasia Centre. All rights reserved.</p>
+                <nav class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-base text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-base text-gray-400 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-base text-gray-400 hover:text-white">Cookie Policy</a>
+                </nav>
             </div>
         </div>
+    </footer>
 
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-white py-8">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="mb-4 md:mb-0">&copy; 2024 Aphasia Corner. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <span class="sr-only">Twitter</span>
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <span class="sr-only">Instagram</span>
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+    <div x-show="showModal" x-cloak class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showModal = false">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-md w-full m-4">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Thank You for Subscribing!</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                Your subscription has been successfully completed. We've sent a confirmation email to <span x-text="email" class="font-semibold"></span>.
+            </p>
+            <button @click="showModal = false" class="w-full px-4 py-2 text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-dark transition duration-150 ease-in-out">
+                Close
+            </button>
+        </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Hero section animation
-            gsap.from(".hero h1", {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: "power3.out"
-            });
-
-            gsap.from(".hero p", {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                delay: 0.3,
-                ease: "power3.out"
-            });
-
-            gsap.from(".hero a", {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                delay: 0.6,
-                ease: "power3.out"
-            });
-
-            // Features section animation
-            gsap.from("#learn-more .bg-white", {
-                scrollTrigger: {
-                    trigger: "#learn-more",
-                    start: "top center"
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power3.out"
-            });
-
-            // Call to action animation
-            gsap.from(".bg-primary h2", {
-                scrollTrigger: {
-                    trigger: ".bg-primary",
-                    start: "top center"
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                ease: "power3.out"
-            });
-
-            gsap.from(".bg-primary a", {
-                scrollTrigger: {
-                    trigger: ".bg-primary",
-                    start: "top center"
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                stagger: 0.2,
-                delay: 0.2,
-                ease: "power3.out"
-            });
-        });
-    </script>
 </body>
 </html>

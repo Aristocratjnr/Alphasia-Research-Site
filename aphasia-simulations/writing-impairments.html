@@ -1,82 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Writing Impairments Overview</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-    <link rel="icon" href=".//images/favicon.ico" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['"Courier New"', 'monospace'],
+                    },
+                },
+            },
+        }
+    </script>
     <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Roboto', sans-serif;
-        }
-        .navbar {
-            background-color: #2c3e50;
-        }
-        .nav-link {
-            color: #ecf0f1 !important;
-            font-weight: 400;
-        }
-        .nav-link.active {
-            font-weight: 500;
-            border-bottom: 2px solid #3498db;
-        }
-        .card {
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .btn-primary {
-            background-color: #3498db !important;
-            border: none;
-        }
-        .btn-primary:hover {
-            background-color: #2980b9 !important;
-        }
-        .btn-outline-primary {
-            color: #3498db !important;
-            border-color: #3498db !important;
-        }
-        .btn-outline-primary:hover {
-            background-color: #3498db !important;
-            color: white !important;
-        }
-        h2 {
-            color: #2c3e50;
-            font-weight: 500;
-        }
-        .card-text {
-            color: #34495e;
-            line-height: 1.6;
-        }
+        [x-cloak] { display: none !important; }
     </style>
 </head>
-<body>
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300"
+      x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+      x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); document.documentElement.classList.toggle('dark', val); })"
+      :class="{ 'dark': darkMode }">
+    <header class="bg-blue-900 dark:bg-gray-800 text-white py-4 px-6 flex justify-between items-center">
+        <h1 class="text-2xl font-bold font-mono">Aphasia Corner</h1>
+        <button @click="darkMode = !darkMode" 
+                class="p-2 rounded-md text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                aria-label="Toggle dark mode">
+            <svg x-show="!darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg x-show="darkMode" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+        </button>
+    </header>
 
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="card">
-                    <div class="card-body p-5">
-                        <h2 class="card-title text-center mb-4" style="font-family: 'Courier New', monospace;">Writing Impairments</h2>
-                        <img src="https://cdn.cancercenter.com/-/media/ctca/images/others/blogs/2020/03-march/blog-writing-l.jpg" class="img-fluid rounded mb-4" alt="Person writing">
-                        <p class="card-text">Individuals with aphasia may experience difficulty in word retrieval when writing, despite having a clear understanding of the message they wish to convey. This cognitive-linguistic challenge can significantly impact their written communication abilities.</p>
-                        <div class="d-flex flex-wrap justify-content-between mt-5">
-                            <a href="writing-impairments.html" class="btn btn-outline-primary m-1">Overview</a>
-                            <a href="writing-impairments-simulation-1.html" class="btn btn-primary m-1">Exercise 1</a>
-                            <a href="writing-impairments-simulation-2.html" class="btn btn-primary m-1">Exercise 2</a>
-                            <a href="writing-impairments-simulation-3.html" class="btn btn-primary m-1">Exercise 3</a>
-                            <a href="writing-impairments-communication-tips.html" class="btn btn-primary m-1">Communication Tips</a>
-                        </div>
-                    </div>
+    <main class="container mx-auto my-8 px-4">
+        <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-center text-2xl font-mono mb-6 text-gray-900 dark:text-white">Writing Impairments</h2>
+                <img src="https://cdn.cancercenter.com/-/media/ctca/images/others/blogs/2020/03-march/blog-writing-l.jpg" alt="Person writing" class="rounded-lg mb-6 w-full">
+                <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    Individuals with aphasia may experience difficulty in word retrieval when writing, despite having a clear understanding of the message they wish to convey. This cognitive-linguistic challenge can significantly impact their written communication abilities.
+                </p>
+                <div class="flex flex-wrap justify-between gap-2">
+                    <a href="/writing-impairments" class="px-4 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition-colors duration-300">Overview</a>
+                    <a href="/aphasia-simulations/writing-impairments-simulation-1.html" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300">Exercise 1</a>
+                    <a href="/aphasia-simulations/writing-impairments-simulation-2" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300">Exercise 2</a>
+                    <a href="/aphasia-simulations/writing-impairments-simulation-3" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300">Exercise 3</a>
+                    <a href="/aphasia-simulations/writing-impairments-communication-tips" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300">Communication Tips</a>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
+    <footer class="bg-blue-900 dark:bg-gray-800 text-white py-4 px-6 text-center">
+        <p>&copy; 2024 Aphasia Corner. Developed by Aristocratjnr.</p>
+    </footer>
 </body>
 </html>

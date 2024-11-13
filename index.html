@@ -31,6 +31,26 @@
     </script>
     <style>
         [x-cloak] { display: none !important; }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300"
@@ -246,7 +266,7 @@
                 </div>
             </div>
         </section>
-
+        <main>
         <section id="contact" class="bg-white dark:bg-gray-900 py-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-8 font-mono">Stay Updated</h2>

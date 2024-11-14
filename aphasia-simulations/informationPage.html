@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Aphasia-Friendly Footer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Contact Section -->
+                <div class="footer-section">
+                    <h2 class="section-title">Contact Us</h2>
+                    <div class="contact-item">
+                        <i data-lucide="phone" aria-hidden="true"></i>
+                        <a href="tel:1234567890" class="contact-link">Call: 123-456-7890</a>
+                    </div>
+                    <div class="contact-item">
+                        <i data-lucide="mail" aria-hidden="true"></i>
+                        <a href="mailto:help@example.com" class="contact-link">Email: help@example.com</a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section">
+                    <h2 class="section-title">Quick Links</h2>
+                    <div class="quick-link-item">
+                        <i data-lucide="info" aria-hidden="true"></i>
+                        <a href="/about" class="quick-link">
+                            About Aphasia
+                            <i data-lucide="external-link" class="external-link-icon" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="quick-link-item">
+                        <i data-lucide="info" aria-hidden="true"></i>
+                        <a href="/resources" class="quick-link">
+                            Helpful Resources
+                            <i data-lucide="external-link" class="external-link-icon" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="footer-section">
+                    <h2 class="section-title">Stay Updated</h2>
+                    <p class="newsletter-text">Join our newsletter for the latest aphasia research and tips.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" placeholder="Your email" required class="newsletter-input">
+                        <button type="submit" class="newsletter-submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Expandable Section -->
+            <div class="expandable-section">
+                <button id="expand-button" class="expand-button">
+                    More Information
+                    <i data-lucide="chevron-up" class="chevron-icon" aria-hidden="true"></i>
+                </button>
+                <div id="expandable-content" class="expandable-content">
+                    <div class="expandable-grid">
+                        <div>
+                            <h3 class="expandable-title">Our Mission</h3>
+                            <p>
+                                We are dedicated to improving the lives of individuals affected by aphasia through support,
+                                education, and cutting-edge research.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="expandable-title">Get Involved</h3>
+                            <ul class="involvement-list">
+                                <li>Volunteer opportunities</li>
+                                <li>Donate to support our cause</li>
+                                <li>Participate in research studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media and Copyright -->
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i data-lucide="facebook" aria-hidden="true"></i>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i data-lucide="twitter" aria-hidden="true"></i>
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i data-lucide="youtube" aria-hidden="true"></i>
+                        <span class="sr-only">YouTube</span>
+                    </a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; <span id="current-year"></span> Aphasia Support. All rights reserved.</p>
+                    <p>
+                        <a href="/privacy" class="legal-link">Privacy Policy</a> |
+                        <a href="/terms" class="legal-link">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

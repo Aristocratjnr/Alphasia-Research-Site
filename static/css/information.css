@@ -1,0 +1,244 @@
+:root {
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-900: #1e3a8a;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    background: linear-gradient(to bottom, var(--blue-50), var(--blue-100));
+    color: var(--blue-900);
+    padding: 2rem 1rem;
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--blue-200);
+}
+
+.contact-item, .quick-link-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.contact-link, .quick-link {
+    color: var(--blue-900);
+    text-decoration: none;
+    font-size: 1.125rem;
+    margin-left: 0.5rem;
+    transition: color 0.3s;
+}
+
+.contact-link:hover, .quick-link:hover {
+    text-decoration: underline;
+    color: var(--blue-600);
+}
+
+.external-link-icon {
+    opacity: 0;
+    margin-left: 0.25rem;
+    transition: opacity 0.3s;
+}
+
+.quick-link:hover .external-link-icon {
+    opacity: 1;
+}
+
+.newsletter-text {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 640px) {
+    .newsletter-form {
+        flex-direction: row;
+    }
+}
+
+.newsletter-input {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--blue-300);
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 640px) {
+    .newsletter-input {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+    }
+}
+
+.newsletter-submit {
+    background-color: var(--blue-600);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.newsletter-submit:hover {
+    background-color: var(--blue-700);
+}
+
+.expandable-section {
+    margin-top: 2rem;
+    border-top: 1px solid var(--blue-200);
+    padding-top: 1.5rem;
+}
+
+.expand-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--blue-600);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.expand-button:hover {
+    color: var(--blue-700);
+}
+
+.chevron-icon {
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.expandable-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.expandable-content.expanded {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in;
+}
+
+.expandable-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .expandable-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.expandable-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.involvement-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.footer-bottom {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .social-links {
+        margin-bottom: 0;
+    }
+}
+
+.social-link {
+    background-color: var(--blue-100);
+    color: var(--blue-600);
+    padding: 0.5rem;
+    border-radius: 9999px;
+    transition: background-color 0.3s;
+}
+
+.social-link:hover {
+    background-color: var(--blue-200);
+}
+
+.copyright {
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .copyright {
+        text-align: right;
+    }
+}
+
+.legal-link {
+    color: var(--blue-900);
+    text-decoration: none;
+}
+
+.legal-link:hover {
+    text-decoration: underline;
+}

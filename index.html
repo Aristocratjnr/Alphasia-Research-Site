@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    <script src="/static/js/"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -381,31 +382,6 @@
             </button>
         </div>
     </div>
-    <script>
-        function submitForm() {
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                if (this.email.includes('@')) {
-                    this.modalMessage = `Thank you for subscribing with email: ${this.email}`;
-                    this.isError = false;
-                } else {
-                    this.modalMessage = 'Please enter a valid email address.';
-                    this.isError = true;
-                }
-                this.showModal = true;
-            }, 1000);
-        }
     
-        // Add this to your global Alpine data
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('newsletterData', () => ({
-                email: '',
-                showModal: false,
-                modalMessage: '',
-                isError: false,
-                submitForm
-            }))
-        })
-    </script>
 </body>
 </html>

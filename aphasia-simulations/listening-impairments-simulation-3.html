@@ -129,12 +129,14 @@
         // Attach event listeners
         playButton.addEventListener('click', togglePlay);
         audio.addEventListener('ended', () => {
+            console.log('Audio has ended'); // Debugging line
             isPlaying = false;
             updatePlayButton();
             showAnswers();
         });
 
         function togglePlay() {
+            console.log('Toggling play state. Current state: ' + (isPlaying ? 'playing' : 'paused')); // Debugging line
             if (isPlaying) {
                 audio.pause();
             } else {
@@ -162,6 +164,7 @@
         }
 
         function showAnswers() {
+            console.log('Showing answers'); // Debugging line
             answersContainer.innerHTML = ''; // Clear previous content
             answersContainer.classList.remove('hidden');
             questions.forEach(q => {

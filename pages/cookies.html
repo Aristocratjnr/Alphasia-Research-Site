@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Consent</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+        }
+        .dialog.open {
+            display: block;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        .overlay.open {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-gray-100 p-4 shadow-lg z-50 hidden">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-gray-700">
+                We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
+            </p>
+            <div class="flex items-center gap-2">
+                <button class="bg-transparent border border-gray-300 text-gray-700 px-3 py-1 rounded" id="reject-btn">Reject</button>
+                <button class="bg-transparent border border-gray-300 text-gray-700 px-3 py-1 rounded" id="more-info-btn">More Info</button>
+                <button class="bg-blue-500 text-white px-3 py-1 rounded" id="accept-btn">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    <div id="dialog" class="dialog">
+        <h2 class="text-lg font-semibold">Cookie Policy</h2>
+        <p>We use cookies and similar technologies to help personalize content, tailor and measure ads, and provide a better experience. By clicking accept, you agree to this use as described in our Cookie Policy.</p>
+        <h4 class="font-semibold mt-4">Types of Cookies We Use:</h4>
+        <ul class="list-disc pl-5 space-y-1">
+            <li>Essential cookies: Necessary for the website to function properly.</li>
+            <li>Analytics cookies: Help us understand how visitors interact with our website.</li>
+            <li>Advertising cookies: Used to deliver relevant ads and track ad performance.</li>
+            <li>Preference cookies: Remember your settings and preferences.</li>
+        </ul>
+        <button class="bg-transparent border border-gray-300 text-gray-700 px-3 py-1 rounded mt-4" id="close-dialog">Close</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cookieConsent = localStorage.getItem('cookieConsent');
+            const cookieConsentBanner = document.getElementById('cookie-consent');
+            const overlay = document.getElementById('overlay');
+            const dialog = document.getElementById('dialog');
+
+            if (cookieConsent === null) {
+                cookieConsentBanner.classList.remove('hidden');
+            }
+
+            document.getElementById('accept-btn').addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                cookieConsentBanner.classList.add('hidden');
+            });
+
+            document.getElementById('reject-btn').addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'rejected');
+                cookieConsentBanner.classList.add('hidden');
+            });
+
+            document.getElementById('more-info-btn').addEventListener('click', () => {
+                overlay.classList.add('open');
+                dialog.classList.add('open');
+            });
+
+            document.getElementById('close-dialog').addEventListener('click', () => {
+                overlay.classList.remove('open');
+                dialog.classList.remove('open');
+            });
+
+            overlay.addEventListener('click', () => {
+                overlay.classList.remove('open');
+                dialog.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>

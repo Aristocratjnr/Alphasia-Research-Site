@@ -113,7 +113,6 @@
             transition: all 0.3s ease;
         }
 
-
         .accordion-trigger {
             width: 100%;
             padding: 1.25rem;
@@ -230,7 +229,6 @@
             height: 2.5rem;
         }
 
-        /* Custom styles for specific sections */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -536,7 +534,6 @@
                     item.style.display = '';
                     // Highlight matching text (optional)
                     if (searchTerm) {
-                        // Add highlight class to matching text
                         const highlightText = (text) => {
                             return text.replace(new RegExp(searchTerm, 'gi'), 
                                 match => `<span class="highlight" style="background-color: #fef08a">${match}</span>`
@@ -544,7 +541,9 @@
                         };
                         
                         const content = item.querySelector('.accordion-content');
-                        content.innerHTML = highlightText(faq.answer);
+                        content.innerHTML = highlightText(content.innerHTML);
+                        const questionElement = item.querySelector('.accordion-trigger span:first-child');
+                        questionElement.innerHTML = highlightText(questionElement.innerHTML);
                     }
                 } else {
                     item.style.display = 'none';

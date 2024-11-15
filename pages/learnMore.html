@@ -41,67 +41,79 @@
         .gradient-bg {
             background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 100%);
         }
+        /* Mobile-specific styles */
+        @media (max-width: 640px) {
+            .tab-container {
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            .tab {
+                display: inline-block;
+                width: auto;
+            }
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen font-sans">
-    <div class="p-6">
+    <div class="p-4 sm:p-6">
         <div class="max-w-6xl mx-auto">
             <!-- Header Section -->
-            <div class="text-center mb-8">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">Understanding Aphasia</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            <div class="text-center mb-6 sm:mb-8">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Understanding Aphasia</h1>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
                     A comprehensive guide to understanding aphasia, its types, symptoms, and available support.
                 </p>
             </div>
 
             <!-- Emergency Alert -->
-            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center gap-2">
-                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 mb-6 flex items-center gap-2">
+                <svg class="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
-                <p class="text-red-600">
+                <p class="text-red-600 text-sm sm:text-base">
                     If you or someone you know is experiencing sudden difficulty speaking, seek immediate medical attention as it could be a sign of stroke.
                 </p>
             </div>
 
             <!-- Tabs Navigation -->
-            <div class="mb-6">
+            <div class="mb-6 tab-container">
                 <div class="flex border-b border-gray-200">
-                    <button class="tab active px-6 py-3 font-medium" data-tab="overview">Overview</button>
-                    <button class="tab px-6 py-3 font-medium" data-tab="types">Types</button>
-                    <button class="tab px-6 py-3 font-medium" data-tab="symptoms">Symptoms</button>
-                    <button class="tab px-6 py-3 font-medium" data-tab="resources">Resources</button>
+                    <button class="tab active px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium" data-tab="overview">Overview</button>
+                    <button class="tab px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium" data-tab="types">Types</button>
+                    <button class="tab px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium" data-tab="symptoms">Symptoms</button>
+                    <button class="tab px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium" data-tab="resources">Resources</button>
                 </div>
             </div>
 
             <!-- Tab Contents -->
             <!-- Overview Tab -->
             <div id="overview" class="tab-content active">
-                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-6">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         What is Aphasia?
                     </h2>
-                    <p class="text-gray-600 mb-6">
+                    <p class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                         Aphasia is a language disorder that affects a person's ability to communicate. 
                         It typically occurs suddenly after a stroke or head injury, but can also develop 
                         gradually due to a brain tumor or progressive neurological disease.
                     </p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-xl font-bold mb-4">Key Facts</h3>
-                            <ul class="list-disc pl-4 space-y-2">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Key Facts</h3>
+                            <ul class="list-disc pl-4 space-y-1 sm:space-y-2 text-sm sm:text-base">
                                 <li>Affects about 2 million Americans</li>
                                 <li>Most common cause is stroke</li>
                                 <li>Can impact speaking, listening, reading, and writing</li>
                                 <li>Does not affect intelligence</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-xl font-bold mb-4">Common Causes</h3>
-                            <ul class="list-disc pl-4 space-y-2">
+                        <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Common Causes</h3>
+                            <ul class="list-disc pl-4 space-y-1 sm:space-y-2 text-sm sm:text-base">
                                 <li>Stroke</li>
                                 <li>Head trauma</li>
                                 <li>Brain tumors</li>
@@ -114,50 +126,49 @@
 
             <!-- Types Tab -->
             <div id="types" class="tab-content">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 6h18M3 18h18"></path>
                         </svg>
                         Types of Aphasia
                     </h2>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-xl font-bold mb-2">Broca's Aphasia</h3>
-                            <p class="text-gray-600 mb-4">Also known as expressive aphasia. Speech is difficult and limited to short phrases.</p>
-                            <ul class="list-disc pl-4 space-y-2">
+                    <div class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Broca's Aphasia</h3>
+                            <p class="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Also known as expressive aphasia. Speech is difficult and limited to short phrases.</p>
+                            <ul class="list-disc pl-4 space-y-1 sm:space-y-2 text-sm sm:text-base">
                                 <li>Slow, effortful speech</li>
                                 <li>Difficulty forming complete sentences</li>
                                 <li>Can understand speech well</li>
                                 <li>Frustrated by communication difficulties</li>
                             </ul>
                         </div>
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-xl font-bold mb-2">Wernicke's Aphasia</h3>
-                            <p class="text-gray-600 mb-4">Also known as receptive aphasia. Speech is fluent but lacks meaning.</p>
-                            <ul class="list-disc pl-4 space-y-2">
+                        <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">Wernicke's Aphasia</h3>
+                            <p class="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Also known as receptive aphasia. Speech is fluent but lacks meaning.</p>
+                            <ul class="list-disc pl-4 space-y-1 sm:space-y-2 text-sm sm:text-base">
                                 <li>Fluent but meaningless speech</li>
                                 <li>Poor comprehension</li>
                                 <li>Unaware of speech errors</li>
                                 <li>Use of made-up or incorrect words</li>
                             </ul>
                         </div>
-                        <!-- Additional types continued... -->
                     </div>
                 </div>
             </div>
 
             <!-- Symptoms Tab -->
             <div id="symptoms" class="tab-content">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-2xl font-bold mb-6">Common Symptoms</h2>
-                    <div class="space-y-4">
+                <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Common Symptoms</h2>
+                    <div class="space-y-3 sm:space-y-4">
                         <div class="accordion-item">
-                            <button class="accordion-trigger w-full text-left p-4 bg-gray-50 rounded-lg font-medium">
+                            <button class="accordion-trigger w-full text-left p-3 sm:p-4 bg-gray-50 rounded-lg font-medium text-sm sm:text-base">
                                 Speaking Difficulties
                             </button>
-                            <div class="accordion-content p-4">
-                                <ul class="list-disc pl-4 space-y-2">
+                            <div class="accordion-content p-3 sm:p-4">
+                                <ul class="list-disc pl-4 space-y-1 sm:space-y-2 text-sm sm:text-base">
                                     <li>Trouble finding words</li>
                                     <li>Speaking in short or incomplete sentences</li>
                                     <li>Speaking unrecognizable words</li>
@@ -165,24 +176,22 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- Additional accordion items... -->
                     </div>
                 </div>
             </div>
 
             <!-- Resources Tab -->
             <div id="resources" class="tab-content">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h2 class="text-2xl font-bold mb-6">Helpful Resources</h2>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-xl font-bold mb-2">National Aphasia Association</h3>
-                            <p class="text-gray-600 mb-4">Comprehensive information and support resources</p>
-                            <a href="https://www.aphasia.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+                <div class="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+                    <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Helpful Resources</h2>
+                    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                        <div class="bg-gray-50 rounded-lg p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold mb-2">National Aphasia Association</h3>
+                            <p class="text-gray-600 mb-3 sm:mb-4 text-sm sm:text-base">Comprehensive information and support resources</p>
+                            <a href="https://www.aphasia.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm sm:text-base">
                                 Visit Website →
                             </a>
                         </div>
-                       
                     </div>
                 </div>
             </div>

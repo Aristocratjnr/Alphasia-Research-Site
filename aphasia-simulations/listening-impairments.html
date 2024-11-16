@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     body {
@@ -17,112 +16,118 @@
     h1, h2, h3 {
       font-family: 'Poppins', sans-serif;
     }
-    .tip-content {
-      display: none;
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
       transition: max-height 0.3s ease-out;
     }
-    .tip-content.show {
-      display: block;
+    .accordion-content.show {
+      max-height: 500px;
       transition: max-height 0.5s ease-in;
     }
   </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              light: '#3f51b5',
+              dark: '#5c6bc0',
+            },
+            secondary: {
+              light: '#ff9800',
+              dark: '#ffa726',
+            },
+          },
+        },
+      },
+    }
+  </script>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900 min-h-screen">
-  <div class="py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <header class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4" style="font-family: 'Courier New', monospace;">Listening Impairments Overview</h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Understanding and addressing challenges in auditory processing and comprehension.</p>
-      </header>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white min-h-screen transition-colors duration-300">
+  <div class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <header class="flex justify-between items-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-blue-900 dark:text-blue-100 font-mono">Listening Impairments Overview</h1>
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200" aria-label="Toggle dark mode">
+        <i data-lucide="sun" class="hidden dark:block"></i>
+        <i data-lucide="moon" class="block dark:hidden"></i>
+      </button>
+    </header>
+    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+      Understanding and addressing challenges in auditory processing and comprehension.
+    </p>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <!-- Main content section -->
-        <div class="space-y-8">
-          <section class="bg-white shadow-xl rounded-lg overflow-hidden" x-data="{ activeTab: null }">
-            <h2 class="text-2xl font-semibold text-gray-900 text-center py-4">Communication Tips</h2>
-            <!-- Tip sections -->
-            <div class="border-b border-gray-200">
-              <button 
-                class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out hover:bg-blue-50"
-                @click="activeTab = activeTab === 1 ? null : 1"
-                :aria-expanded="activeTab === 1"
-                aria-controls="tip-1"
-              >
-                <div class="flex items-center justify-between">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <div class="p-6">
+            <h2 class="text-2xl font-semibold mb-4">Communication Tips</h2>
+            <div class="space-y-4" id="accordion">
+              <div class="border-b border-gray-200 dark:border-gray-700">
+                <button class="w-full text-left py-4 flex items-center justify-between focus:outline-none" aria-expanded="false" aria-controls="tip-1">
                   <div class="flex items-center">
                     <i data-lucide="volume-2" class="w-6 h-6 text-blue-500 mr-3"></i>
-                    <h3 class="text-lg font-semibold text-gray-900">Speak slowly and clearly</h3>
+                    <span class="font-semibold">Speak slowly and clearly</span>
                   </div>
-                  <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300" :class="{ 'transform rotate-180': activeTab === 1 }"></i>
+                  <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </button>
+                <div id="tip-1" class="accordion-content px-9 pb-4">
+                  <p class="text-gray-700 dark:text-gray-300">Take your time and enunciate each word. This helps the person with listening impairments process the information more easily. Be patient and allow extra time for comprehension.</p>
                 </div>
-              </button>
-              <div id="tip-1" class="tip-content px-6 pb-4" :class="{ 'show': activeTab === 1 }">
-                <p class="text-gray-700">Take your time and enunciate each word. This helps the person with listening impairments process the information more easily. Be patient and allow extra time for comprehension.</p>
               </div>
-            </div>
-
-            <div class="border-b border-gray-200">
-              <button 
-                class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out hover:bg-blue-50"
-                @click="activeTab = activeTab === 2 ? null : 2"
-                :aria-expanded="activeTab === 2"
-                aria-controls="tip-2"
-              >
-                <div class="flex items-center justify-between">
+              <div class="border-b border-gray-200 dark:border-gray-700">
+                <button class="w-full text-left py-4 flex items-center justify-between focus:outline-none" aria-expanded="false" aria-controls="tip-2">
                   <div class="flex items-center">
                     <i data-lucide="eye" class="w-6 h-6 text-blue-500 mr-3"></i>
-                    <h3 class="text-lg font-semibold text-gray-900">Use visual cues</h3>
+                    <span class="font-semibold">Use visual cues</span>
                   </div>
-                  <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300" :class="{ 'transform rotate-180': activeTab === 2 }"></i>
+                  <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </button>
+                <div id="tip-2" class="accordion-content px-9 pb-4">
+                  <p class="text-gray-700 dark:text-gray-300">Incorporate gestures, facial expressions, and written aids to support your verbal communication. Visual cues can greatly enhance understanding for those with listening impairments.</p>
                 </div>
-              </button>
-              <div id="tip-2" class="tip-content px-6 pb-4" :class="{ 'show': activeTab === 2 }">
-                <p class="text-gray-700">Incorporate gestures, facial expressions, and written aids to support your verbal communication. Visual cues can greatly enhance understanding for those with listening impairments.</p>
               </div>
-            </div>
-
-            <div class="border-b border-gray-200">
-              <button 
-                class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out hover:bg-blue-50"
-                @click="activeTab = activeTab === 3 ? null : 3"
-                :aria-expanded="activeTab === 3"
-                aria-controls="tip-3"
-              >
-                <div class="flex items-center justify-between">
+              <div class="border-b border-gray-200 dark:border-gray-700">
+                <button class="w-full text-left py-4 flex items-center justify-between focus:outline-none" aria-expanded="false" aria-controls="tip-3">
                   <div class="flex items-center">
                     <i data-lucide="check-circle" class="w-6 h-6 text-blue-500 mr-3"></i>
-                    <h3 class="text-lg font-semibold text-gray-900">Confirm understanding</h3>
+                    <span class="font-semibold">Confirm understanding</span>
                   </div>
-                  <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300" :class="{ 'transform rotate-180': activeTab === 3 }"></i>
+                  <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform duration-300"></i>
+                </button>
+                <div id="tip-3" class="accordion-content px-9 pb-4">
+                  <p class="text-gray-700 dark:text-gray-300">Regularly check if the person has understood your message. Encourage them to ask for clarification and be prepared to rephrase or repeat information as needed.</p>
                 </div>
-              </button>
-              <div id="tip-3" class="tip-content px-6 pb-4" :class="{ 'show': activeTab === 3 }">
-                <p class="text-gray-700">Regularly check if the person has understood your message. Encourage them to ask for clarification and be prepared to rephrase or repeat information as needed.</p>
               </div>
             </div>
-          </section>
-
-          <div class="text-center lg:text-left">
-            <a href="listening-impairments-simulation-1.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Go to Next Exercise
-              <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
-            </a>
           </div>
         </div>
-        
-        <!-- Image and quick facts section -->
-        <div class="space-y-8">
-          <section class="bg-white p-6 rounded-lg shadow-lg">
-            <img src="https://cdn.flintrehab.com/uploads/2020/06/doctor-and-speech-therapy-patient.jpg" alt="Speech therapist working with a patient" class="w-full h-auto rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105" />
-            <p class="mt-4 text-sm text-gray-500 italic">A speech therapist working with a patient to improve listening and comprehension skills.</p>
-          </section>
 
-          <section class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-center lg:text-left">
+          <a href="listening-impairments-simulation-1.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            Go to Next Exercise
+            <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <div class="p-6">
+            <img src="https://cdn.flintrehab.com/uploads/2020/06/doctor-and-speech-therapy-patient.jpg" alt="Speech therapist working with a patient" class="w-full h-auto rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105" />
+            <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 italic">A speech therapist working with a patient to improve listening and comprehension skills.</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden">
+          <div class="p-6">
             <h3 class="text-xl font-semibold mb-4 flex items-center">
               <i data-lucide="lightbulb" class="w-6 h-6 mr-2 text-yellow-500"></i>
               Quick Facts
             </h3>
-            <ul class="space-y-2 text-gray-700">
+            <ul class="space-y-2">
               <li class="flex items-start">
                 <i data-lucide="check" class="w-5 h-5 mr-2 text-green-500 flex-shrink-0 mt-1"></i>
                 <span>Listening impairments can affect people of all ages</span>
@@ -136,29 +141,26 @@
                 <span>Early intervention and proper support can significantly improve communication outcomes</span>
               </li>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
     </div>
   </div>
   
-  <footer class="bg-gray-800 text-white py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 mt-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p>&copy; <span id="currentYear"></span> Aphasia Corner. All rights reserved.</p>
         <p class="mt-2 md:mt-0">Developed by <code class="text-blue-300">Aristocratjnr</code></p>
       </div>
       <div class="mt-4 flex justify-center space-x-6">
-        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-          <span class="sr-only">Facebook</span>
+        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Visit our Facebook page">
           <i data-lucide="facebook" class="w-6 h-6"></i>
         </a>
-        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-          <span class="sr-only">Twitter</span>
+        <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Visit our Instagram page">
           <i data-lucide="instagram" class="w-6 h-6"></i>
         </a>
-        <a href="https://github.com/Aristocratjnr" class="text-gray-400 hover:text-white transition duration-300">
-          <span class="sr-only">GitHub</span>
+        <a href="https://github.com/Aristocratjnr" class="text-gray-400 hover:text-white transition duration-300" aria-label="Visit our GitHub page">
           <i data-lucide="github" class="w-6 h-6"></i>
         </a>
       </div>
@@ -166,8 +168,44 @@
   </footer>
 
   <script>
+    // Set current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Create Lucide icons
     lucide.createIcons();
+
+    // Dark mode toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or prefer-color-scheme
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      html.classList.add('dark');
+    }
+
+    // Theme toggle event listener
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Accordion functionality
+    const accordionItems = document.querySelectorAll('#accordion > div');
+    accordionItems.forEach(item => {
+      const button = item.querySelector('button');
+      const content = item.querySelector('.accordion-content');
+      const icon = item.querySelector('[data-lucide="chevron-down"]');
+
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true' || false;
+        button.setAttribute('aria-expanded', !expanded);
+        content.classList.toggle('show');
+        icon.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    });
   </script>
 </body>
 </html>

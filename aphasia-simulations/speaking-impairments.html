@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aphasia Corner: Speaking Impairments Overview</title>
+    <meta name="description" content="Learn about speaking impairments in aphasia and explore exercises to understand communication challenges.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
@@ -11,14 +12,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#3b82f6',
-                        secondary: '#f59e0b',
+                        primary: {
+                            light: '#3b82f6',
+                            dark: '#60a5fa',
+                        },
+                        secondary: {
+                            light: '#f59e0b',
+                            dark: '#fbbf24',
+                        },
                     },
                 },
             },
@@ -28,30 +36,47 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans" x-data="{ mobileMenuOpen: false }">
-  
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300" 
+      x-data="{ mobileMenuOpen: false, darkMode: localStorage.getItem('darkMode') === 'true' }" 
+      x-init="$watch('darkMode', val => { localStorage.setItem('darkMode', val); document.documentElement.classList.toggle('dark', val); })"
+      :class="{ 'dark': darkMode }">
+    <header class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-primary-light dark:text-primary-dark"></h1>
+                <button @click="darkMode = !darkMode" 
+                        class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light dark:focus:ring-primary-dark transition-colors duration-300" 
+                        aria-label="Toggle dark mode">
+                    <i data-lucide="sun" x-show="darkMode" class="h-6 w-6"></i>
+                    <i data-lucide="moon" x-show="!darkMode" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav class="mb-8">
+    <nav class="bg-white dark:bg-gray-800 ">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <ul class="flex flex-wrap justify-center space-x-4">
-                <li class="mb-2"><a href="speaking-impairments.html" class="px-4 py-2 rounded-full bg-secondary text-white font-medium shadow-md hover:bg-orange-600 transition duration-300">Overview</a></li>
-                <li class="mb-2"><a href="speaking-impairments-simulation-1.html" class="px-4 py-2 rounded-full bg-white hover:bg-gray-100 transition duration-300 shadow-md">Exercise 1</a></li>
-                <li class="mb-2"><a href="speaking-impairments-simulation-2.html" class="px-4 py-2 rounded-full bg-white hover:bg-gray-100 transition duration-300 shadow-md">Exercise 2</a></li>
-                <li class="mb-2"><a href="speaking-impairments-communication-tips.html" class="px-4 py-2 rounded-full bg-white hover:bg-gray-100 transition duration-300 shadow-md">Communication Tips</a></li>
+                <li class="mb-2"><a href="speaking-impairments.html" class="px-4 py-2 rounded-full bg-secondary-light dark:bg-secondary-dark text-white font-medium shadow-md hover:bg-orange-600 dark:hover:bg-orange-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-light dark:focus:ring-secondary-dark">Overview</a></li>
+                <li class="mb-2"><a href="speaking-impairments-simulation-1.html" class="px-4 py-2 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light dark:focus:ring-primary-dark">Exercise 1</a></li>
+                <li class="mb-2"><a href="speaking-impairments-simulation-2.html" class="px-4 py-2 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light dark:focus:ring-primary-dark">Exercise 2</a></li>
+                <li class="mb-2"><a href="speaking-impairments-communication-tips.html" class="px-4 py-2 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light dark:focus:ring-primary-dark">Communication Tips</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
 
-        <main class="bg-white shadow-xl rounded-lg overflow-hidden">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <article class="bg-white dark:bg-gray-800 shadow-xl rounded-lg overflow-hidden">
             <div class="p-6 md:p-8">
-                <h2 class="text-3xl font-bold mb-6 text-primary">Speaking Impairments in Aphasia</h2>
+                <h2 class="text-3xl font-bold mb-6 text-primary-light dark:text-primary-dark">Speaking Impairments in Aphasia</h2>
                 <div class="mb-8">
-                    <img src="https://www.riversideonline.com/-/media/patients-and-visitors/healthy-you/aphasia--blog-banner.ashx" alt="Aphasia illustration" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-md">
+                    <img src="https://www.riversideonline.com/-/media/patients-and-visitors/healthy-you/aphasia--blog-banner.ashx" alt="Illustration of a person with aphasia struggling to speak" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-md">
                 </div>
-                <div class="prose max-w-none">
+                <div class="prose dark:prose-invert max-w-none">
                     <p class="mb-4 text-lg">
                         Speaking impairments in aphasia can significantly impact a person's ability to communicate verbally. It's crucial to understand that individuals with aphasia often know what they want to say but struggle to find the right words or form coherent sentences.
                     </p>
-                    <h3 class="text-xl font-semibold mb-3 text-gray-700">Common Speaking Challenges</h3>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-300">Common Speaking Challenges</h3>
                     <ul class="list-disc pl-6 mb-6 space-y-2">
                         <li><strong>Word Retrieval (Anomia):</strong> Difficulty in recalling the names of objects, people, or concepts.</li>
                         <li><strong>Unintended Words or Sounds:</strong> Producing words or sounds that are different from what was intended.</li>
@@ -63,36 +88,33 @@
                     </p>
                 </div>
             </div>
-            <div class="bg-gray-50 px-6 py-4 flex justify-between items-center">
-                <a href="../index.html" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300">
+            <div class="bg-gray-50 dark:bg-gray-700 px-6 py-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <a href="../index.html" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-primary-light dark:text-primary-dark bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light dark:focus:ring-primary-dark transition duration-300">
                     <i data-lucide="chevron-left" class="mr-2 h-5 w-5"></i>
                     Back to Introduction
                 </a>
-                <a href="speaking-impairments-simulation-1.html" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-secondary hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition duration-300">
+                <a href="speaking-impairments-simulation-1.html" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-secondary-light dark:bg-secondary-dark hover:bg-orange-600 dark:hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-light dark:focus:ring-secondary-dark transition duration-300">
                     Start Exercise 1
                     <i data-lucide="chevron-right" class="ml-2 h-5 w-5"></i>
                 </a>
             </div>
-        </main>
-    </div>
+        </article>
+    </main>
 
-    <footer class="bg-gray-800 text-white mt-12">
+    <footer class="bg-gray-800 dark:bg-gray-900 text-white mt-12">
         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
                     <p>&copy; 2024 Aphasia Corner. All rights reserved.</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <span class="sr-only">Facebook</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Visit our Facebook page">
                         <i data-lucide="facebook" class="h-6 w-6"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <span class="sr-only">Twitter</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Visit our Twitter page">
                         <i data-lucide="twitter" class="h-6 w-6"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
-                        <span class="sr-only">Instagram</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300" aria-label="Visit our Instagram page">
                         <i data-lucide="instagram" class="h-6 w-6"></i>
                     </a>
                 </div>

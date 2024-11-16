@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +26,25 @@
             --danger: #ef4444;
         }
 
+        .dark {
+            --primary: #60a5fa;
+            --primary-light: #93c5fd;
+            --primary-dark: #3b82f6;
+            --gray-50: #374151;
+            --gray-100: #1f2937;
+            --gray-200: #111827;
+            --gray-300: #374151;
+            --gray-400: #4b5563;
+            --gray-500: #6b7280;
+            --gray-600: #9ca3af;
+            --gray-700: #d1d5db;
+            --gray-800: #e5e7eb;
+            --gray-900: #f3f4f6;
+            --success: #34d399;
+            --warning: #fbbf24;
+            --danger: #f87171;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -38,6 +57,12 @@
             color: var(--gray-800);
             background: linear-gradient(to bottom, var(--gray-50), white);
             min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark body {
+            background: linear-gradient(to bottom, var(--gray-900), var(--gray-800));
+            color: var(--gray-200);
         }
 
         .container {
@@ -90,7 +115,12 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             margin-bottom: 2rem;
             padding: 2rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s ease;
+        }
+
+        .dark .card {
+            background: var(--gray-800);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
         }
 
         .card:hover {
@@ -98,8 +128,16 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
+        .dark .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+
         .text-muted {
             color: var(--gray-600);
+        }
+
+        .dark .text-muted {
+            color: var(--gray-400);
         }
 
         .accordion {
@@ -112,6 +150,10 @@
             margin-bottom: 1rem;
             overflow: hidden;
             transition: all 0.3s ease;
+        }
+
+        .dark .accordion-item {
+            border-color: var(--gray-700);
         }
 
         .accordion-trigger {
@@ -130,8 +172,17 @@
             transition: background-color 0.2s;
         }
 
+        .dark .accordion-trigger {
+            background: var(--gray-800);
+            color: var(--gray-200);
+        }
+
         .accordion-trigger:hover {
             background-color: var(--gray-50);
+        }
+
+        .dark .accordion-trigger:hover {
+            background-color: var(--gray-700);
         }
 
         .accordion-trigger .icon-container {
@@ -148,6 +199,10 @@
             overflow: hidden;
             transition: all 0.3s ease;
             background-color: var(--gray-50);
+        }
+
+        .dark .accordion-content {
+            background-color: var(--gray-700);
         }
 
         .accordion-content.active {
@@ -242,6 +297,12 @@
             padding: 1.5rem;
             border-radius: 0.75rem;
             border: 1px solid var(--gray-200);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .dark .info-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
         }
 
         .info-card-header {
@@ -255,6 +316,10 @@
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--gray-900);
+        }
+
+        .dark .info-card-title {
+            color: var(--gray-100);
         }
 
         .badge {
@@ -288,6 +353,14 @@
             border-radius: 0.5rem;
             font-size: 1rem;
             transition: all 0.2s;
+            background-color: white;
+            color: var(--gray-800);
+        }
+
+        .dark .search-input {
+            background-color: var(--gray-800);
+            border-color: var(--gray-700);
+            color: var(--gray-200);
         }
 
         .search-input:focus {
@@ -296,12 +369,20 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
+        .dark .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+        }
+
         .progress-bar {
             width: 100%;
             height: 0.5rem;
             background-color: var(--gray-200);
             border-radius: 9999px;
             overflow: hidden;
+        }
+
+        .dark .progress-bar {
+            background-color: var(--gray-700);
         }
 
         .progress-bar-fill {
@@ -324,6 +405,12 @@
             border-radius: 0.75rem;
             text-align: center;
             border: 1px solid var(--gray-200);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .dark .stat-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
         }
 
         .stat-value {
@@ -337,9 +424,41 @@
             color: var(--gray-600);
             font-size: 0.875rem;
         }
+
+        .dark .stat-label {
+            color: var(--gray-400);
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem;
+            background-color: var(--gray-200);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark #theme-toggle {
+            background-color: var(--gray-700);
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--gray-300);
+        }
+
+        .dark #theme-toggle:hover {
+            background-color: var(--gray-600);
+        }
     </style>
 </head>
 <body>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+        <i data-lucide="sun" class="icon"></i>
+    </button>
+
     <div class="container">
         <div class="hero">
             <h1 class="hero-title">
@@ -354,8 +473,8 @@
         <div class="card">
             <div class="search-container">
                 <input type="text" 
-                       placeholder="Search questions..." 
-                       class="search-input" 
+                       placeholder="Search questions..."
+                       class="search-input"
                        id="searchInput">
             </div>
 
@@ -587,6 +706,48 @@
                 }, 300 + (index * 100));
             });
         });
+
+        // Dark mode toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const sunIcon = themeToggle.querySelector('[data-lucide="sun"]');
+        const moonIcon = document.createElement('i');
+        moonIcon.setAttribute('data-lucide', 'moon');
+        moonIcon.classList.add('icon');
+
+        // Check for saved theme preference or prefer-color-scheme
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            htmlElement.classList.add('dark');
+            themeToggle.replaceChild(moonIcon, sunIcon);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            
+            if (htmlElement.classList.contains('dark')) {
+                themeToggle.replaceChild(moonIcon, sunIcon);
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.replaceChild(sunIcon, moonIcon);
+                localStorage.setItem('theme', 'light');
+            }
+            
+            lucide.createIcons();
+        });
+
+        // Update icons when theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    lucide.createIcons();
+                }
+            });
+        });
+
+        observer.observe(htmlElement, { attributes: true });
     </script>
 </body>
 </html>
